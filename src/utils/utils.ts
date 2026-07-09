@@ -39,13 +39,18 @@ function readMDXFile(filePath: string) {
   const rawContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(rawContent);
 
+  // Media renders videos with a plain <video> tag, which bypasses the
+  // next/image loader, so gallery/carousel paths get the basePath here.
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const withBasePath = (src: string) => (src?.startsWith("/") ? `${basePath}${src}` : src);
+
   const metadata: Metadata = {
     title: data.title || "",
     subtitle: data.subtitle || "",
     publishedAt: data.publishedAt,
     summary: data.summary || "",
     image: data.image || "",
-    images: data.images || [],
+    images: (data.images || []).map(withBasePath),
     tag: data.tag || [],
     team: data.team || [],
     link: data.link || "",
