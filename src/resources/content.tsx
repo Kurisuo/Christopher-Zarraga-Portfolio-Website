@@ -6,7 +6,7 @@ const person: Person = {
   lastName: "Zarraga",
   name: `Christopher Zarraga`,
   role: "Computer Science Student",
-  avatar: "/images/avatar.jpg",
+  avatar: "/images/christobal.jpg",
   email: "christopherzarraga31@gmail.com",
   location: "America/Los_Angeles",
   languages: ["English"],

@@ -11,11 +11,9 @@ import {
 } from "@once-ui-system/core";
 
 interface ProjectCardProps {
-  href: string;
   priority?: boolean;
   images: string[];
   title: string;
-  content: string;
   description: string;
   avatars: { src: string }[];
   link: string;
@@ -23,10 +21,8 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
-  href,
   images = [],
   title,
-  content,
   description,
   avatars,
   link,
@@ -58,7 +54,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             </Heading>
           </Flex>
         )}
-        {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
+        {(avatars?.length > 0 || description?.trim() || link || showViewProject) && (
           <Column flex={7} gap="16">
             {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
             {description?.trim() && (
@@ -67,15 +63,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               </Text>
             )}
             <Flex gap="24" wrap>
-              {content?.trim() && (
-                <SmartLink
-                  suffixIcon="arrowRight"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={href}
-                >
-                  <Text variant="body-default-s">Read case study</Text>
-                </SmartLink>
-              )}
               {link ? (
                 <SmartLink
                   suffixIcon="arrowUpRightFromSquare"
