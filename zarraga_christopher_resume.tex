@@ -1,0 +1,134 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[left=0.42in,right=0.42in,top=0.28in,bottom=0.24in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage{xcolor}
+
+\definecolor{navy}{HTML}{1B2A4A}
+\definecolor{slate}{HTML}{3A4756}
+
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+\titleformat{\section}
+  {\color{navy}\scshape\bfseries\normalsize}
+  {}{0em}{}[\color{navy}\titlerule\vspace{-2pt}]
+\titlespacing*{\section}{0pt}{2pt}{1pt}
+
+\setlist[itemize]{leftmargin=12pt,topsep=0.5pt,itemsep=0.5pt,parsep=0pt}
+\newcommand{\bull}[1]{\item\small{#1}}
+
+% two-line entry: title + right1 ; subtitle + right2
+\newcommand{\entryTwo}[4]{%
+  \vspace{0.5pt}
+  {\noindent\textbf{#1}\hfill\textcolor{slate}{\small #2}\par}
+  {\noindent\textcolor{slate}{\small\textit{#3}}\hfill\textcolor{slate}{\small\textit{#4}}\par}
+  \vspace{-1pt}
+}
+
+% project title (bold) + small tech tag
+\newcommand{\projTitle}[2]{%
+  \vspace{1pt}
+  {\noindent\textbf{#1}\,\textcolor{slate}{\small #2}\par}
+  \vspace{-1pt}
+}
+
+\begin{document}
+
+%==================== HEADER ====================
+\begin{center}
+  {\Large\bfseries\color{navy} Christopher Zarraga}\\[1pt]
+  {\small christopherzarraga31@gmail.com $\cdot$ (619) 538-3887 $\cdot$ Santa Cruz, CA $\cdot$ linkedin.com/in/christopher-zarraga $\cdot$ github.com/Kurisuo}
+\end{center}
+
+%==================== EDUCATION ====================
+\section{Education}
+\entryTwo{University of California, Santa Cruz}{Expected June 2028}{B.S. Computer Science (Applied Mathematics Minor)}{Santa Cruz, CA}
+\begin{itemize}
+  \bull{Sabatte Family Full Ride Scholarship --- First Cohort Recipient}
+  \bull{\textbf{Relevant Coursework:} XAI for Healthcare (CSE 41), Parallel Programming (CSE 113), Software Engineering (CSE 115A), Systems Design (CSE 130), Artificial Intelligence (CSE 140), Databases (CSE 180)}
+\end{itemize}
+
+%==================== SKILLS ====================
+\section{Technical Skills}
+\vspace{2pt}
+\noindent\small
+\textbf{Languages:} C, C++17/20, Python, TypeScript, SQL\\[1pt]
+\textbf{Technologies:} Linux, Kubernetes (Nautilus), POSIX, Docker, Git, CMake, Bash, NVML, PyTorch, Gymnasium, NumPy, Pandas, Scikit-Learn\\[1pt]
+\textbf{Concepts:} Parallel Computing, Concurrency, Performance Optimization, Systems \& AI Infrastructure
+
+%==================== PROJECTS ====================
+\section{Projects}
+\projTitle{Multi-Threaded HTTP/1.1 Server}{$\cdot$ C, POSIX Threads}
+\begin{itemize}
+  \bull{Engineered a concurrent HTTP/1.1 server (GET/PUT) that sustains parallel clients, pairing a fixed-size thread pool with a bounded producer-consumer queue and condition-variable signaling to eliminate busy-waiting.}
+  \bull{Designed dynamic, mutex-protected per-URI reader--writer locks, enabling concurrent reads and serializing writes for consistency.}
+  \bull{Hand-implemented the queue and reader--writer lock primitives from scratch (no library concurrency), guaranteeing atomic writes and a coherent audit log via fine-grained locking over raw POSIX syscalls.}
+\end{itemize}
+
+\projTitle{VeriFi --- Vector Store for a RAG Pipeline}{$\cdot$ C++ $\cdot$ 5-person team (in progress)}
+\begin{itemize}
+  \bull{\textbf{Founded and lead a 5-person team} building an in-memory vector store for a Retrieval-Augmented Generation pipeline that grounds LLM answers in financial regulatory documents; defined the Day-1 interface contracts (chunk format, search API, response schema) that let the team build in parallel.}
+  \bull{Own the core engine: implemented exact cosine-similarity k-NN search in C++ --- the correctness baseline ahead of index and SIMD optimization.}
+\end{itemize}
+
+\projTitle{Limit Order Book Matching Engine}{$\cdot$ C++}
+\begin{itemize}
+  \bull{Built a price-time-priority limit order book matching engine in C++ and designed two original order types for tighter execution control; validation suite against hand-computed expected fills in progress.}
+  \bull{\textbf{Banded Execution Order:} rests rather than fills when the market gaps beyond a tolerance band, protecting against flash-crash slippage. \textbf{VWAP Pre-Execution Gate:} checks the volume-weighted average across available liquidity before matching, so a large order in a thin book cannot silently average above the intended limit.}
+\end{itemize}
+
+\projTitle{NVPilot --- GPU / System Performance Agent}{$\cdot$ TypeScript, NVML}
+\begin{itemize}
+  \bull{Optimized PC performance and power usage in real time --- full system perception in $\sim$550 ms and plan generation in under 1 ms --- by engineering an autonomous TypeScript/Node agent that processes live GPU telemetry via NVML (NVIDIA $\times$ ASUS Hackathon).}
+  \bull{Designed a journal-based reversibility system recording a mechanical inverse for every state mutation; verified byte-identical configuration restoration with $\sim$3-second full rollbacks.}
+  \bull{Freed $\sim$2 GB of background memory across 400+ active processes via an allowlist-based process scanner identifying reclaimable resources.}
+\end{itemize}
+
+\projTitle{Neural Network Inference Engine}{$\cdot$ C++ / PyTorch (in progress)}
+\begin{itemize}
+  \bull{Built the PyTorch training and binary weight-export pipeline for a from-scratch, dependency-free C++ MNIST inference engine (784$\rightarrow$128$\rightarrow$64$\rightarrow$10); CPU forward pass --- matrix multiply, ReLU, and argmax --- in development.}
+\end{itemize}
+
+%==================== EXPERIENCE ====================
+\section{Experience}
+\entryTwo{AIEA Lab --- Undergraduate AI Researcher}{May 2026 -- Present}{Robustifying Autonomous Vehicles (RL Safety \& Benchmarking)}{Hybrid}
+\begin{itemize}
+  \bull{Deployed CARLA, an Unreal Engine--based autonomous-driving simulator, headless on the Nautilus Kubernetes GPU cluster (PVC-backed storage, GPU-scheduled jobs, custom YAML specs) and documented the process for the lab, building on prior PyTorch neuron-activation analysis.}
+  \bull{Validated the environment end-to-end by training a CNN classifier (PyTorch, CIFAR-10) on CUDA-scheduled jobs and running CARLA's Python API and Gym interface against the headless deployment.}
+\end{itemize}
+
+\entryTwo{Tech4Good Lab --- Undergraduate Full-Stack Researcher}{June 2026 -- Present}{Full-Stack \& AI/ML Applications for Social Impact}{Hybrid}
+\begin{itemize}
+  \bull{Built a standalone Angular component (OnPush change detection, Signals-driven inline editing, Angular CDK autosizing) in the lab's TypeScript / Angular Material codebase.}
+\end{itemize}
+
+\entryTwo{Perspective Paint}{June 2025 -- May 2026}{Web Developer}{Hybrid}
+\begin{itemize}
+  \bull{Grew a freelance client's organic search traffic 45\% over $\sim$3 months (Google Analytics) by building and deploying a responsive vanilla HTML/CSS/JS site with caching, asset compression, and optimized metadata --- won via cold outreach and shipped solo.}
+\end{itemize}
+
+\entryTwo{Lando Interactive}{October 2025 -- March 2026}{Coding Instructor}{Onsite}
+\begin{itemize}
+  \bull{Solo lead instructor for K--5 coding classes of 25 students across 10 elementary campuses; contributed curriculum critiques and applied a metacognitive, peer problem-solving teaching approach.}
+\end{itemize}
+
+\entryTwo{Independent Card Trading (Pok\'emon)}{2024 -- 2025}{Self-Directed}{Onsite}
+\begin{itemize}
+  \bull{Generated $\sim$\$15K profit ($\sim$\$5K cost of goods) reselling collectible cards and brokering buyer--seller deals against live market demand.}
+\end{itemize}
+
+%==================== CERTS / HONORS ====================
+\section{Certifications, Honors \& Interests}
+\noindent\small
+\textbf{Certifications:} Google AI Professional Certificate; Google AI Essentials\\[0pt]
+\textbf{Honors \& Activities:} Co-Founder, Sabatte \& Regents Scholars Association (2026); SHPE --- Society of Hispanic Professional Engineers (2024 -- Present); NVIDIA $\times$ ASUS Hackathon\\[0pt]
+\textbf{Interests:} Chess (2000 Elo), Active Trading (equities; thinkorswim paper trading), Lap Swimming, Calisthenics
+
+\end{document}

@@ -2,49 +2,34 @@ import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
+  firstName: "Christopher",
+  lastName: "Zarraga",
+  name: `Christopher Zarraga`,
+  role: "Computer Science Student",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
-  locale: "en", // BCP 47 language tag for the HTML lang attribute, e.g., 'en', 'ja', 'zh-TW'
+  email: "christopherzarraga31@gmail.com",
+  location: "America/Los_Angeles",
+  languages: ["English"],
+  locale: "en",
 };
 
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: <>My weekly newsletter about creativity and engineering</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/Kurisuo",
     essential: true,
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-    essential: true,
-  },
-  {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.linkedin.com/in/christopher-zarraga/",
     essential: true,
   },
   {
@@ -60,25 +45,26 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  description: `Portfolio website showcasing my work as a ${person.role.toLowerCase()}`,
+  headline: <>Building systems at the intersection of AI and performance</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">NVPilot</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured work
+          Featured project
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/nvpilot",
   },
   subline: (
     <>
       I'm {person.firstName}, a {person.role.toLowerCase()} at{" "}
-      <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+      <Text as="span" size="xl" weight="strong">UC Santa Cruz</Text>, researching AI safety and
+      building systems software — from concurrent servers to GPU performance agents.
     </>
   ),
 };
@@ -87,7 +73,7 @@ const about: About = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role.toLowerCase()} from Santa Cruz, CA`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -96,7 +82,7 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
@@ -104,52 +90,82 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        {person.firstName} is a {person.location.split("/")[1]?.replace("_", " ")}-based {person.role.toLowerCase()} with a passion for transforming complex challenges
-        into simple, elegant design solutions. Their work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        {person.firstName} is a Santa Cruz–based computer science student at the University of
+        California, Santa Cruz, pursuing a B.S. in Computer Science with an Applied Mathematics
+        minor (expected June 2028). He researches autonomous-vehicle safety at the AIEA Lab,
+        builds full-stack tools at Tech4Good, and ships systems projects spanning concurrent
+        servers, vector search, trading engines, and GPU performance tooling.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "AIEA Lab",
+        timeframe: "May 2026 – Present",
+        role: "Undergraduate AI Researcher",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Deployed CARLA, an Unreal Engine–based autonomous-driving simulator, headless on the
+            Nautilus Kubernetes GPU cluster with PVC-backed storage, GPU-scheduled jobs, and custom
+            YAML specs — and documented the process for the lab.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Validated the environment end-to-end by training a CNN classifier (PyTorch, CIFAR-10) on
+            CUDA-scheduled jobs and running CARLA's Python API and Gym interface against the headless
+            deployment.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Tech4Good Lab",
+        timeframe: "June 2026 – Present",
+        role: "Undergraduate Full-Stack Researcher",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Built a standalone Angular component (OnPush change detection, Signals-driven inline
+            editing, Angular CDK autosizing) in the lab's TypeScript / Angular Material codebase.
           </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Perspective Paint",
+        timeframe: "June 2025 – May 2026",
+        role: "Web Developer",
+        achievements: [
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Grew a freelance client's organic search traffic 45% over ~3 months (Google Analytics)
+            by building and deploying a responsive vanilla HTML/CSS/JS site with caching, asset
+            compression, and optimized metadata — won via cold outreach and shipped solo.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Lando Interactive",
+        timeframe: "October 2025 – March 2026",
+        role: "Coding Instructor",
+        achievements: [
+          <>
+            Solo lead instructor for K–5 coding classes of 25 students across 10 elementary campuses;
+            contributed curriculum critiques and applied a metacognitive, peer problem-solving
+            teaching approach.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Independent Card Trading (Pokémon)",
+        timeframe: "2024 – 2025",
+        role: "Self-Directed",
+        achievements: [
+          <>
+            Generated ~$15K profit (~$5K cost of goods) reselling collectible cards and brokering
+            buyer–seller deals against live market demand.
           </>,
         ],
         images: [],
@@ -157,78 +173,75 @@ const about: About = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true,
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "University of California, Santa Cruz",
+        description: (
+          <>
+            B.S. Computer Science with an Applied Mathematics minor (expected June 2028). Sabatte
+            Family Full Ride Scholarship — first cohort recipient. Relevant coursework includes
+            XAI for Healthcare, Parallel Programming, Software Engineering, Systems Design,
+            Artificial Intelligence, and Databases.
+          </>
+        ),
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
+        title: "Languages",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>Core languages for systems programming, application development, and data work.</>
         ),
         tags: [
-          {
-            name: "Figma",
-            icon: "figma",
-          },
+          { name: "C" },
+          { name: "C++" },
+          { name: "Python" },
+          { name: "TypeScript", icon: "javascript" },
+          { name: "SQL" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        title: "Next.js",
+        title: "Systems & Infrastructure",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>
+            Tools and concepts for building performant, concurrent, and production-ready systems.
+          </>
         ),
         tags: [
-          {
-            name: "JavaScript",
-            icon: "javascript",
-          },
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
-          },
+          { name: "Linux" },
+          { name: "Kubernetes" },
+          { name: "Docker" },
+          { name: "POSIX" },
+          { name: "CMake" },
+          { name: "Git" },
+          { name: "Bash" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
+        images: [],
+      },
+      {
+        title: "AI / ML",
+        description: (
+          <>
+            Frameworks and libraries for machine learning research, inference pipelines, and GPU
+            telemetry.
+          </>
+        ),
+        tags: [
+          { name: "PyTorch" },
+          { name: "NumPy" },
+          { name: "Pandas" },
+          { name: "Scikit-Learn" },
+          { name: "NVML" },
+          { name: "Gymnasium" },
         ],
+        images: [],
       },
     ],
   },
@@ -237,19 +250,15 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: "Writing about systems, AI, and engineering",
   description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
 };
 
 const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  description: `Systems, AI, and software projects by ${person.name}`,
 };
 
 const gallery: Gallery = {
@@ -257,8 +266,6 @@ const gallery: Gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
