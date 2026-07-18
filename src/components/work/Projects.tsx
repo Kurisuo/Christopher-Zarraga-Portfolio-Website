@@ -39,7 +39,7 @@ export function Projects({ range, exclude }: ProjectsProps) {
           title={post.metadata.title}
           description={post.metadata.summary}
           avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}
-          link={post.metadata.link || ""}
+          link={post.metadata.link || `/work/${post.slug}`}
           showViewProject
         />
       ))}
