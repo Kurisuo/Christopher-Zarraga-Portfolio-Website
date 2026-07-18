@@ -21,6 +21,7 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
+  priority = false,
   images = [],
   title,
   description,
@@ -33,6 +34,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       {images.length > 0 && (
         <Carousel
           sizes="(max-width: 960px) 100vw, 960px"
+          priority={priority}
+          revealedByDefault
           items={images.map((image) => ({
             slide: image,
             alt: title,
