@@ -7,12 +7,18 @@ interface ProjectsProps {
   exclude?: string[];
 }
 
+// Temporarily hidden from Home and Work — remove from this list to restore
+const temporarilyHidden = [
+  "limit-order-book-matching-engine",
+  "neural-network-inference-engine",
+];
+
 export function Projects({ range, exclude }: ProjectsProps) {
   let allProjects = getPosts(["src", "app", "work", "projects"]);
 
-  // Exclude by slug (exact match)
-  if (exclude && exclude.length > 0) {
-    allProjects = allProjects.filter((post) => !exclude.includes(post.slug));
+  const excluded = [...temporarilyHidden, ...(exclude ?? [])];
+  if (excluded.length > 0) {
+    allProjects = allProjects.filter((post) => !excluded.includes(post.slug));
   }
 
   const sortedProjects = allProjects.sort((a, b) => {
