@@ -136,18 +136,22 @@ export function Hero() {
                 Built with
               </p>
               <div className="flex flex-wrap items-center justify-center gap-2">
-                {allSelectedTech.map((name) => (
-                  <img
-                    key={name}
-                    src={techLogos[name].src}
-                    alt={techLogos[name].alt}
-                    width={34}
-                    height={34}
-                    loading="lazy"
-                    className="size-[34px] rounded-md bg-flame-foreground/10 p-1 object-contain transition-transform duration-200 hover:scale-110"
-                    title={name}
-                  />
-                ))}
+                {allSelectedTech.map((name) => {
+                  const logo = techLogos[name];
+                  if (!logo) return null;
+                  return (
+                    <img
+                      key={name}
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={34}
+                      height={34}
+                      loading="lazy"
+                      className="size-[34px] rounded-md bg-flame-foreground/10 p-1 object-contain transition-transform duration-200 hover:scale-110"
+                      title={name}
+                    />
+                  );
+                })}
               </div>
             </div>
 
