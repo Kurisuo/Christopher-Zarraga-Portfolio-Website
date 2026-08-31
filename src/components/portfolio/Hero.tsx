@@ -7,6 +7,46 @@ import galleryChess from "@/assets/gallery-chess.jpg";
 import gallerySwim from "@/assets/gallery-swim.jpg";
 import galleryCalisthenics from "@/assets/gallery-calisthenics.jpg";
 import galleryPhotography from "@/assets/gallery-photography.jpg";
+import cppLogo from "@/assets/c-plus-plus-logo.png.asset.json";
+import cLogo from "@/assets/c-logo.png.asset.json";
+import pythonLogo from "@/assets/python-logo.png.asset.json";
+import cudaLogo from "@/assets/cuda-logo.png.asset.json";
+import tsLogo from "@/assets/typescript-logo.png.asset.json";
+import nemoclawLogo from "@/assets/nemoclaw-logo.png.asset.json";
+import nvmlLogo from "@/assets/nvml-logo.png.asset.json";
+
+const techLogos: Record<string, { src: string; alt: string }> = {
+  "C++": { src: cppLogo.url, alt: "C++ logo" },
+  C: { src: cLogo.url, alt: "C logo" },
+  Python: { src: pythonLogo.url, alt: "Python logo" },
+  CUDA: { src: cudaLogo.url, alt: "CUDA logo" },
+  TypeScript: { src: tsLogo.url, alt: "TypeScript logo" },
+  NemoClaw: { src: nemoclawLogo.url, alt: "NemoClaw logo" },
+  NVML: { src: nvmlLogo.url, alt: "NVML logo" },
+};
+
+function TechStack({ names }: { names: string[] }) {
+  return (
+    <span className="flex items-center gap-1.5">
+      {names.map((name) => {
+        const logo = techLogos[name];
+        if (!logo) return null;
+        return (
+          <img
+            key={name}
+            src={logo.src}
+            alt={logo.alt}
+            width={22}
+            height={22}
+            loading="lazy"
+            className="size-[22px] rounded object-contain bg-flame-foreground/10 p-0.5"
+            title={name}
+          />
+        );
+      })}
+    </span>
+  );
+}
 
 const stats = [
   { value: "1st", label: ["COHORT FULL RIDE", "RECIPIENT AT UCSC"] },
