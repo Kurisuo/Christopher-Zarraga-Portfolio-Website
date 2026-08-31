@@ -95,13 +95,13 @@ export function Hero() {
               <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-flame-foreground/70">
                 Built with
               </p>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-3 gap-4">
                 {[
                   ["C++", "C"],
                   ["CUDA", "NVML"],
                   ["TypeScript", "NemoClaw"],
-                ].map((pair, rowIndex) => (
-                  <div key={rowIndex} className="flex items-center justify-center gap-3">
+                ].map((pair, colIndex) => (
+                  <div key={colIndex} className="flex flex-col items-center gap-2">
                     {pair.map((name) => {
                       const logo = techLogos[name];
                       if (!logo) return null;
