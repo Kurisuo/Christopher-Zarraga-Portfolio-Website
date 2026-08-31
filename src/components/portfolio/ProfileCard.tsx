@@ -34,15 +34,19 @@ export function ProfileCard({ className }: { className?: string }) {
         className,
       )}
     >
-      {/* Purple glow trail */}
-      {trail.map((d) => (
-        <span
-          key={d.id}
-          aria-hidden
-          className="glow-dot"
-          style={{ left: d.x, top: d.y }}
-        />
-      ))}
+      {/* Purple glow trail — rendered above all card content so it covers the whole box */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-10 overflow-hidden rounded-xl"
+      >
+        {trail.map((d) => (
+          <span
+            key={d.id}
+            className="glow-dot"
+            style={{ left: d.x, top: d.y }}
+          />
+        ))}
+      </div>
 
       <img
         src={portrait}
