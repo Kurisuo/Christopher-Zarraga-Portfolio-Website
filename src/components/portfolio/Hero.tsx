@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { ProfileCard } from "./ProfileCard";
+import { ChessQueen } from "./ChessQueen";
 
 const stats = [
   { value: "1st", label: ["FULL RIDE IN", "UCSC HISTORY"] },
