@@ -159,9 +159,12 @@ export function Hero() {
               <li>Reading — financial literacy</li>
               <li>Photography</li>
             </ul>
-            <ChessQueen />
+            <div className="mt-auto grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] items-center gap-2 pt-6">
+              <ChessQueen />
+              <ChessGame />
+            </div>
             <span
-              className="mt-1 flex size-9 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-y-0.5"
+              className="mt-4 flex size-9 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-y-0.5"
               aria-hidden="true"
             >
               <ChevronDown
