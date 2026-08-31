@@ -37,7 +37,7 @@ export function Hero() {
           <br />
           <span className="text-ghost">Science</span>
         </h1>
-        <p className="mt-7 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
           I&apos;m Christopher Zarraga — a CS major and Applied Math minor at UC
           Santa Cruz, here on the Sabatte Family full-ride scholarship, the
           first ever awarded by the university. I spend most of my time turning
@@ -45,14 +45,14 @@ export function Hero() {
         </p>
       </Reveal>
 
-      <Reveal delay={160} className="mt-12">
-        <dl className="flex flex-wrap gap-x-10 gap-y-6">
+      <Reveal delay={160} className="mt-16">
+        <dl className="flex flex-wrap justify-between gap-x-8 gap-y-6">
           {stats.map((s) => (
-            <div key={s.value}>
-              <dt className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
+            <div key={s.value + s.label[0]} className="min-w-0 flex-1 text-center">
+              <dt className="font-display text-5xl font-bold tracking-tight sm:text-6xl">
                 {s.value}
               </dt>
-              <dd className="mt-1 font-mono text-[11px] uppercase leading-relaxed tracking-wider text-muted-foreground">
+              <dd className="mt-2 font-mono text-[11px] uppercase leading-relaxed tracking-wider text-muted-foreground">
                 {s.label[0]}
                 <br />
                 {s.label[1]}
@@ -62,13 +62,13 @@ export function Hero() {
         </dl>
       </Reveal>
 
-      <div className="mt-12 grid gap-4 sm:grid-cols-2">
+      <div className="mt-16 grid gap-4 sm:grid-cols-2">
         <Reveal delay={200}>
           <div className="flex h-full flex-col rounded-3xl bg-flame p-5 text-flame-foreground">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Selected work
             </p>
-            <ul className="mt-3 space-y-1.5 font-display text-lg font-semibold leading-snug">
+            <ul className="mt-3 space-y-1.5 font-display text-xl font-semibold leading-snug">
               <li>Neural inference engine in C++</li>
               <li>Multi-threaded HTTP server</li>
               <li>VeriFi — C++ RAG pipeline</li>
@@ -104,7 +104,7 @@ export function Hero() {
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Off the keyboard
             </p>
-            <ul className="mt-3 space-y-1.5 font-display text-lg font-semibold leading-snug">
+            <ul className="mt-3 space-y-1.5 font-display text-xl font-semibold leading-snug">
               <li>Chess — 2000 Elo</li>
               <li>Lap swimming — just finished my first swim class</li>
               <li>Calisthenics</li>
