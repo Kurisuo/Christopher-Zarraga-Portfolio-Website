@@ -30,7 +30,7 @@ export function UCSC() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="mt-14 grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
           {/* NVPilot — featured */}
           <Reveal delay={120}>
             <article className="h-full rounded-[2rem] border border-border bg-ink p-6 sm:p-8">
