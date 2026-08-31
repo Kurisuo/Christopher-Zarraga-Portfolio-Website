@@ -68,11 +68,37 @@ export function Hero() {
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Selected work
             </p>
-            <ul className="mt-3 space-y-1.5 font-display text-xl font-semibold leading-snug">
-              <li>Neural inference engine in C++</li>
-              <li>Multi-threaded HTTP server</li>
-              <li>VeriFi — C++ RAG pipeline</li>
-              <li>NVPilot — NVIDIA x ASUS hackathon</li>
+            <ul className="mt-3 space-y-2 font-display text-xl font-semibold leading-snug">
+              <li className="flex flex-wrap items-center gap-2">
+                <span>Neural inference engine</span>
+                <span className="rounded-md bg-flame-foreground/15 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-flame-foreground">
+                  C++
+                </span>
+              </li>
+              <li className="flex flex-wrap items-center gap-2">
+                <span>Multi-threaded HTTP server</span>
+                <span className="rounded-md bg-flame-foreground/15 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-flame-foreground">
+                  C
+                </span>
+              </li>
+              <li className="flex flex-wrap items-center gap-2">
+                <span>VeriFi — RAG pipeline</span>
+                <span className="rounded-md bg-flame-foreground/15 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-flame-foreground">
+                  Python
+                </span>
+                <span className="rounded-md bg-flame-foreground/15 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-flame-foreground">
+                  C++
+                </span>
+              </li>
+              <li className="flex flex-wrap items-center gap-2">
+                <span>NVPilot — NVIDIA x ASUS</span>
+                <span className="rounded-md bg-flame-foreground/15 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-flame-foreground">
+                  Python
+                </span>
+                <span className="rounded-md bg-flame-foreground/15 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-flame-foreground">
+                  CUDA
+                </span>
+              </li>
             </ul>
             <a
               href="#work"
