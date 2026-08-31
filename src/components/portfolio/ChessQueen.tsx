@@ -87,17 +87,17 @@ export function ChessQueen() {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return <div className="h-32 w-full sm:h-36" aria-hidden />;
+    return <div className="h-24 w-full sm:h-28" aria-hidden />;
   }
 
   return (
     <div
-      className="h-32 w-full cursor-grab touch-none active:cursor-grabbing sm:h-36"
+      className="h-24 w-full cursor-grab touch-none active:cursor-grabbing sm:h-28"
       aria-label="Interactive 3D render of a queen chess piece — drag to spin"
     >
       <Canvas
         dpr={[1, 2]}
-        camera={{ position: [0, 0.4, 4.8], fov: 40 }}
+        camera={{ position: [0, 0.4, 5.2], fov: 40 }}
         gl={{ alpha: true, antialias: true }}
         style={{ background: "transparent" }}
       >
