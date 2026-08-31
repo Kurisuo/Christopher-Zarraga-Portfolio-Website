@@ -53,26 +53,30 @@ export function ProfileCard({ className }: { className?: string }) {
         Christopher Zarraga Jimenez
       </h2>
       <p className="mt-4 text-center text-sm leading-relaxed text-surface-foreground/60">
-        A Computer Science student building things that are equal parts math and
-        stubbornness.
+        CS + Applied Math at UC Santa Cruz — Sabatte Family full-ride
+        scholar, systems builder, 2000-Elo chess player.
       </p>
       <div className="mt-7 flex justify-center gap-3 pb-1">
         <a
-          href="https://github.com"
+          href="https://github.com/Kurisuo"
+          target="_blank"
+          rel="noreferrer"
           className="flex size-10 items-center justify-center rounded-full bg-surface-foreground/5 text-flame transition-colors hover:bg-flame hover:text-flame-foreground"
           aria-label="GitHub"
         >
           <Github className="size-[18px]" />
         </a>
         <a
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/in/christopher-zarraga/"
+          target="_blank"
+          rel="noreferrer"
           className="flex size-10 items-center justify-center rounded-full bg-surface-foreground/5 text-flame transition-colors hover:bg-flame hover:text-flame-foreground"
           aria-label="LinkedIn"
         >
           <Linkedin className="size-[18px]" />
         </a>
         <a
-          href="#contact"
+          href="mailto:christopherzarraga31@gmail.com"
           className="flex size-10 items-center justify-center rounded-full bg-surface-foreground/5 text-flame transition-colors hover:bg-flame hover:text-flame-foreground"
           aria-label="Email"
         >
