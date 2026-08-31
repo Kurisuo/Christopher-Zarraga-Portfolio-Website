@@ -84,7 +84,23 @@ export function Hero() {
           </div>
         </Reveal>
         <Reveal delay={260}>
-          <div className="flex h-full flex-col rounded-3xl bg-volt p-5 text-volt-foreground">
+          <div
+            role="button"
+            tabIndex={0}
+            aria-expanded={galleryOpen}
+            onClick={(e) => {
+              // Don't toggle while dragging the 3D queen
+              if ((e.target as HTMLElement).closest("canvas")) return;
+              setGalleryOpen((v) => !v);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setGalleryOpen((v) => !v);
+              }
+            }}
+            className="flex h-full cursor-pointer flex-col rounded-3xl bg-volt p-5 text-volt-foreground"
+          >
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Off the keyboard
             </p>
@@ -96,17 +112,14 @@ export function Hero() {
               <li>Photography</li>
             </ul>
             <ChessQueen />
-            <button
-              type="button"
-              onClick={() => setGalleryOpen((v) => !v)}
-              aria-expanded={galleryOpen}
+            <span
               className="mt-1 flex size-9 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-y-0.5"
-              aria-label="Toggle photo gallery"
+              aria-hidden="true"
             >
               <ChevronDown
                 className={`size-4 transition-transform duration-300 ${galleryOpen ? "rotate-180" : ""}`}
               />
-            </button>
+            </span>
           </div>
         </Reveal>
       </div>
