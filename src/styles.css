@@ -21,6 +21,8 @@
 @theme inline {
   --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-flame: var(--flame);

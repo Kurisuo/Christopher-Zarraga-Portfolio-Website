@@ -40,4 +40,3 @@ export function CodeCard({
   );
 }
 
-export const kw = (t: string) => t;
