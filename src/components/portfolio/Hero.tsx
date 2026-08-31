@@ -25,7 +25,7 @@ const techLogos: Record<string, { src: string; alt: string }> = {
   NVML: { src: nvmlLogo.url, alt: "NVML logo" },
 };
 
-function TechStack({ names }: { names: string[] }) {
+function TechStack({ names, size = 24 }: { names: string[]; size?: number }) {
   return (
     <span className="flex items-center gap-1.5">
       {names.map((name) => {
@@ -36,10 +36,11 @@ function TechStack({ names }: { names: string[] }) {
             key={name}
             src={logo.src}
             alt={logo.alt}
-            width={22}
-            height={22}
+            width={size}
+            height={size}
             loading="lazy"
-            className="size-[22px] rounded object-contain bg-flame-foreground/10 p-0.5"
+            className="rounded object-contain bg-flame-foreground/10 p-0.5"
+            style={{ width: size, height: size }}
             title={name}
           />
         );
@@ -47,6 +48,8 @@ function TechStack({ names }: { names: string[] }) {
     </span>
   );
 }
+
+const allSelectedTech = ["C", "C++", "Python", "CUDA", "TypeScript", "NemoClaw", "NVML"];
 
 const stats = [
   { value: "1st", label: ["COHORT FULL RIDE", "RECIPIENT AT UCSC"] },
