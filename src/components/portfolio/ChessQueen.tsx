@@ -92,7 +92,7 @@ export function ChessQueen() {
 
   return (
     <div
-      className="h-24 w-full cursor-grab touch-none active:cursor-grabbing sm:h-28"
+      className="h-40 w-full cursor-grab touch-none active:cursor-grabbing sm:h-48"
       aria-label="Interactive 3D render of a queen chess piece — drag to spin"
     >
       <Canvas
