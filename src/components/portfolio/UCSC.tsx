@@ -21,12 +21,13 @@ export function UCSC() {
 
         <Reveal delay={80}>
           <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            I came to UC Santa Cruz on the first full-ride scholarship the
-            university had ever awarded. It changed what I could afford to be
-            curious about. I declared Computer Science with Applied Math because
-            I wanted both halves — the systems that run and the math that
-            explains why they run the way they do. Two projects from that stretch
-            matter most.
+            I came to UC Santa Cruz as the first-ever recipient of the Sabatte
+            Family full-ride scholarship — the first full ride in the
+            university&apos;s history. It changed what I could afford to be
+            curious about. I declared Computer Science with an Applied Math
+            minor because I wanted both halves — the systems that run and the
+            math that explains why they run the way they do. Two projects from
+            that stretch matter most.
           </p>
         </Reveal>
 
