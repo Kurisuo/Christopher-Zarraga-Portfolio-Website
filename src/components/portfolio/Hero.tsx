@@ -112,56 +112,51 @@ export function Hero() {
               Selected work
             </p>
             <ul className="mt-3 space-y-3 font-display text-xl font-semibold leading-snug">
-              <li className="flex items-center justify-between gap-3">
-                <span>Neural inference engine</span>
-                <TechStack names={["C++"]} size={26} />
-              </li>
-              <li className="flex items-center justify-between gap-3">
-                <span>Multi-threaded HTTP server</span>
-                <TechStack names={["C"]} size={26} />
-              </li>
-              <li className="flex items-center justify-between gap-3">
-                <span>VeriFi — RAG pipeline</span>
-                <TechStack names={["Python", "C++"]} size={26} />
-              </li>
-              <li className="flex items-center justify-between gap-3">
-                <span>NVPilot — NVIDIA x ASUS</span>
-                <TechStack names={["TypeScript", "NemoClaw", "NVML"]} size={26} />
-              </li>
+              <li>Neural inference engine</li>
+              <li>Multi-threaded HTTP server</li>
+              <li>VeriFi — RAG pipeline</li>
+              <li>NVPilot — NVIDIA x ASUS</li>
             </ul>
 
-            {/* Tech-stack logo row — anchors the tile like the chess piece */}
-            <div className="mt-auto flex flex-col items-center gap-2 pt-6">
+            {/* Tech-stack logo grid — anchors the tile like the chess piece */}
+            <div className="mt-auto flex flex-col items-center gap-3 pt-6">
               <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-flame-foreground/70">
                 Built with
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-2">
-                {allSelectedTech.map((name) => {
-                  const logo = techLogos[name];
-                  if (!logo) return null;
-                  return (
-                    <img
-                      key={name}
-                      src={logo.src}
-                      alt={logo.alt}
-                      width={34}
-                      height={34}
-                      loading="lazy"
-                      className="size-[34px] rounded-md bg-flame-foreground/10 p-1 object-contain transition-transform duration-200 hover:scale-110"
-                      title={name}
-                    />
-                  );
-                })}
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  ["C++", "C"],
+                  ["CUDA", "NVML"],
+                  ["TypeScript", "NemoClaw"],
+                ].map((pair, rowIndex) => (
+                  <div key={rowIndex} className="flex items-center justify-center gap-3">
+                    {pair.map((name) => {
+                      const logo = techLogos[name];
+                      if (!logo) return null;
+                      return (
+                        <img
+                          key={name}
+                          src={logo.src}
+                          alt={logo.alt}
+                          width={56}
+                          height={56}
+                          loading="lazy"
+                          className="size-14 rounded-lg bg-flame-foreground/10 p-1.5 object-contain transition-transform duration-200 hover:scale-110"
+                          title={name}
+                        />
+                      );
+                    })}
+                  </div>
+                ))}
               </div>
             </div>
 
-            <a
-              href="#work"
-              className="mt-4 flex size-9 items-center justify-center self-end rounded-full border border-flame-foreground/40 transition-transform hover:translate-x-1"
-              aria-label="Jump to projects"
+            <span
+              className="mt-4 flex size-9 items-center justify-center self-end rounded-full border border-flame-foreground/40"
+              aria-hidden="true"
             >
-              <ArrowRight className="size-4" />
-            </a>
+              <ChevronDown className="size-4" />
+            </span>
           </div>
         </Reveal>
         <Reveal delay={260}>
