@@ -1,22 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Reveal } from "./Reveal";
 import resume from "@/assets/resume.pdf.asset.json";
 
 export function Contact() {
   const [showResume, setShowResume] = useState(false);
-
-  useEffect(() => {
-    if (!showResume) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setShowResume(false);
-    };
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
-  }, [showResume]);
 
   return (
     <footer
