@@ -2,46 +2,47 @@ import { Reveal } from "./Reveal";
 
 const projects = [
   {
-    tag: "Web",
-    name: "Shelf",
-    blurb: "A local-first tracker for everything I'm reading.",
+    tag: "C++ / RAG",
+    name: "VeriFi",
+    blurb:
+      "A RAG pipeline that answers queries from verified, sourced company policy documents.",
     detail:
-      "Offline-first storage with a small sync engine, built to survive a laptop closing mid-thought.",
+      "Led a 5-person team; 0.36ms query latency at 1k vectors scaling to 96ms at 250k, and 33k chunks/sec ingestion through a cosine-similarity top-k engine in C++.",
   },
   {
-    tag: "CLI",
-    name: "Replay",
-    blurb: "Fuzzy search across my whole shell history.",
+    tag: "C / POSIX",
+    name: "HTTP Server",
+    blurb: "A multi-threaded HTTP server over raw POSIX syscalls.",
     detail:
-      "Zero dependencies, written to stay fast on a decade of terminal commands.",
+      "~8,400 req/s with 99% of requests under ~13ms across 64 connections — thread pool over a bounded queue, reader-writer locks, zero concurrency libraries.",
   },
   {
-    tag: "Data",
-    name: "Pulse",
-    blurb: "A live heatmap of campus events at UCSC.",
+    tag: "Research",
+    name: "AIEA Lab",
+    blurb: "Autonomous vehicles research with reinforcement learning.",
     detail:
-      "Scrapes and aggregates public RSVPs into a grid that shows where the night is actually happening.",
+      "Evaluating SAC agents in Gymnasium CarRacing with Stable-Baselines3, and running CARLA workloads on the Nautilus Kubernetes GPU cluster.",
   },
   {
-    tag: "ML",
-    name: "Grain",
-    blurb: "Small image models trained on my own photos.",
+    tag: "Tech4Good",
+    name: "Causeway",
+    blurb: "A full-stack learning curriculum app built for social impact.",
     detail:
-      "An excuse to get comfortable with training loops, augmentation, and honest evaluation.",
+      "Built half the data/event milestone components and architected bulk data pipelines with batch write services for multi-record transactions.",
   },
   {
-    tag: "Tooling",
-    name: "Scaffold",
-    blurb: "My personal project generator.",
+    tag: "TypeScript",
+    name: "Reversibility Engine",
+    blurb: "Journaled undo for every state mutation an agent makes.",
     detail:
-      "Because the first twenty minutes of every project were the same twenty minutes.",
+      "Designed as .md skill specs for Claude Code — records a mechanical inverse per mutation, verified byte-identical config restoration in ~3s.",
   },
   {
-    tag: "Math",
-    name: "Proofs",
-    blurb: "Explorable write-ups of results I like.",
+    tag: "Leadership",
+    name: "Sabatte & Regents",
+    blurb: "Co-founded the association for UCSC's scholarship cohort.",
     detail:
-      "Interactive diagrams for the theorems that took me the longest to actually feel.",
+      "Building community for the Sabatte Family and Regents scholars alongside SHPE, connecting first-gen and underrepresented engineers.",
   },
 ];
 
@@ -86,8 +87,9 @@ export function MoreProjects() {
             Right now
           </p>
           <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            I&apos;m going deeper on GPU-adjacent systems work and applied
-            machine learning — the seam NVPilot opened up for me. Alongside that
+            I&apos;m going deeper on autonomous-driving RL at the AIEA Lab and
+            shipping Causeway with Tech4Good — while digging further into the
+            GPU-adjacent systems work NVPilot opened up for me. Alongside that
             I&apos;m looking for an internship where I can ship something real
             and be the least experienced person in the room for a while.
           </p>
