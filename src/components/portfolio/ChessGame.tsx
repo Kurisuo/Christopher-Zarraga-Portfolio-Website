@@ -96,7 +96,7 @@ function usePieceGeometries() {
     (Object.keys(PROFILES) as PieceType[]).forEach((t) => {
       const geo = new THREE.LatheGeometry(
         PROFILES[t].map(([x, y]) => new THREE.Vector2(x, y)),
-        28,
+        48,
       );
       geo.computeVertexNormals();
       out[t] = geo;
@@ -156,13 +156,51 @@ function Board({ placed }: { placed: Placed[] }) {
           <meshStandardMaterial color="#181410" roughness={0.5} />
         </mesh>
         {placed.map((p) => (
-          <mesh key={p.key} geometry={geos[p.type]} position={[p.x, 0, p.z]} castShadow>
-            <meshStandardMaterial
-              color={p.color === "w" ? "#f2ede2" : "#191919"}
-              roughness={0.3}
-              metalness={0.25}
-            />
-          </mesh>
+          <group key={p.key} position={[p.x, 0, p.z]}>
+            <mesh geometry={geos[p.type]} castShadow>
+              <meshPhysicalMaterial
+                color={p.color === "w" ? "#f5efe2" : "#17151b"}
+                roughness={p.color === "w" ? 0.28 : 0.18}
+                metalness={0.1}
+                clearcoat={1}
+                clearcoatRoughness={0.25}
+                specularIntensity={1}
+              />
+            </mesh>
+            {p.type === "q" && (
+              <mesh position={[0, 1.16, 0]}>
+                <sphereGeometry args={[0.09, 24, 24]} />
+                <meshPhysicalMaterial
+                  color={p.color === "w" ? "#f5efe2" : "#17151b"}
+                  roughness={0.15}
+                  clearcoat={1}
+                  clearcoatRoughness={0.2}
+                />
+              </mesh>
+            )}
+            {p.type === "k" && (
+              <group position={[0, 1.14, 0]}>
+                <mesh>
+                  <boxGeometry args={[0.07, 0.22, 0.07]} />
+                  <meshPhysicalMaterial
+                    color={p.color === "w" ? "#f5efe2" : "#17151b"}
+                    roughness={0.15}
+                    clearcoat={1}
+                    clearcoatRoughness={0.2}
+                  />
+                </mesh>
+                <mesh position={[0, 0.05, 0]}>
+                  <boxGeometry args={[0.17, 0.06, 0.06]} />
+                  <meshPhysicalMaterial
+                    color={p.color === "w" ? "#f5efe2" : "#17151b"}
+                    roughness={0.15}
+                    clearcoat={1}
+                    clearcoatRoughness={0.2}
+                  />
+                </mesh>
+              </group>
+            )}
+          </group>
         ))}
       </group>
       <OrbitControls
@@ -224,7 +262,7 @@ export function ChessGame() {
     >
       <Canvas
         dpr={[1, 2]}
-        camera={{ position: [0, 7.5, 8.5], fov: 34 }}
+        camera={{ position: [0, 10.5, 11.5], fov: 36 }}
         gl={{ alpha: true, antialias: true }}
         style={{ background: "transparent" }}
       >
