@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PillNav } from "@/components/portfolio/PillNav";
+import { ProfileCard } from "@/components/portfolio/ProfileCard";
 import { Hero } from "@/components/portfolio/Hero";
 import { FirstProject } from "@/components/portfolio/FirstProject";
 import { UCSC } from "@/components/portfolio/UCSC";
@@ -28,11 +29,23 @@ function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <PillNav />
-      <Hero />
-      <FirstProject />
-      <UCSC />
-      <MoreProjects />
-      <Contact />
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:grid lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-16">
+        {/* Pinned profile column — stays put while the right side scrolls */}
+        <aside className="hidden lg:block">
+          <div className="sticky top-0 flex h-screen items-center py-24">
+            <ProfileCard className="max-h-full overflow-hidden" />
+          </div>
+        </aside>
+
+        {/* Scrollable content column */}
+        <div className="min-w-0">
+          <Hero />
+          <FirstProject />
+          <UCSC />
+          <MoreProjects />
+          <Contact />
+        </div>
+      </div>
     </main>
   );
 }
