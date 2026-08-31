@@ -1,0 +1,30 @@
+import { Home, Terminal, GraduationCap, FolderGit2, Mail } from "lucide-react";
+
+const items = [
+  { href: "#top", label: "Intro", Icon: Home },
+  { href: "#origin", label: "First project", Icon: Terminal },
+  { href: "#ucsc", label: "UCSC", Icon: GraduationCap },
+  { href: "#work", label: "Projects", Icon: FolderGit2 },
+  { href: "#contact", label: "Contact", Icon: Mail },
+];
+
+export function PillNav() {
+  return (
+    <nav className="fixed inset-x-0 top-5 z-50 flex justify-center px-4">
+      <ul className="flex items-center gap-1 rounded-full border border-border bg-ink-soft/80 px-2 py-2 backdrop-blur-md">
+        {items.map(({ href, label, Icon }) => (
+          <li key={href}>
+            <a
+              href={href}
+              aria-label={label}
+              title={label}
+              className="flex size-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-flame hover:text-flame-foreground"
+            >
+              <Icon className="size-[18px]" strokeWidth={1.75} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
