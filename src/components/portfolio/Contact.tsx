@@ -1,7 +1,23 @@
+import { useEffect, useState } from "react";
 import { Reveal } from "./Reveal";
 import resume from "@/assets/resume.pdf.asset.json";
 
 export function Contact() {
+  const [showResume, setShowResume] = useState(false);
+
+  useEffect(() => {
+    if (!showResume) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowResume(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [showResume]);
+
   return (
     <footer
       id="contact"
@@ -34,14 +50,13 @@ export function Contact() {
             >
               christopherzarraga31@gmail.com
             </a>
-            <a
-              href={resume.url}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              type="button"
+              onClick={() => setShowResume(true)}
               className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors hover:border-flame hover:text-flame"
             >
               Resume (PDF)
-            </a>
+            </button>
             <a
               href="https://github.com/Kurisuo"
               target="_blank"
@@ -66,6 +81,49 @@ export function Contact() {
           <span>Santa Cruz, CA</span>
         </div>
       </div>
+
+      {showResume && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/80 p-4 backdrop-blur-sm sm:p-8"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Resume"
+          onClick={() => setShowResume(false)}
+        >
+          <div
+            className="relative flex h-full max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-xl border border-border bg-ink-soft shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-border px-5 py-3">
+              <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+                Christopher Zarraga — Resume
+              </span>
+              <div className="flex items-center gap-2">
+                <a
+                  href={resume.url}
+                  download
+                  className="rounded-full border border-border px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-foreground transition-colors hover:border-flame hover:text-flame"
+                >
+                  Download
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setShowResume(false)}
+                  aria-label="Close resume"
+                  className="rounded-full border border-border px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-foreground transition-colors hover:border-flame hover:text-flame"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+            <iframe
+              src={resume.url}
+              title="Christopher Zarraga Resume"
+              className="h-full w-full flex-1"
+            />
+          </div>
+        </div>
+      )}
     </footer>
   );
 }
