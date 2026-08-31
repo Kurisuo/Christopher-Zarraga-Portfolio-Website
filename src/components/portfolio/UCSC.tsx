@@ -5,9 +5,9 @@ export function UCSC() {
   return (
     <section
       id="ucsc"
-      className="border-y border-border bg-ink-soft/40 py-20 lg:py-28"
+      className="-mx-5 border-y border-border bg-ink-soft/40 px-5 py-20 sm:-mx-8 sm:px-8 lg:py-28"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div>
         <Reveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-volt">
             02 — Santa Cruz
@@ -30,7 +30,7 @@ export function UCSC() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="mt-14 grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
           {/* NVPilot — featured */}
           <Reveal delay={120}>
             <article className="h-full rounded-[2rem] border border-border bg-ink p-6 sm:p-8">

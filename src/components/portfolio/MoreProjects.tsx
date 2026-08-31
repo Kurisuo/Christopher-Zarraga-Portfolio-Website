@@ -47,7 +47,7 @@ const projects = [
 
 export function MoreProjects() {
   return (
-    <section id="work" className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
+    <section id="work" className="py-20 lg:py-28">
       <Reveal>
         <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
           03 — Everything else

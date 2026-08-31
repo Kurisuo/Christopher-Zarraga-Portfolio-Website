@@ -4,9 +4,9 @@ export function Contact() {
   return (
     <footer
       id="contact"
-      className="border-t border-border bg-ink-soft/40 py-20 lg:py-28"
+      className="-mx-5 border-t border-border bg-ink-soft/40 px-5 py-20 sm:-mx-8 sm:px-8 lg:py-28"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div>
         <Reveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
             04 — Say hello
