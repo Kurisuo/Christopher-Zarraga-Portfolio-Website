@@ -3,6 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { ProfileCard } from "./ProfileCard";
 import { ChessQueen } from "./ChessQueen";
+import { ChessGame } from "./ChessGame";
 import galleryChess from "@/assets/gallery-chess.jpg";
 import gallerySwim from "@/assets/gallery-swim.jpg";
 import galleryCalisthenics from "@/assets/gallery-calisthenics.jpg";
@@ -93,7 +94,7 @@ export function Hero() {
             {/* Tech-stack logo grid — anchors the tile like the chess piece */}
             <div className="mt-auto flex flex-col items-center gap-3 pt-6">
               <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-flame-foreground/70">
-                Built with
+                Building with
               </p>
               <div className="grid grid-cols-3 gap-4">
                 {[
@@ -159,9 +160,12 @@ export function Hero() {
               <li>Reading — financial literacy</li>
               <li>Photography</li>
             </ul>
-            <ChessQueen />
+            <div className="mt-auto grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] items-center gap-2 pt-6">
+              <ChessQueen />
+              <ChessGame />
+            </div>
             <span
-              className="mt-1 flex size-9 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-y-0.5"
+              className="mt-4 flex size-9 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-y-0.5"
               aria-hidden="true"
             >
               <ChevronDown
