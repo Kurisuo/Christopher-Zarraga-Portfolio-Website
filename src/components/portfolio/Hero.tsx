@@ -68,7 +68,7 @@ export function Hero() {
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Selected work
             </p>
-            <ul className="mt-3 space-y-1.5 font-display text-lg font-semibold leading-snug">
+            <ul className="mt-3 space-y-1.5 font-display text-xl font-semibold leading-snug">
               <li>Neural inference engine in C++</li>
               <li>Multi-threaded HTTP server</li>
               <li>VeriFi — C++ RAG pipeline</li>
@@ -104,7 +104,7 @@ export function Hero() {
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Off the keyboard
             </p>
-            <ul className="mt-3 space-y-1.5 font-display text-lg font-semibold leading-snug">
+            <ul className="mt-3 space-y-1.5 font-display text-xl font-semibold leading-snug">
               <li>Chess — 2000 Elo</li>
               <li>Lap swimming — just finished my first swim class</li>
               <li>Calisthenics</li>
