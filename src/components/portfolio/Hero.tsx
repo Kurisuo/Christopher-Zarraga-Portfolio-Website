@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { ProfileCard } from "./ProfileCard";
+import { ChessQueen } from "./ChessQueen";
 
 const stats = [
   { value: "1st", label: ["FULL RIDE IN", "UCSC HISTORY"] },
@@ -73,13 +74,15 @@ export function Hero() {
               Off the keyboard
             </p>
             <ul className="mt-4 space-y-2 font-display text-lg font-semibold leading-snug">
+              <li>Chess — always up for a game</li>
               <li>Basketball and long runs</li>
               <li>Music production</li>
               <li>Cooking for way too many people</li>
             </ul>
+            <ChessQueen />
             <a
               href="#origin"
-              className="mt-6 flex size-9 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-x-1"
+              className="mt-2 flex size-9 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-x-1"
               aria-label="Jump to my first project"
             >
               <ArrowRight className="size-4" />
