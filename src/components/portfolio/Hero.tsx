@@ -93,7 +93,7 @@ export function Hero() {
             {/* Tech-stack logo grid — anchors the tile like the chess piece */}
             <div className="mt-auto flex flex-col items-center gap-3 pt-6">
               <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-flame-foreground/70">
-                Built with
+                Building with
               </p>
               <div className="grid grid-cols-3 gap-4">
                 {[
