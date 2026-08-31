@@ -109,35 +109,21 @@ export function Hero() {
               Selected work
             </p>
             <ul className="mt-3 space-y-2 font-display text-xl font-semibold leading-snug">
-              <li className="flex flex-wrap items-center gap-2">
+              <li className="flex items-center justify-between gap-3">
                 <span>Neural inference engine</span>
-                <span className="rounded-md bg-flame-foreground/15 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-flame-foreground">
-                  C++
-                </span>
+                <TechStack names={["C++"]} />
               </li>
-              <li className="flex flex-wrap items-center gap-2">
+              <li className="flex items-center justify-between gap-3">
                 <span>Multi-threaded HTTP server</span>
-                <span className="rounded-md bg-flame-foreground/15 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-flame-foreground">
-                  C
-                </span>
+                <TechStack names={["C"]} />
               </li>
-              <li className="flex flex-wrap items-center gap-2">
+              <li className="flex items-center justify-between gap-3">
                 <span>VeriFi — RAG pipeline</span>
-                <span className="rounded-md bg-flame-foreground/15 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-flame-foreground">
-                  Python
-                </span>
-                <span className="rounded-md bg-flame-foreground/15 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-flame-foreground">
-                  C++
-                </span>
+                <TechStack names={["Python", "C++"]} />
               </li>
-              <li className="flex flex-wrap items-center gap-2">
+              <li className="flex items-center justify-between gap-3">
                 <span>NVPilot — NVIDIA x ASUS</span>
-                <span className="rounded-md bg-flame-foreground/15 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-flame-foreground">
-                  Python
-                </span>
-                <span className="rounded-md bg-flame-foreground/15 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-flame-foreground">
-                  CUDA
-                </span>
+                <TechStack names={["TypeScript", "NemoClaw", "NVML"]} />
               </li>
             </ul>
             <a
