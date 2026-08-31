@@ -194,7 +194,7 @@ export function ChessGame() {
     const game = new Chess();
     for (let i = 0; i < ply; i++) {
       try {
-        game.move(MOVES[i]);
+        game.move(MOVES[i]!);
       } catch {
         break;
       }
