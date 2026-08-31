@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { ProfileCard } from "./ProfileCard";
 import { ChessQueen } from "./ChessQueen";
