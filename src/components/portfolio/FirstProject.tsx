@@ -5,7 +5,7 @@ export function FirstProject() {
   return (
     <section
       id="origin"
-      className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28"
+      className="py-20 lg:py-28"
     >
       <Reveal>
         <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">

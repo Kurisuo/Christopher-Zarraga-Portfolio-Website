@@ -5,9 +5,9 @@ export function UCSC() {
   return (
     <section
       id="ucsc"
-      className="border-y border-border bg-ink-soft/40 py-20 lg:py-28"
+      className="-mx-5 border-y border-border bg-ink-soft/40 px-5 py-20 sm:-mx-8 sm:px-8 lg:py-28"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div>
         <Reveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-volt">
             02 — Santa Cruz
