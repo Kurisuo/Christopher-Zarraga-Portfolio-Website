@@ -111,24 +111,46 @@ export function Hero() {
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Selected work
             </p>
-            <ul className="mt-3 space-y-2 font-display text-xl font-semibold leading-snug">
+            <ul className="mt-3 space-y-3 font-display text-xl font-semibold leading-snug">
               <li className="flex items-center justify-between gap-3">
                 <span>Neural inference engine</span>
-                <TechStack names={["C++"]} />
+                <TechStack names={["C++"]} size={26} />
               </li>
               <li className="flex items-center justify-between gap-3">
                 <span>Multi-threaded HTTP server</span>
-                <TechStack names={["C"]} />
+                <TechStack names={["C"]} size={26} />
               </li>
               <li className="flex items-center justify-between gap-3">
                 <span>VeriFi — RAG pipeline</span>
-                <TechStack names={["Python", "C++"]} />
+                <TechStack names={["Python", "C++"]} size={26} />
               </li>
               <li className="flex items-center justify-between gap-3">
                 <span>NVPilot — NVIDIA x ASUS</span>
-                <TechStack names={["TypeScript", "NemoClaw", "NVML"]} />
+                <TechStack names={["TypeScript", "NemoClaw", "NVML"]} size={26} />
               </li>
             </ul>
+
+            {/* Tech-stack logo row — anchors the tile like the chess piece */}
+            <div className="mt-auto flex flex-col items-center gap-2 pt-6">
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-flame-foreground/70">
+                Built with
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                {allSelectedTech.map((name) => (
+                  <img
+                    key={name}
+                    src={techLogos[name].src}
+                    alt={techLogos[name].alt}
+                    width={34}
+                    height={34}
+                    loading="lazy"
+                    className="size-[34px] rounded-md bg-flame-foreground/10 p-1 object-contain transition-transform duration-200 hover:scale-110"
+                    title={name}
+                  />
+                ))}
+              </div>
+            </div>
+
             <a
               href="#work"
               className="mt-4 flex size-9 items-center justify-center self-end rounded-full border border-flame-foreground/40 transition-transform hover:translate-x-1"
