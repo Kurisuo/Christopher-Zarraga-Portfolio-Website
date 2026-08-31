@@ -215,3 +215,32 @@
   opacity: 1;
   transform: none;
 }
+
+/* Cursor glow trail */
+.glow-dot {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgb(168 85 247 / 0.55) 0%,
+    rgb(168 85 247 / 0.18) 45%,
+    transparent 70%
+  );
+  filter: blur(6px);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: glow-fade 1.5s ease-out forwards;
+}
+
+@keyframes glow-fade {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.55);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
