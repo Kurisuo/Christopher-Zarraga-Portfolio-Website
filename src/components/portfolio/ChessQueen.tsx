@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 
 function QueenMesh() {
@@ -38,34 +39,46 @@ function QueenMesh() {
     return geo;
   }, []);
 
+  // Gentle idle spin only while the user isn't dragging
+  const controlsRef = useRef<any>(null);
   useFrame((state, delta) => {
     const dt = Math.min(delta, 0.05);
+    if (group.current && !controlsRef.current?.dragging) {
+      group.current.rotation.y += dt * 0.4;
+    }
     if (group.current) {
-      group.current.rotation.y += dt * 0.8;
       group.current.position.y =
-        -1.15 + Math.sin(state.clock.elapsedTime * 1.2) * 0.06;
+        -1.15 + Math.sin(state.clock.elapsedTime * 1.2) * 0.05;
     }
   });
 
   return (
-    <group ref={group} position={[0, -1.15, 0]}>
-      <mesh geometry={geometry} castShadow>
-        <meshStandardMaterial
-          color="#161616"
-          roughness={0.25}
-          metalness={0.35}
-        />
-      </mesh>
-      {/* Crown ball */}
-      <mesh position={[0, 2.38, 0]}>
-        <sphereGeometry args={[0.09, 24, 24]} />
-        <meshStandardMaterial
-          color="#161616"
-          roughness={0.25}
-          metalness={0.35}
-        />
-      </mesh>
-    </group>
+    <>
+      <group ref={group} position={[0, -1.15, 0]}>
+        <mesh geometry={geometry} castShadow>
+          <meshStandardMaterial
+            color="#161616"
+            roughness={0.25}
+            metalness={0.35}
+          />
+        </mesh>
+        {/* Crown ball */}
+        <mesh position={[0, 2.38, 0]}>
+          <sphereGeometry args={[0.09, 24, 24]} />
+          <meshStandardMaterial
+            color="#161616"
+            roughness={0.25}
+            metalness={0.35}
+          />
+        </mesh>
+      </group>
+      <OrbitControls
+        ref={controlsRef}
+        enableZoom={false}
+        enablePan={false}
+        rotateSpeed={0.9}
+      />
+    </>
   );
 }
 
@@ -74,14 +87,17 @@ export function ChessQueen() {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return <div className="h-48 w-full sm:h-56" aria-hidden />;
+    return <div className="h-32 w-full sm:h-36" aria-hidden />;
   }
 
   return (
-    <div className="h-48 w-full sm:h-56" aria-label="3D render of a queen chess piece">
+    <div
+      className="h-32 w-full cursor-grab touch-none active:cursor-grabbing sm:h-36"
+      aria-label="Interactive 3D render of a queen chess piece — drag to spin"
+    >
       <Canvas
         dpr={[1, 2]}
-        camera={{ position: [0, 0.4, 4.4], fov: 40 }}
+        camera={{ position: [0, 0.4, 4.8], fov: 40 }}
         gl={{ alpha: true, antialias: true }}
         style={{ background: "transparent" }}
       >
