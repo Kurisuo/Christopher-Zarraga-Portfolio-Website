@@ -21,12 +21,13 @@ export function UCSC() {
 
         <Reveal delay={80}>
           <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            I came to UC Santa Cruz on the first full-ride scholarship the
-            university had ever awarded. It changed what I could afford to be
-            curious about. I declared Computer Science with Applied Math because
-            I wanted both halves — the systems that run and the math that
-            explains why they run the way they do. Two projects from that stretch
-            matter most.
+            I came to UC Santa Cruz as the first-ever recipient of the Sabatte
+            Family full-ride scholarship — the first full ride in the
+            university&apos;s history. It changed what I could afford to be
+            curious about. I declared Computer Science with an Applied Math
+            minor because I wanted both halves — the systems that run and the
+            math that explains why they run the way they do. Two projects from
+            that stretch matter most.
           </p>
         </Reveal>
 
@@ -39,17 +40,20 @@ export function UCSC() {
                   NVIDIA Hackathon
                 </span>
                 <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                  On campus · 48 hours
+                  NVIDIA x ASUS · On campus
                 </span>
               </div>
               <h3 className="mt-5 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
                 NVPilot
               </h3>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-                Built with my team during NVIDIA&apos;s hackathon at UCSC. NVPilot
-                watches GPU telemetry in real time and steers workloads away from
-                thermal and memory ceilings before they stall — a copilot for the
-                hardware instead of the code.
+                Built at the NVIDIA x ASUS hackathon at UCSC. NVPilot is an
+                autonomous agent that watches live NVML GPU telemetry and tunes
+                the machine itself — it parses full system state in ~550ms,
+                generates plans in under 1ms, and freed ~2GB of background
+                memory across 400+ processes. Every mutation is journaled with
+                a mechanical inverse, so any change can be restored
+                byte-identical in ~3 seconds.
               </p>
               <CodeCard
                 filename="nvpilot/core.py"
@@ -81,21 +85,21 @@ export function UCSC() {
           <Reveal delay={180}>
             <article className="flex h-full flex-col rounded-[2rem] bg-flame p-6 text-flame-foreground sm:p-8">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em]">
-                Applied Math · Coursework
+                C++17 · PyTorch
               </span>
               <h3 className="mt-5 font-display text-4xl font-extrabold tracking-tight">
-                Spectral
+                Inference Engine
               </h3>
               <p className="mt-4 text-base leading-relaxed text-flame-foreground/80">
-                An interactive linear algebra visualizer I built for my applied
-                math sequence. Drag a matrix and watch the space stretch along
-                its eigenvectors in real time — the tool I wished existed when I
-                was first learning it.
+                A zero-dependency C++17 neural network inference engine — GEMM,
+                ReLU, Argmax, and a custom binary weight loader that bridges
+                PyTorch and the C++ runtime. 100% output agreement across all
+                10,000 MNIST test images.
               </p>
               <ul className="mt-auto space-y-2 pt-8 font-mono text-[11px] uppercase tracking-[0.15em] text-flame-foreground/70">
-                <li>Canvas rendering</li>
-                <li>Live eigen-decomposition</li>
-                <li>Used by my study group</li>
+                <li>~24,000 images/sec single-threaded</li>
+                <li>~41µs inference latency</li>
+                <li>20x speedup via -O2 fix</li>
               </ul>
             </article>
           </Reveal>

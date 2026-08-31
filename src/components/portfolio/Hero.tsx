@@ -24,10 +24,10 @@ export function Hero() {
           <span className="text-ghost">Science</span>
         </h1>
         <p className="mt-7 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-          I&apos;m a CS and Applied Math student at UC Santa Cruz. I got here on
-          the first full-ride scholarship in the university&apos;s history, and
-          I spend most of my time turning half-formed ideas into things that
-          actually run.
+          I&apos;m Christopher Zarraga — a CS major and Applied Math minor at UC
+          Santa Cruz, here on the Sabatte Family full-ride scholarship, the
+          first ever awarded by the university. I spend most of my time turning
+          half-formed ideas into systems that actually run.
         </p>
       </Reveal>
 
@@ -55,9 +55,10 @@ export function Hero() {
               Selected work
             </p>
             <ul className="mt-3 space-y-1.5 font-display text-lg font-semibold leading-snug">
-              <li>NVPilot — NVIDIA campus hackathon</li>
-              <li>Applied math visualizers</li>
-              <li>Full-stack side projects</li>
+              <li>NVPilot — NVIDIA x ASUS hackathon</li>
+              <li>VeriFi — C++ RAG pipeline</li>
+              <li>Neural inference engine in C++</li>
+              <li>Multi-threaded HTTP server</li>
             </ul>
             <a
               href="#work"
@@ -74,10 +75,10 @@ export function Hero() {
               Off the keyboard
             </p>
             <ul className="mt-3 space-y-1.5 font-display text-lg font-semibold leading-snug">
-              <li>Chess — always up for a game</li>
-              <li>Basketball and long runs</li>
-              <li>Music production</li>
-              <li>Cooking for way too many people</li>
+              <li>Chess — 2000 Elo, always up for a game</li>
+              <li>Active trading</li>
+              <li>Lap swimming</li>
+              <li>Calisthenics</li>
             </ul>
             <ChessQueen />
             <a
