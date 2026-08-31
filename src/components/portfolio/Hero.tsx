@@ -50,18 +50,18 @@ export function Hero() {
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2">
         <Reveal delay={200}>
-          <div className="flex h-full flex-col rounded-3xl bg-flame p-6 text-flame-foreground">
+          <div className="flex h-full flex-col rounded-3xl bg-flame p-5 text-flame-foreground">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Selected work
             </p>
-            <ul className="mt-4 space-y-2 font-display text-lg font-semibold leading-snug">
+            <ul className="mt-3 space-y-1.5 font-display text-lg font-semibold leading-snug">
               <li>NVPilot — NVIDIA campus hackathon</li>
               <li>Applied math visualizers</li>
               <li>Full-stack side projects</li>
             </ul>
             <a
               href="#work"
-              className="mt-6 flex size-9 items-center justify-center self-end rounded-full border border-flame-foreground/40 transition-transform hover:translate-x-1"
+              className="mt-4 flex size-9 items-center justify-center self-end rounded-full border border-flame-foreground/40 transition-transform hover:translate-x-1"
               aria-label="Jump to projects"
             >
               <ArrowRight className="size-4" />
@@ -69,11 +69,11 @@ export function Hero() {
           </div>
         </Reveal>
         <Reveal delay={260}>
-          <div className="flex h-full flex-col rounded-3xl bg-volt p-6 text-volt-foreground">
+          <div className="flex h-full flex-col rounded-3xl bg-volt p-5 text-volt-foreground">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Off the keyboard
             </p>
-            <ul className="mt-4 space-y-2 font-display text-lg font-semibold leading-snug">
+            <ul className="mt-3 space-y-1.5 font-display text-lg font-semibold leading-snug">
               <li>Chess — always up for a game</li>
               <li>Basketball and long runs</li>
               <li>Music production</li>
@@ -82,7 +82,7 @@ export function Hero() {
             <ChessQueen />
             <a
               href="#origin"
-              className="mt-2 flex size-9 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-x-1"
+              className="mt-1 flex size-9 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-x-1"
               aria-label="Jump to my first project"
             >
               <ArrowRight className="size-4" />
