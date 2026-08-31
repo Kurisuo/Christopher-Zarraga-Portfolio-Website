@@ -1,6 +1,7 @@
 import { useState } from "react";
+import resumeImage from "@/assets/christopher-zarraga-resume.png";
+import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
-import resume from "@/assets/resume.pdf.asset.json";
 
 export function Contact() {
   const [showResume, setShowResume] = useState(false);
@@ -37,13 +38,16 @@ export function Contact() {
             >
               christopherzarraga31@gmail.com
             </a>
-            <button
+            <Button
               type="button"
               onClick={() => setShowResume((v) => !v)}
-              className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors hover:border-flame hover:text-flame"
+              aria-expanded={showResume}
+              aria-controls="inline-resume"
+              variant="outline"
+              className="h-auto rounded-full border-border bg-transparent px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground shadow-none hover:border-flame hover:bg-transparent hover:text-flame"
             >
-              Resume (PDF)
-            </button>
+              {showResume ? "Hide resume" : "View resume"}
+            </Button>
             <a
               href="https://github.com/Kurisuo"
               target="_blank"
@@ -70,33 +74,29 @@ export function Contact() {
       </div>
 
       {showResume && (
-        <div className="mt-10 flex flex-col overflow-hidden rounded-xl border border-border bg-ink-soft shadow-2xl">
+        <div
+          id="inline-resume"
+          className="mt-10 flex flex-col overflow-hidden rounded-xl border border-border bg-ink-soft shadow-2xl"
+        >
           <div className="flex items-center justify-between border-b border-border px-5 py-3">
             <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
               Christopher Zarraga — Resume
             </span>
-            <div className="flex items-center gap-2">
-              <a
-                href={resume.url}
-                download
-                className="rounded-full border border-border px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-foreground transition-colors hover:border-flame hover:text-flame"
-              >
-                Download
-              </a>
-              <button
-                type="button"
-                onClick={() => setShowResume(false)}
-                aria-label="Close resume"
-                className="rounded-full border border-border px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-foreground transition-colors hover:border-flame hover:text-flame"
-              >
-                Close
-              </button>
-            </div>
+            <Button
+              type="button"
+              onClick={() => setShowResume(false)}
+              aria-label="Close resume"
+              variant="outline"
+              size="sm"
+              className="rounded-full border-border bg-transparent font-mono text-[11px] uppercase tracking-[0.15em] text-foreground shadow-none hover:border-flame hover:bg-transparent hover:text-flame"
+            >
+              Close
+            </Button>
           </div>
-          <iframe
-            src={resume.url}
-            title="Christopher Zarraga Resume"
-            className="h-[70vh] w-full"
+          <img
+            src={resumeImage}
+            alt="Christopher Zarraga Jimenez resume"
+            className="block h-auto w-full bg-background object-contain"
           />
         </div>
       )}
