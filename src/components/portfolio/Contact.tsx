@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import resume from "@/assets/resume.pdf.asset.json";
 
 export function Contact() {
   return (
@@ -28,22 +29,34 @@ export function Contact() {
         <Reveal delay={140}>
           <div className="mt-10 flex flex-wrap gap-3">
             <a
-              href="mailto:czarraga@ucsc.edu"
+              href="mailto:christopherzarraga31@gmail.com"
               className="rounded-full bg-flame px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-flame-foreground transition-colors hover:bg-volt hover:text-volt-foreground"
             >
-              czarraga@ucsc.edu
+              christopherzarraga31@gmail.com
             </a>
             <a
-              href="/resume.pdf"
+              href={resume.url}
+              target="_blank"
+              rel="noreferrer"
               className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors hover:border-flame hover:text-flame"
             >
               Resume (PDF)
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/Kurisuo"
+              target="_blank"
+              rel="noreferrer"
               className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors hover:border-flame hover:text-flame"
             >
               GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/christopher-zarraga/"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors hover:border-flame hover:text-flame"
+            >
+              LinkedIn
             </a>
           </div>
         </Reveal>
