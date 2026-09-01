@@ -161,7 +161,7 @@ export function Hero() {
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Off the keyboard
             </p>
-            <ul className="mt-2 space-y-1 font-display text-lg font-semibold leading-snug">
+            <ul className="mt-2 space-y-0.5 font-display text-lg font-semibold leading-snug">
               <li>Chess — 2000 Elo</li>
               <li>Lap swimming — just finished my first swim class</li>
               <li>Calisthenics</li>
@@ -170,13 +170,13 @@ export function Hero() {
             </ul>
             <div className="mt-4 grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] items-center gap-2 pt-2">
               <ChessQueen />
-              <div className="flex w-full items-center justify-center overflow-hidden rounded-[1px] bg-volt-foreground/10">
+              <div className="flex max-h-44 w-full items-center justify-center overflow-hidden rounded-[1px] bg-volt-foreground/10">
                 <img
                   src={lichessGame.url}
                   alt="Replay of my Lichess game as White"
                   width={720}
                   height={840}
-                  className="aspect-[6/7] h-auto w-full object-contain"
+                  className="h-full w-auto object-contain"
                   loading="lazy"
                 />
               </div>
