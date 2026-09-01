@@ -60,13 +60,13 @@ export function Hero() {
       </Reveal>
 
       <Reveal delay={160} className="mt-10 lg:mt-12">
-        <dl className="flex flex-wrap justify-between gap-x-8 gap-y-6">
+        <dl className="flex flex-wrap justify-between gap-x-6 gap-y-6">
           {stats.map((s) => (
-            <div key={s.value + s.label[0]} className="min-w-0 flex-1 text-center">
+            <div key={s.value + s.label[0]} className="flex min-w-0 flex-1 flex-col items-center text-center">
               <dt className="font-display text-5xl font-bold tracking-tight sm:text-6xl">
                 {s.value}
               </dt>
-              <dd className="mt-2 font-mono text-[11px] uppercase leading-relaxed tracking-wider text-muted-foreground">
+              <dd className="mt-1 font-mono text-[10px] uppercase leading-tight tracking-wider text-muted-foreground">
                 {s.label[0]}
                 <br />
                 {s.label[1]}
