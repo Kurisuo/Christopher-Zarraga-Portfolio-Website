@@ -26,7 +26,7 @@ const techLogos: Record<string, { src: string; alt: string }> = {
 
 const stats = [
   { value: "1st", label: ["COHORT FULL RIDE", "RECIPIENT AT UCSC"] },
-  { value: "+4", label: ["UPCOMING CONVENTIONS", "& HACKATHONS"] },
+  { value: "5", label: ["ENGINEERS LED", "ON VERIFI"] },
   { value: "1st Gen", label: ["SCHOLAR", "IN SHPE"] },
 ];
 
@@ -41,7 +41,7 @@ export function Hero() {
   const [galleryOpen, setGalleryOpen] = useState(false);
 
   return (
-    <header id="top" className="pb-14 pt-24 lg:pb-16 lg:pt-28">
+    <header id="top" className="pb-14 pt-28 lg:pb-16 lg:pt-32">
       {/* Profile card — mobile only; desktop shows the pinned left column */}
       <Reveal className="mb-12 lg:hidden">
         <ProfileCard />
