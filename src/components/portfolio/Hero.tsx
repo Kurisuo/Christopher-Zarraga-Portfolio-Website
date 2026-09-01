@@ -2,8 +2,6 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { ProfileCard } from "./ProfileCard";
-import { ChessQueen } from "./ChessQueen";
-import lichessGame from "@/assets/lichess-game.gif.asset.json";
 import galleryChess from "@/assets/gallery-chess.jpg";
 import gallerySwim from "@/assets/gallery-swim.jpg";
 import galleryCalisthenics from "@/assets/gallery-calisthenics.jpg";
