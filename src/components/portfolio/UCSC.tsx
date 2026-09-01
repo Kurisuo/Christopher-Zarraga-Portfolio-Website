@@ -20,7 +20,7 @@ export function UCSC() {
         </Reveal>
 
         <Reveal delay={80}>
-          <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mt-8 max-w-4xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
             I came to UC Santa Cruz as the first-ever recipient of the Sabatte
             Family full-ride scholarship — the first full ride in the
             university&apos;s history. It changed what I could afford to be
@@ -46,7 +46,7 @@ export function UCSC() {
               <h3 className="mt-5 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
                 NVPilot
               </h3>
-              <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
+              <p className="mt-4 max-w-4xl text-base leading-relaxed text-muted-foreground lg:text-lg">
                 Built at the NVIDIA x ASUS hackathon at UCSC. NVPilot is an
                 autonomous agent that watches live NVML GPU telemetry and tunes
                 the machine itself — it parses full system state in ~550ms,

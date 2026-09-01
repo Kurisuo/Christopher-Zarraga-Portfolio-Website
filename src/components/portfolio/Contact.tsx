@@ -24,7 +24,7 @@ export function Contact() {
         </Reveal>
 
         <Reveal delay={80}>
-          <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mt-7 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
             Internships, side projects, or a question about anything above — my
             inbox is genuinely open.
           </p>

@@ -86,7 +86,7 @@ export function MoreProjects() {
           <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-volt">
             Right now
           </p>
-          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="max-w-4xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
             I&apos;m going deeper on autonomous-driving RL at the AIEA Lab and
             shipping Causeway with Tech4Good — while digging further into the
             GPU-adjacent systems work NVPilot opened up for me. Alongside that
