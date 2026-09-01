@@ -31,7 +31,7 @@ export function UCSC() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
+        <div className="mt-14">
           {/* NVPilot — featured */}
           <Reveal delay={120}>
             <article className="h-full rounded-[2rem] border border-border bg-ink p-6 sm:p-8">
@@ -46,7 +46,7 @@ export function UCSC() {
               <h3 className="mt-5 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
                 NVPilot
               </h3>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
                 Built at the NVIDIA x ASUS hackathon at UCSC. NVPilot is an
                 autonomous agent that watches live NVML GPU telemetry and tunes
                 the machine itself — it parses full system state in ~550ms,
@@ -131,29 +131,6 @@ export function UCSC() {
                 <span className="text-volt">toUpperCase</span>());{"\n"}
                 {"}"}
               </CodeCard>
-            </article>
-          </Reveal>
-
-          {/* Second school project */}
-          <Reveal delay={180}>
-            <article className="flex h-full flex-col rounded-[2rem] bg-flame p-6 text-flame-foreground sm:p-8">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em]">
-                C++17 · PyTorch
-              </span>
-              <h3 className="mt-5 font-display text-4xl font-extrabold tracking-tight">
-                Inference Engine
-              </h3>
-              <p className="mt-4 text-base leading-relaxed text-flame-foreground/80">
-                A zero-dependency C++17 neural network inference engine — GEMM,
-                ReLU, Argmax, and a custom binary weight loader that bridges
-                PyTorch and the C++ runtime. 100% output agreement across all
-                10,000 MNIST test images.
-              </p>
-              <ul className="mt-auto space-y-2 pt-8 font-mono text-[11px] uppercase tracking-[0.15em] text-flame-foreground/70">
-                <li>~24,000 images/sec single-threaded</li>
-                <li>~41µs inference latency</li>
-                <li>20x speedup via -O2 fix</li>
-              </ul>
             </article>
           </Reveal>
         </div>
