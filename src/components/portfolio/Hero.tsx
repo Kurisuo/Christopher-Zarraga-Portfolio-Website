@@ -80,31 +80,31 @@ export function Hero() {
 
       <div className="mt-10 grid items-start gap-4 sm:grid-cols-2 lg:mt-12">
         <Reveal delay={200}>
-          <div className="flex flex-col rounded-3xl bg-flame p-3.5 text-flame-foreground">
+          <div className="flex flex-col rounded-3xl bg-flame p-3 text-flame-foreground">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Selected work
             </p>
-            <ul className="mt-2 space-y-1 font-display text-lg font-semibold leading-snug">
+            <ul className="mt-1.5 space-y-0.5 font-display text-base font-semibold leading-snug">
               <li>Neural inference engine</li>
               <li>Multi-threaded HTTP server</li>
               <li>VeriFi — RAG pipeline</li>
               <li>NVPilot — NVIDIA x ASUS</li>
             </ul>
 
-            <p className="mt-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-flame-foreground/70">
+            <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-flame-foreground/70">
               In-Progress
             </p>
-            <ul className="mt-1 space-y-0.5 font-display text-base font-semibold leading-snug text-flame-foreground/90">
+            <ul className="mt-0.5 space-y-0.5 font-display text-sm font-semibold leading-snug text-flame-foreground/90">
               <li>NES C++ Emulator</li>
               <li>AVScope</li>
             </ul>
 
             {/* Tech-stack logo grid — anchors the tile like the chess piece */}
-            <div className="mt-3 flex flex-col items-center gap-1.5 pt-1">
+            <div className="mt-2 flex flex-col items-center gap-1 pt-1">
               <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-flame-foreground/70">
                 Building with
               </p>
-              <div className="grid grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-3 gap-2">
                 {[
                   ["C++", "C"],
                   ["CUDA", "NVML"],
@@ -119,10 +119,10 @@ export function Hero() {
                           key={name}
                           src={logo.src}
                           alt={logo.alt}
-                          width={40}
-                          height={40}
+                          width={36}
+                          height={36}
                           loading="lazy"
-                          className="size-10 rounded-lg bg-flame-foreground/10 p-1 object-contain transition-transform duration-200 hover:scale-110"
+                          className="size-9 rounded-lg bg-flame-foreground/10 p-1 object-contain transition-transform duration-200 hover:scale-110"
                           title={name}
                         />
                       );
@@ -133,10 +133,10 @@ export function Hero() {
             </div>
 
             <span
-              className="mt-2 flex size-8 items-center justify-center self-end rounded-full border border-flame-foreground/40"
+              className="mt-1.5 flex size-7 items-center justify-center self-end rounded-full border border-flame-foreground/40"
               aria-hidden="true"
             >
-              <ChevronDown className="size-4" />
+              <ChevronDown className="size-3.5" />
             </span>
           </div>
         </Reveal>
