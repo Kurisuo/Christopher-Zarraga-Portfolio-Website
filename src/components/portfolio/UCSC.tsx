@@ -186,7 +186,7 @@ export function UCSC() {
                 <span className="text-volt">&quot;  Config:   &quot;</span> +{" "}
                 Object.<span className="text-volt">entries</span>(s.gameSettings).
                 <span className="text-volt">map</span>(([k, v]) =&gt;{" "}
-                <span className="text-volt">&quot;\${k}=\${v}&quot;</span>).
+                <span className="text-volt">&quot;$&#123;k&#125;=$&#123;v&#125;&quot;</span>).
                 <span className="text-volt">join</span>(<span className="text-volt">&quot;, &quot;</span>));{"\n"}
                 {"  "}{"}"}{"\n\n"}
                 {"  "}<span className="text-flame">if</span> (s.suspendable.length &gt;{" "}
