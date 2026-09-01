@@ -156,7 +156,7 @@ export function Hero() {
                 setGalleryOpen((v) => !v);
               }
             }}
-            className="flex cursor-pointer flex-col rounded-3xl bg-volt p-4 text-volt-foreground"
+            className="flex cursor-pointer flex-col rounded-3xl bg-volt p-3.5 text-volt-foreground"
           >
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Off the keyboard
