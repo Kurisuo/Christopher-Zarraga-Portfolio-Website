@@ -56,27 +56,161 @@ export function UCSC() {
                 byte-identical in ~3 seconds.
               </p>
               <CodeCard
-                filename="nvpilot/core.py"
+                filename="nvpilot/main.ts"
                 badge="live"
                 className="mt-7 bg-ink-soft"
               >
-                <span className="text-muted-foreground">
-                  # steer the workload before the GPU chokes
-                </span>
-                {"\n"}
-                <span className="text-flame">async def</span>{" "}
-                <span className="text-volt">pilot</span>(gpu):{"\n"}
-                {"    "}
-                <span className="text-flame">async for</span> frame{" "}
-                <span className="text-flame">in</span> gpu.telemetry():{"\n"}
-                {"        "}
-                <span className="text-flame">if</span> frame.temp {">"}{" "}
-                <span className="text-volt">THERMAL_LIMIT</span>:{"\n"}
-                {"            "}
-                <span className="text-flame">await</span> gpu.rebalance(
-                frame.batch // <span className="text-volt">2</span>){"\n"}
-                {"        "}
-                <span className="text-flame">yield</span> frame.metrics
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ perceive, reflect }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./core/agent&quot;</span>;{"\n"}
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ applyPlan }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./core/executor&quot;</span>;{"\n"}
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ OLLAMA_MODEL }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./core/config&quot;</span>;{"\n"}
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ runDaemon }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./core/daemon&quot;</span>;{"\n"}
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ revertAll }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./core/executor&quot;</span>;{"\n"}
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ Journal }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./core/journal&quot;</span>;{"\n"}
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ Plan, SystemSnapshot }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./core/types&quot;</span>;{"\n"}
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ createDrivers }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./drivers&quot;</span>;{"\n"}
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ GAME_ADAPTERS }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./games/registry&quot;</span>;{"\n"}
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ OllamaPlanner }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./planners/ollama-planner&quot;</span>;{"\n"}
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ Planner }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./planners/planner&quot;</span>;{"\n"}
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ RulePlanner }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./planners/rule-planner&quot;</span>;{"\n"}
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ HELP_TEXT, parseArgs }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./cli&quot;</span>;{"\n"}
+                <span className="text-flame">import</span>{" "}
+                <span className="text-foreground/85">{"{ TOOL_DEFINITIONS }"}</span>{" "}
+                <span className="text-flame">from</span>{" "}
+                <span className="text-volt">&quot;./tools/definitions&quot;</span>;{"\n\n"}
+                <span className="text-flame">function</span>{" "}
+                <span className="text-volt">banner</span>():{" "}
+                <span className="text-flame">void</span>{" "}{"{"}{"\n"}
+                {"  "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;╔══════════════════════════════════════════════════════════╗&quot;</span>);{"\n"}
+                {"  "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;║   NVPilot — Adaptive Performance Agent                     ║&quot;</span>);{"\n"}
+                {"  "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;╚══════════════════════════════════════════════════════════╝&quot;</span>);{"\n"}
+                {"}"}{"\n\n"}
+                <span className="text-flame">function</span>{" "}
+                <span className="text-volt">printSnapshot</span>(s: SystemSnapshot):{" "}
+                <span className="text-flame">void</span>{" "}{"{"}{"\n"}
+                {"  "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;\n&gt;&gt;&gt; PERCEIVE — system state\n&quot;</span>);{"\n"}
+                {"  "}<span className="text-flame">if</span> (s.gpu) {"{"}{"\n"}
+                {"    "}<span className="text-flame">const</span> memPct = Math.
+                <span className="text-volt">round</span>((s.gpu.memoryUsedMiB / s.gpu.memoryTotalMiB) *{" "}
+                <span className="text-volt">100</span>);{"\n"}
+                {"    "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;  GPU:      &quot;</span> + s.gpu.name +{" "}
+                <span className="text-volt">&quot; (driver &quot;</span> + s.gpu.driverVersion +{" "}
+                <span className="text-volt">&quot;)&quot;</span>);{"\n"}
+                {"    "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;  VRAM:     &quot;</span> + s.gpu.memoryUsedMiB +{" "}
+                <span className="text-volt">&quot;/&quot;</span> + s.gpu.memoryTotalMiB +{" "}
+                <span className="text-volt">&quot; MiB (&quot;</span> + memPct +{" "}
+                <span className="text-volt">&quot;% used)&quot;</span>);{"\n"}
+                {"    "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;  Temp:     &quot;</span> + s.gpu.temperatureC +{" "}
+                <span className="text-volt">&quot;°C   Power: &quot;</span> + s.gpu.powerUsageW +{" "}
+                <span className="text-volt">&quot;W / &quot;</span> + s.gpu.powerCapW +{" "}
+                <span className="text-volt">&quot;W   Load: &quot;</span> + s.gpu.gpuUtilizationPercent +{" "}
+                <span className="text-volt">&quot;%&quot;</span>);{"\n"}
+                {"  "}{"}"} <span className="text-flame">else</span> {"{"}{"\n"}
+                {"    "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;  GPU:      no NVIDIA telemetry available (nvidia-smi missing or failed)&quot;</span>);{"\n"}
+                {"  "}{"}"}{"\n"}
+                {"  "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;  Tier:     &quot;</span> + s.gpuTier.
+                <span className="text-volt">toUpperCase</span>());{"\n\n"}
+                {"  "}<span className="text-flame">if</span> (s.power.current) {"{"}{"\n"}
+                {"    "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;  Power:    &quot;</span> + s.power.current.name +{" "}
+                <span className="text-volt">&quot; (control: &quot;</span> + s.power.capability +{" "}
+                <span className="text-volt">&quot;)&quot;</span>);{"\n"}
+                {"  "}{"}"} <span className="text-flame">else</span> {"{"}{"\n"}
+                {"    "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;  Power:    unavailable (control: &quot;</span> + s.power.capability +{" "}
+                <span className="text-volt">&quot;)&quot;</span>);{"\n"}
+                {"  "}{"}"}{"\n\n"}
+                {"  "}<span className="text-flame">if</span> (s.gameProcess) {"{"}{"\n"}
+                {"    "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;  Game:     &quot;</span> + s.gameProcess.name +{" "}
+                <span className="text-volt">&quot; (PID &quot;</span> + s.gameProcess.pid +{" "}
+                <span className="text-volt">&quot;, &quot;</span> + s.gameProcess.memoryMB.
+                <span className="text-volt">toFixed</span>(<span className="text-volt">0</span>) +{" "}
+                <span className="text-volt">&quot; MB, priority &quot;</span> + s.gameProcess.priority +{" "}
+                <span className="text-volt">&quot;)&quot;</span>);{"\n"}
+                {"  "}{"}"} <span className="text-flame">else if</span> (s.targetApp !=={" "}
+                <span className="text-volt">&quot;generic&quot;</span>) {"{"}{"\n"}
+                {"    "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;  Game:     &quot;</span> + s.targetApp +{" "}
+                <span className="text-volt">&quot; not currently running (settings apply on next launch)&quot;</span>);{"\n"}
+                {"  "}{"}"}{"\n\n"}
+                {"  "}<span className="text-flame">if</span> (s.gameSettings) {"{"}{"\n"}
+                {"    "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;  Config:   &quot;</span> +{" "}
+                Object.<span className="text-volt">entries</span>(s.gameSettings).
+                <span className="text-volt">map</span>(([k, v]) =&gt;{" "}
+                <span className="text-volt">&quot;$&#123;k&#125;=$&#123;v&#125;&quot;</span>).
+                <span className="text-volt">join</span>(<span className="text-volt">&quot;, &quot;</span>));{"\n"}
+                {"  "}{"}"}{"\n\n"}
+                {"  "}<span className="text-flame">if</span> (s.suspendable.length &gt;{" "}
+                <span className="text-volt">0</span>) {"{"}{"\n"}
+                {"    "}<span className="text-flame">const</span> total = s.suspendable.
+                <span className="text-volt">reduce</span>((sum, p) =&gt; sum + p.memoryMB,{" "}
+                <span className="text-volt">0</span>);{"\n"}
+                {"    "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;  Background apps on safe-to-close list: &quot;</span> + s.suspendable.length +{" "}
+                <span className="text-volt">&quot; (~&quot;</span> + total.
+                <span className="text-volt">toFixed</span>(<span className="text-volt">0</span>) +{" "}
+                <span className="text-volt">&quot; MB)&quot;</span>);{"\n"}
+                {"    "}<span className="text-flame">for</span> (<span className="text-flame">const</span> p{" "}
+                <span className="text-flame">of</span> s.suspendable) {"{"}{"\n"}
+                {"      "}console.<span className="text-volt">log</span>(
+                <span className="text-volt">&quot;    - &quot;</span> + p.name.
+                <span className="text-volt">padEnd</span>(<span className="text-volt">28</span>) +{" "}
+                <span className="text-volt">&quot; &quot;</span> + p.memoryMB.
+                <span className="text-volt">toFixed</span>(<span className="text-volt">0</span>).
+                <span className="text-volt">padStart</span>(<span className="text-volt">6</span>) +{" "}
+                <span className="text-volt">&quot; MB&quot;</span>);{"\n"}
+                {"    "}{"}"}{"\n"}
+                {"  "}{"}"}{"\n"}
+                {"}"}
               </CodeCard>
             </article>
           </Reveal>
