@@ -128,60 +128,7 @@ export function UCSC() {
                 {"  "}{"}"}{"\n"}
                 {"  "}console.<span className="text-volt">log</span>(
                 <span className="text-volt">&quot;  Tier:     &quot;</span> + s.gpuTier.
-                <span className="text-volt">toUpperCase</span>());{"\n\n"}
-                {"  "}<span className="text-flame">if</span> (s.power.current) {"{"}{"\n"}
-                {"    "}console.<span className="text-volt">log</span>(
-                <span className="text-volt">&quot;  Power:    &quot;</span> + s.power.current.name +{" "}
-                <span className="text-volt">&quot; (control: &quot;</span> + s.power.capability +{" "}
-                <span className="text-volt">&quot;)&quot;</span>);{"\n"}
-                {"  "}{"}"} <span className="text-flame">else</span> {"{"}{"\n"}
-                {"    "}console.<span className="text-volt">log</span>(
-                <span className="text-volt">&quot;  Power:    unavailable (control: &quot;</span> + s.power.capability +{" "}
-                <span className="text-volt">&quot;)&quot;</span>);{"\n"}
-                {"  "}{"}"}{"\n\n"}
-                {"  "}<span className="text-flame">if</span> (s.gameProcess) {"{"}{"\n"}
-                {"    "}console.<span className="text-volt">log</span>(
-                <span className="text-volt">&quot;  Game:     &quot;</span> + s.gameProcess.name +{" "}
-                <span className="text-volt">&quot; (PID &quot;</span> + s.gameProcess.pid +{" "}
-                <span className="text-volt">&quot;, &quot;</span> + s.gameProcess.memoryMB.
-                <span className="text-volt">toFixed</span>(<span className="text-volt">0</span>) +{" "}
-                <span className="text-volt">&quot; MB, priority &quot;</span> + s.gameProcess.priority +{" "}
-                <span className="text-volt">&quot;)&quot;</span>);{"\n"}
-                {"  "}{"}"} <span className="text-flame">else if</span> (s.targetApp !=={" "}
-                <span className="text-volt">&quot;generic&quot;</span>) {"{"}{"\n"}
-                {"    "}console.<span className="text-volt">log</span>(
-                <span className="text-volt">&quot;  Game:     &quot;</span> + s.targetApp +{" "}
-                <span className="text-volt">&quot; not currently running (settings apply on next launch)&quot;</span>);{"\n"}
-                {"  "}{"}"}{"\n\n"}
-                {"  "}<span className="text-flame">if</span> (s.gameSettings) {"{"}{"\n"}
-                {"    "}console.<span className="text-volt">log</span>(
-                <span className="text-volt">&quot;  Config:   &quot;</span> +{" "}
-                Object.<span className="text-volt">entries</span>(s.gameSettings).
-                <span className="text-volt">map</span>(([k, v]) =&gt;{" "}
-                <span className="text-volt">&quot;$&#123;k&#125;=$&#123;v&#125;&quot;</span>).
-                <span className="text-volt">join</span>(<span className="text-volt">&quot;, &quot;</span>));{"\n"}
-                {"  "}{"}"}{"\n\n"}
-                {"  "}<span className="text-flame">if</span> (s.suspendable.length &gt;{" "}
-                <span className="text-volt">0</span>) {"{"}{"\n"}
-                {"    "}<span className="text-flame">const</span> total = s.suspendable.
-                <span className="text-volt">reduce</span>((sum, p) =&gt; sum + p.memoryMB,{" "}
-                <span className="text-volt">0</span>);{"\n"}
-                {"    "}console.<span className="text-volt">log</span>(
-                <span className="text-volt">&quot;  Background apps on safe-to-close list: &quot;</span> + s.suspendable.length +{" "}
-                <span className="text-volt">&quot; (~&quot;</span> + total.
-                <span className="text-volt">toFixed</span>(<span className="text-volt">0</span>) +{" "}
-                <span className="text-volt">&quot; MB)&quot;</span>);{"\n"}
-                {"    "}<span className="text-flame">for</span> (<span className="text-flame">const</span> p{" "}
-                <span className="text-flame">of</span> s.suspendable) {"{"}{"\n"}
-                {"      "}console.<span className="text-volt">log</span>(
-                <span className="text-volt">&quot;    - &quot;</span> + p.name.
-                <span className="text-volt">padEnd</span>(<span className="text-volt">28</span>) +{" "}
-                <span className="text-volt">&quot; &quot;</span> + p.memoryMB.
-                <span className="text-volt">toFixed</span>(<span className="text-volt">0</span>).
-                <span className="text-volt">padStart</span>(<span className="text-volt">6</span>) +{" "}
-                <span className="text-volt">&quot; MB&quot;</span>);{"\n"}
-                {"    "}{"}"}{"\n"}
-                {"  "}{"}"}{"\n"}
+                <span className="text-volt">toUpperCase</span>());{"\n"}
                 {"}"}
               </CodeCard>
             </article>
