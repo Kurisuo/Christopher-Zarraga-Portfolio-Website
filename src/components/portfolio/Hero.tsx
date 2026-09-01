@@ -53,7 +53,7 @@ export function Hero() {
           <br />
           <span className="text-ghost">Science</span>
         </h1>
-        <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+        <p className="mt-7 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:text-[1.35rem] lg:leading-relaxed">
           I&apos;m Christopher Zarraga — a CS major and Applied Math minor at UC
           Santa Cruz, here on the Sabatte Family full-ride scholarship, the
           first ever awarded by the university. I spend most of my time turning

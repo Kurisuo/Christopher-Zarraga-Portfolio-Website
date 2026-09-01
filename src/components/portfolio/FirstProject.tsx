@@ -18,7 +18,7 @@ export function FirstProject() {
         </h2>
       </Reveal>
 
-      <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:items-start lg:gap-12 xl:gap-16">
+      <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)] lg:items-start lg:gap-12 xl:gap-20">
         <Reveal delay={80} className="min-w-0">
           <div className="space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
