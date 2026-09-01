@@ -122,7 +122,7 @@ export function Hero() {
                           width={36}
                           height={36}
                           loading="lazy"
-                          className="size-9 rounded-lg bg-flame-foreground/10 p-1 object-contain transition-transform duration-200 hover:scale-110"
+                          className="size-9 rounded-lg bg-flame-foreground/10 p-1 object-contain grayscale contrast-125 transition-all duration-200 hover:scale-110 hover:grayscale-0"
                           title={name}
                         />
                       );
