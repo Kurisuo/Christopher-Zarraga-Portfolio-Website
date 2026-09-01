@@ -91,6 +91,14 @@ export function Hero() {
               <li>NVPilot — NVIDIA x ASUS</li>
             </ul>
 
+            <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-flame-foreground/70">
+              In-Progress
+            </p>
+            <ul className="mt-2 space-y-2 font-display text-lg font-semibold leading-snug text-flame-foreground/90">
+              <li>NES C++ Emulator</li>
+              <li>AVScope</li>
+            </ul>
+
             {/* Tech-stack logo grid — anchors the tile like the chess piece */}
             <div className="mt-auto flex flex-col items-center gap-3 pt-6">
               <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-flame-foreground/70">
@@ -165,7 +173,7 @@ export function Hero() {
               <img
                 src={lichessGame.url}
                 alt="Replay of my Lichess game as White"
-                className="h-40 w-full rounded-xl object-cover sm:h-48"
+                className="h-40 w-full rounded-[1px] object-cover sm:h-48"
                 loading="lazy"
               />
             </div>
