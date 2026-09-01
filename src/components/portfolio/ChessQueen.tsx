@@ -87,12 +87,12 @@ export function ChessQueen() {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return <div className="h-40 w-full sm:h-48" aria-hidden />;
+    return <div className="h-28 w-full sm:h-32" aria-hidden />;
   }
 
   return (
     <div
-      className="h-40 w-full cursor-grab touch-none active:cursor-grabbing sm:h-48"
+      className="h-28 w-full cursor-grab touch-none active:cursor-grabbing sm:h-32"
       aria-label="Interactive 3D render of a queen chess piece — drag to spin"
     >
       <Canvas
