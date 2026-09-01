@@ -27,11 +27,11 @@ export function FirstProject() {
               file, and an afternoon I thought would be short.
             </p>
             <p>
-              It was a small program that took a messy list of things I had to
-              do and sorted them by how badly they needed doing. Trivial code.
-              But the first time it printed the right order back at me, I
-              realized I could make a computer do something nobody had asked it
-              to do yet.
+              It was a tiny text RPG: a player, a monster, a store with overpriced
+              cereal, and a loop that rolled dice to see what happened next.
+              Trivial code. But the first time it printed &quot;A monster appears
+              with 50 HP!&quot; back at me, I realized I could make a computer do
+              something nobody had asked it to do yet.
             </p>
             <p className="text-foreground">
               That&apos;s the moment the whole thing clicked. Everything after
@@ -42,28 +42,71 @@ export function FirstProject() {
 
         <Reveal delay={140}>
           <CodeCard filename="main.py" badge="repl · v0.1">
-            <span className="text-muted-foreground">
-              # the first thing I ever wrote that worked
-            </span>
+            <span className="text-muted-foreground"># my first working game loop</span>
             {"\n"}
-            <span className="text-flame">def</span>{" "}
-            <span className="text-volt">rank</span>(tasks):{"\n"}
-            {"    "}
-            <span className="text-flame">return</span>{" "}
-            <span className="text-volt">sorted</span>(
+            <span className="text-flame">import</span> random{" "}as{" "}rand{"\n\n"}
+            <span className="text-flame">class</span>{" "}
+            <span className="text-volt">Monster</span>:{"\n"}
+            {"    "}<span className="text-flame">def</span>{" "}
+            <span className="text-volt">__init__</span>(
+            <span className="text-foreground/60">self</span>, health=
+            <span className="text-volt">50</span>, attack=
+            <span className="text-volt">10</span>):{"\n"}
+            {"        "}self.health = health{"\n"}
+            {"        "}self.attack = attack{"\n"}
+            {"        "}self.drops = {"{"}
             {"\n"}
-            {"        "}tasks,{"\n"}
-            {"        "}key=
-            <span className="text-flame">lambda</span> t: (t.due, -t.weight),
-            {"\n"}
-            {"    "}){"\n\n"}
-            <span className="text-flame">for</span> t{" "}
-            <span className="text-flame">in</span> rank(load()):{"\n"}
-            {"    "}
-            <span className="text-volt">print</span>(
-            <span className="text-flame">f</span>
+            {"            "}&quot;currency&quot;: rand.randrange(
+            <span className="text-volt">1</span>,{" "}
+            <span className="text-volt">50</span>),{"\n"}
+            {"            "}&quot;items&quot;: [
+            <span className="text-foreground/60">&quot;bronze-sword&quot;</span>,{" "}
+            <span className="text-foreground/60">&quot;iron-ingot&quot;</span>],{"\n"}
+            {"        "}{"}"}{"\n\n"}
+            <span className="text-flame">class</span>{" "}
+            <span className="text-volt">Game</span>:{"\n"}
+            {"    "}<span className="text-flame">def</span>{" "}
+            <span className="text-volt">__init__</span>(
+            <span className="text-foreground/60">self</span>):{"\n"}
+            {"        "}self.player = Player(){"\n"}
+            {"        "}self.has_lost ={" "}
+            <span className="text-flame">False</span>{"\n"}
+            {"        "}self.steps_taken ={" "}
+            <span className="text-volt">0</span>{"\n\n"}
+            {"    "}<span className="text-flame">def</span>{" "}
+            <span className="text-volt">trigger_encounter</span>(
+            <span className="text-foreground/60">self</span>):{"\n"}
+            {"        "}monster = Monster(){"\n"}
+            {"        "}print(
             <span className="text-foreground/60">
-              &quot;{"{"}t.due{"}"} · {"{"}t.name{"}"}&quot;
+              &quot;A monster appears with {"{"}monster.health{"}"} HP!&quot;
+            </span>
+            ){"\n\n"}
+            {"    "}<span className="text-flame">def</span>{" "}
+            <span className="text-volt">run</span>(
+            <span className="text-foreground/60">self</span>):{"\n"}
+            {"        "}while{" "}
+            <span className="text-flame">not</span>{" "}self.has_lost{" "}
+            <span className="text-flame">and</span>{" "}self.steps_taken &lt;{" "}
+            <span className="text-volt">10</span>:{"\n"}
+            {"            "}self.steps_taken +={" "}
+            <span className="text-volt">1</span>{"\n"}
+            {"            "}roll = rand.randrange(
+            <span className="text-volt">1</span>,{" "}
+            <span className="text-volt">11</span>){"\n\n"}
+            {"            "}if roll %{" "}
+            <span className="text-volt">3</span>{" "}=={" "}
+            <span className="text-volt">0</span>:{"\n"}
+            {"                "}print(
+            <span className="text-foreground/60">
+              &quot;[Step {"{"}self.steps_taken{"}"}] Monster!&quot;
+            </span>
+            ){"\n"}
+            {"                "}self.trigger_encounter(){"\n"}
+            {"            "}else:{"\n"}
+            {"                "}print(
+            <span className="text-foreground/60">
+              &quot;[Step {"{"}self.steps_taken{"}"}] Peaceful walk...&quot;
             </span>
             )
           </CodeCard>
