@@ -156,9 +156,9 @@ export function Hero() {
                 setGalleryOpen((v) => !v);
               }
             }}
-            className="flex cursor-pointer flex-col rounded-3xl bg-volt p-3 text-volt-foreground"
+            className="flex cursor-pointer flex-col rounded-3xl border border-border bg-ink-soft/60 p-3 text-foreground"
           >
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
               Off the keyboard
             </p>
             <ul className="mt-1.5 space-y-0.5 font-display text-sm font-semibold leading-snug">
@@ -168,21 +168,8 @@ export function Hero() {
               <li>Reading — financial literacy</li>
               <li>Photography</li>
             </ul>
-            <div className="mt-2 grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] items-center gap-2 pt-1">
-              <ChessQueen />
-              <div className="flex max-h-32 w-full items-center justify-center overflow-hidden rounded-[1px] bg-volt-foreground/10">
-                <img
-                  src={lichessGame.url}
-                  alt="Replay of my Lichess game as White"
-                  width={720}
-                  height={840}
-                  className="h-full w-auto object-contain"
-                  loading="lazy"
-                />
-              </div>
-            </div>
             <span
-              className="mt-3 flex size-8 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-y-0.5"
+              className="mt-3 flex size-8 items-center justify-center self-end rounded-full border border-foreground/30 transition-transform hover:translate-y-0.5"
               aria-hidden="true"
             >
               <ChevronDown
