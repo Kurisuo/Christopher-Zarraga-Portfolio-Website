@@ -78,39 +78,39 @@ export function Hero() {
         </dl>
       </Reveal>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12">
+      <div className="mt-10 grid items-start gap-4 sm:grid-cols-2 lg:mt-12">
         <Reveal delay={200}>
-          <div className="flex h-full flex-col rounded-3xl bg-flame p-5 text-flame-foreground">
+          <div className="flex flex-col rounded-3xl bg-flame p-3 text-flame-foreground">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Selected work
             </p>
-            <ul className="mt-3 space-y-3 font-display text-xl font-semibold leading-snug">
+            <ul className="mt-1.5 space-y-0.5 font-display text-base font-semibold leading-snug">
               <li>Neural inference engine</li>
               <li>Multi-threaded HTTP server</li>
               <li>VeriFi — RAG pipeline</li>
               <li>NVPilot — NVIDIA x ASUS</li>
             </ul>
 
-            <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-flame-foreground/70">
+            <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-flame-foreground/70">
               In-Progress
             </p>
-            <ul className="mt-2 space-y-2 font-display text-lg font-semibold leading-snug text-flame-foreground/90">
+            <ul className="mt-0.5 space-y-0.5 font-display text-sm font-semibold leading-snug text-flame-foreground/90">
               <li>NES C++ Emulator</li>
               <li>AVScope</li>
             </ul>
 
             {/* Tech-stack logo grid — anchors the tile like the chess piece */}
-            <div className="mt-auto flex flex-col items-center gap-3 pt-6">
+            <div className="mt-2 flex flex-col items-center gap-1 pt-1">
               <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-flame-foreground/70">
                 Building with
               </p>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-3 gap-2">
                 {[
                   ["C++", "C"],
                   ["CUDA", "NVML"],
                   ["TypeScript", "NemoClaw"],
                 ].map((pair, colIndex) => (
-                  <div key={colIndex} className="flex flex-col items-center gap-2">
+                  <div key={colIndex} className="flex flex-col items-center gap-1">
                     {pair.map((name) => {
                       const logo = techLogos[name];
                       if (!logo) return null;
@@ -119,10 +119,10 @@ export function Hero() {
                           key={name}
                           src={logo.src}
                           alt={logo.alt}
-                          width={56}
-                          height={56}
+                          width={36}
+                          height={36}
                           loading="lazy"
-                          className="size-14 rounded-lg bg-flame-foreground/10 p-1.5 object-contain transition-transform duration-200 hover:scale-110"
+                          className="size-9 rounded-lg bg-flame-foreground/10 p-1 object-contain transition-transform duration-200 hover:scale-110"
                           title={name}
                         />
                       );
@@ -133,10 +133,10 @@ export function Hero() {
             </div>
 
             <span
-              className="mt-4 flex size-9 items-center justify-center self-end rounded-full border border-flame-foreground/40"
+              className="mt-1.5 flex size-7 items-center justify-center self-end rounded-full border border-flame-foreground/40"
               aria-hidden="true"
             >
-              <ChevronDown className="size-4" />
+              <ChevronDown className="size-3.5" />
             </span>
           </div>
         </Reveal>
@@ -156,33 +156,33 @@ export function Hero() {
                 setGalleryOpen((v) => !v);
               }
             }}
-            className="flex h-full cursor-pointer flex-col rounded-3xl bg-volt p-5 text-volt-foreground"
+            className="flex cursor-pointer flex-col rounded-3xl bg-volt p-3 text-volt-foreground"
           >
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Off the keyboard
             </p>
-            <ul className="mt-3 space-y-1.5 font-display text-xl font-semibold leading-snug">
+            <ul className="mt-1.5 space-y-0.5 font-display text-sm font-semibold leading-snug">
               <li>Chess — 2000 Elo</li>
               <li>Lap swimming — just finished my first swim class</li>
               <li>Calisthenics</li>
               <li>Reading — financial literacy</li>
               <li>Photography</li>
             </ul>
-            <div className="mt-auto grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] items-center gap-2 pt-6">
+            <div className="mt-2 grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] items-center gap-2 pt-1">
               <ChessQueen />
-              <div className="flex w-full items-center justify-center overflow-hidden rounded-[1px] bg-volt-foreground/10">
+              <div className="flex max-h-32 w-full items-center justify-center overflow-hidden rounded-[1px] bg-volt-foreground/10">
                 <img
                   src={lichessGame.url}
                   alt="Replay of my Lichess game as White"
                   width={720}
                   height={840}
-                  className="aspect-[6/7] h-auto w-full object-contain"
+                  className="h-full w-auto object-contain"
                   loading="lazy"
                 />
               </div>
             </div>
             <span
-              className="mt-4 flex size-9 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-y-0.5"
+              className="mt-3 flex size-8 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-y-0.5"
               aria-hidden="true"
             >
               <ChevronDown
