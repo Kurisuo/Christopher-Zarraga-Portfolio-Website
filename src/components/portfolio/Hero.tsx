@@ -25,7 +25,7 @@ const techLogos: Record<string, { src: string; alt: string }> = {
 const stats = [
   { value: "1st", label: ["COHORT FULL RIDE", "RECIPIENT AT UCSC"] },
   { value: "5", label: ["ENGINEERS LED", "ON VERIFI"] },
-  { value: "1st Gen", label: ["SCHOLAR", "IN SHPE"] },
+  { value: "First-gen", label: ["COLLEGE SCHOLAR", "IN SHPE"] },
 ];
 
 const gallery = [
