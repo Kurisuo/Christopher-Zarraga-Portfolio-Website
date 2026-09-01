@@ -173,7 +173,7 @@ export function Hero() {
               <img
                 src={lichessGame.url}
                 alt="Replay of my Lichess game as White"
-                className="h-40 w-full rounded-xl object-cover sm:h-48"
+                className="h-40 w-full rounded-[1px] object-cover sm:h-48"
                 loading="lazy"
               />
             </div>
