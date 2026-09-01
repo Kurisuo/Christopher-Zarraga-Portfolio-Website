@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { CodeCard } from "./CodeCard";
 import { Reveal } from "./Reveal";
 
 const projects = [
@@ -31,13 +34,6 @@ const projects = [
       "Built half the data/event milestone components and architected bulk data pipelines with batch write services for multi-record transactions.",
   },
   {
-    tag: "TypeScript",
-    name: "Reversibility Engine",
-    blurb: "Journaled undo for every state mutation an agent makes.",
-    detail:
-      "Designed as .md skill specs for Claude Code — records a mechanical inverse per mutation, verified byte-identical config restoration in ~3s.",
-  },
-  {
     tag: "Leadership",
     name: "Sabatte & Regents",
     blurb: "Co-founded the association for UCSC's scholarship cohort.",
@@ -45,6 +41,132 @@ const projects = [
       "Building community for the Sabatte Family and Regents scholars alongside SHPE, connecting first-gen and underrepresented engineers.",
   },
 ];
+
+function NVPilotCard() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Reveal delay={180}>
+      <article className="group h-full rounded-3xl border border-border bg-ink-soft p-6 transition-colors hover:border-flame">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          className="w-full text-left"
+        >
+          <div className="flex items-center justify-between gap-3">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              TypeScript / NVML
+            </span>
+            <ChevronDown
+              className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300 ${
+                open ? "rotate-180" : ""
+              }`}
+            />
+          </div>
+          <h3 className="mt-3 font-display text-3xl font-bold tracking-tight transition-colors group-hover:text-flame">
+            NVPilot
+          </h3>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            An autonomous agent that watches live NVML GPU telemetry and tunes
+            the machine itself.
+          </p>
+          <p className="mt-2 max-h-0 overflow-hidden text-sm leading-relaxed text-muted-foreground opacity-0 transition-all duration-300 group-hover:max-h-40 group-hover:opacity-100">
+            Built at the NVIDIA x ASUS hackathon at UCSC — parses full system
+            state in ~550ms, plans in under 1ms, and freed ~2GB across 400+
+            processes. Every mutation is journaled with a mechanical inverse,
+            restored byte-identical in ~3s. Click to see the code.
+          </p>
+        </button>
+
+        <div
+          className={`grid transition-all duration-500 ease-in-out ${
+            open ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <CodeCard
+              filename="nvpilot/main.ts"
+              badge="live"
+              className="bg-ink"
+            >
+              <span className="text-flame">import</span>{" "}
+              <span className="text-foreground/85">{"{ perceive, reflect }"}</span>{" "}
+              <span className="text-flame">from</span>{" "}
+              <span className="text-volt">&quot;./core/agent&quot;</span>;{"\n"}
+              <span className="text-flame">import</span>{" "}
+              <span className="text-foreground/85">{"{ runDaemon }"}</span>{" "}
+              <span className="text-flame">from</span>{" "}
+              <span className="text-volt">&quot;./core/daemon&quot;</span>;{"\n"}
+              <span className="text-flame">import</span>{" "}
+              <span className="text-foreground/85">{"{ Journal }"}</span>{" "}
+              <span className="text-flame">from</span>{" "}
+              <span className="text-volt">&quot;./core/journal&quot;</span>;{"\n"}
+              <span className="text-flame">import</span>{" "}
+              <span className="text-foreground/85">{"{ Plan, SystemSnapshot }"}</span>{" "}
+              <span className="text-flame">from</span>{" "}
+              <span className="text-volt">&quot;./core/types&quot;</span>;{"\n"}
+              <span className="text-flame">import</span>{" "}
+              <span className="text-foreground/85">{"{ OllamaPlanner }"}</span>{" "}
+              <span className="text-flame">from</span>{" "}
+              <span className="text-volt">&quot;./planners/ollama-planner&quot;</span>;{"\n"}
+              <span className="text-flame">import</span>{" "}
+              <span className="text-foreground/85">{"{ HELP_TEXT, parseArgs }"}</span>{" "}
+              <span className="text-flame">from</span>{" "}
+              <span className="text-volt">&quot;./cli&quot;</span>;{"\n"}
+              <span className="text-flame">import</span>{" "}
+              <span className="text-foreground/85">{"{ TOOL_DEFINITIONS }"}</span>{" "}
+              <span className="text-flame">from</span>{" "}
+              <span className="text-volt">&quot;./tools/definitions&quot;</span>;{"\n\n"}
+              <span className="text-flame">function</span>{" "}
+              <span className="text-volt">banner</span>():{" "}
+              <span className="text-flame">void</span>{" "}{"{"}{"\n"}
+              {"  "}console.<span className="text-volt">log</span>(
+              <span className="text-volt">&quot;╔══════════════════════════════════════════════════════════╗&quot;</span>);{"\n"}
+              {"  "}console.<span className="text-volt">log</span>(
+              <span className="text-volt">&quot;║   NVPilot — Adaptive Performance Agent                     ║&quot;</span>);{"\n"}
+              {"  "}console.<span className="text-volt">log</span>(
+              <span className="text-volt">&quot;╚══════════════════════════════════════════════════════════╝&quot;</span>);{"\n"}
+              {"}"}{"\n\n"}
+              <span className="text-flame">function</span>{" "}
+              <span className="text-volt">printSnapshot</span>(s: SystemSnapshot):{" "}
+              <span className="text-flame">void</span>{" "}{"{"}{"\n"}
+              {"  "}console.<span className="text-volt">log</span>(
+              <span className="text-volt">&quot;\n&gt;&gt;&gt; PERCEIVE — system state\n&quot;</span>);{"\n"}
+              {"  "}<span className="text-flame">if</span> (s.gpu) {"{"}{"\n"}
+              {"    "}<span className="text-flame">const</span> memPct = Math.
+              <span className="text-volt">round</span>((s.gpu.memoryUsedMiB / s.gpu.memoryTotalMiB) *{" "}
+              <span className="text-volt">100</span>);{"\n"}
+              {"    "}console.<span className="text-volt">log</span>(
+              <span className="text-volt">&quot;  GPU:      &quot;</span> + s.gpu.name +{" "}
+              <span className="text-volt">&quot; (driver &quot;</span> + s.gpu.driverVersion +{" "}
+              <span className="text-volt">&quot;)&quot;</span>);{"\n"}
+              {"    "}console.<span className="text-volt">log</span>(
+              <span className="text-volt">&quot;  VRAM:     &quot;</span> + s.gpu.memoryUsedMiB +{" "}
+              <span className="text-volt">&quot;/&quot;</span> + s.gpu.memoryTotalMiB +{" "}
+              <span className="text-volt">&quot; MiB (&quot;</span> + memPct +{" "}
+              <span className="text-volt">&quot;% used)&quot;</span>);{"\n"}
+              {"    "}console.<span className="text-volt">log</span>(
+              <span className="text-volt">&quot;  Temp:     &quot;</span> + s.gpu.temperatureC +{" "}
+              <span className="text-volt">&quot;°C   Power: &quot;</span> + s.gpu.powerUsageW +{" "}
+              <span className="text-volt">&quot;W / &quot;</span> + s.gpu.powerCapW +{" "}
+              <span className="text-volt">&quot;W   Load: &quot;</span> + s.gpu.gpuUtilizationPercent +{" "}
+              <span className="text-volt">&quot;%&quot;</span>);{"\n"}
+              {"  "}{"}"} <span className="text-flame">else</span> {"{"}{"\n"}
+              {"    "}console.<span className="text-volt">log</span>(
+              <span className="text-volt">&quot;  GPU:      no NVIDIA telemetry available (nvidia-smi missing or failed)&quot;</span>);{"\n"}
+              {"  "}{"}"}{"\n"}
+              {"  "}console.<span className="text-volt">log</span>(
+              <span className="text-volt">&quot;  Tier:     &quot;</span> + s.gpuTier.
+              <span className="text-volt">toUpperCase</span>());{"\n"}
+              {"}"}
+            </CodeCard>
+          </div>
+        </div>
+      </article>
+    </Reveal>
+  );
+}
 
 export function MoreProjects() {
   return (
@@ -79,6 +201,7 @@ export function MoreProjects() {
             </article>
           </Reveal>
         ))}
+        <NVPilotCard />
       </div>
 
       <Reveal delay={120}>
