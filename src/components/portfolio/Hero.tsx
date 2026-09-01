@@ -2,8 +2,6 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { ProfileCard } from "./ProfileCard";
-import { ChessQueen } from "./ChessQueen";
-import lichessGame from "@/assets/lichess-game.gif.asset.json";
 import galleryChess from "@/assets/gallery-chess.jpg";
 import gallerySwim from "@/assets/gallery-swim.jpg";
 import galleryCalisthenics from "@/assets/gallery-calisthenics.jpg";
@@ -26,7 +24,7 @@ const techLogos: Record<string, { src: string; alt: string }> = {
 
 const stats = [
   { value: "1st", label: ["COHORT FULL RIDE", "RECIPIENT AT UCSC"] },
-  { value: "+4", label: ["UPCOMING CONVENTIONS", "& HACKATHONS"] },
+  { value: "5", label: ["ENGINEERS LED", "ON VERIFI"] },
   { value: "1st Gen", label: ["SCHOLAR", "IN SHPE"] },
 ];
 
@@ -41,7 +39,7 @@ export function Hero() {
   const [galleryOpen, setGalleryOpen] = useState(false);
 
   return (
-    <header id="top" className="pb-14 pt-24 lg:pb-16 lg:pt-28">
+    <header id="top" className="pb-14 pt-28 lg:pb-16 lg:pt-32">
       {/* Profile card — mobile only; desktop shows the pinned left column */}
       <Reveal className="mb-12 lg:hidden">
         <ProfileCard />
@@ -122,7 +120,7 @@ export function Hero() {
                           width={36}
                           height={36}
                           loading="lazy"
-                          className="size-9 rounded-lg bg-flame-foreground/10 p-1 object-contain transition-transform duration-200 hover:scale-110"
+                          className="size-9 rounded-lg bg-flame-foreground/10 p-1 object-contain grayscale contrast-125 transition-all duration-200 hover:scale-110 hover:grayscale-0"
                           title={name}
                         />
                       );
@@ -156,9 +154,9 @@ export function Hero() {
                 setGalleryOpen((v) => !v);
               }
             }}
-            className="flex cursor-pointer flex-col rounded-3xl bg-volt p-3 text-volt-foreground"
+            className="flex cursor-pointer flex-col rounded-3xl border border-border bg-ink-soft/60 p-3 text-foreground"
           >
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
               Off the keyboard
             </p>
             <ul className="mt-1.5 space-y-0.5 font-display text-sm font-semibold leading-snug">
@@ -168,21 +166,8 @@ export function Hero() {
               <li>Reading — financial literacy</li>
               <li>Photography</li>
             </ul>
-            <div className="mt-2 grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] items-center gap-2 pt-1">
-              <ChessQueen />
-              <div className="flex max-h-32 w-full items-center justify-center overflow-hidden rounded-[1px] bg-volt-foreground/10">
-                <img
-                  src={lichessGame.url}
-                  alt="Replay of my Lichess game as White"
-                  width={720}
-                  height={840}
-                  className="h-full w-auto object-contain"
-                  loading="lazy"
-                />
-              </div>
-            </div>
             <span
-              className="mt-3 flex size-8 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-y-0.5"
+              className="mt-3 flex size-8 items-center justify-center self-end rounded-full border border-foreground/30 transition-transform hover:translate-y-0.5"
               aria-hidden="true"
             >
               <ChevronDown
