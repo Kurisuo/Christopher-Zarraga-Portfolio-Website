@@ -15,11 +15,11 @@ export function CodeCard({
   return (
     <div
       className={cn(
-        "min-w-0 overflow-hidden rounded-3xl border border-border bg-ink-soft",
+        "flex min-w-0 flex-col overflow-hidden rounded-3xl border border-border bg-ink-soft",
         className,
       )}
     >
-      <div className="flex items-center gap-2 border-b border-border px-5 py-4">
+      <div className="flex shrink-0 items-center gap-2 border-b border-border px-5 py-4">
         <span className="size-2.5 rounded-full bg-flame" />
         <span className="size-2.5 rounded-full bg-foreground/20" />
         <span className="size-2.5 rounded-full bg-foreground/20" />
@@ -33,7 +33,7 @@ export function CodeCard({
           </span>
         ) : null}
       </div>
-      <pre className="max-w-full overflow-x-auto p-5 font-mono text-[12px] leading-relaxed text-foreground/85 sm:p-6 sm:text-[13px]">
+      <pre className="min-h-0 flex-1 overflow-auto p-5 font-mono text-[12px] leading-relaxed text-foreground/85 sm:p-6 sm:text-[13px]">
         <code>{children}</code>
       </pre>
     </div>
