@@ -18,8 +18,8 @@ export function FirstProject() {
         </h2>
       </Reveal>
 
-      <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-        <Reveal delay={80}>
+      <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:items-start lg:gap-12 xl:gap-16">
+        <Reveal delay={80} className="min-w-0">
           <div className="space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
               My first real project lived in a browser tab. No local setup, no
@@ -40,7 +40,7 @@ export function FirstProject() {
           </div>
         </Reveal>
 
-        <Reveal delay={140}>
+        <Reveal delay={140} className="min-w-0">
           <CodeCard filename="main.py" badge="repl · v0.1">
             <span className="text-muted-foreground"># my first working game loop</span>
             {"\n"}
