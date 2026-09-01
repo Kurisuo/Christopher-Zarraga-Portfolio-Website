@@ -156,19 +156,19 @@ export function Hero() {
                 setGalleryOpen((v) => !v);
               }
             }}
-            className="flex h-full cursor-pointer flex-col rounded-3xl bg-volt p-5 text-volt-foreground"
+            className="flex cursor-pointer flex-col rounded-3xl bg-volt p-4 text-volt-foreground"
           >
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
               Off the keyboard
             </p>
-            <ul className="mt-3 space-y-1.5 font-display text-xl font-semibold leading-snug">
+            <ul className="mt-2 space-y-1 font-display text-lg font-semibold leading-snug">
               <li>Chess — 2000 Elo</li>
               <li>Lap swimming — just finished my first swim class</li>
               <li>Calisthenics</li>
               <li>Reading — financial literacy</li>
               <li>Photography</li>
             </ul>
-            <div className="mt-auto grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] items-center gap-2 pt-6">
+            <div className="mt-4 grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] items-center gap-2 pt-2">
               <ChessQueen />
               <div className="flex w-full items-center justify-center overflow-hidden rounded-[1px] bg-volt-foreground/10">
                 <img
@@ -182,7 +182,7 @@ export function Hero() {
               </div>
             </div>
             <span
-              className="mt-4 flex size-9 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-y-0.5"
+              className="mt-3 flex size-8 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-y-0.5"
               aria-hidden="true"
             >
               <ChevronDown
