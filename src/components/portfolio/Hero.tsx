@@ -170,12 +170,16 @@ export function Hero() {
             </ul>
             <div className="mt-auto grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] items-center gap-2 pt-6">
               <ChessQueen />
-              <img
-                src={lichessGame.url}
-                alt="Replay of my Lichess game as White"
-                className="h-40 w-full rounded-[1px] object-cover sm:h-48"
-                loading="lazy"
-              />
+              <div className="flex w-full items-center justify-center overflow-hidden rounded-[1px] bg-volt-foreground/10">
+                <img
+                  src={lichessGame.url}
+                  alt="Replay of my Lichess game as White"
+                  width={720}
+                  height={840}
+                  className="aspect-[6/7] h-auto w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
             </div>
             <span
               className="mt-4 flex size-9 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-y-0.5"
