@@ -26,6 +26,7 @@ const stats = [
   { value: "1st", label: ["COHORT FULL RIDE", "RECIPIENT AT UCSC"] },
   { value: "5", label: ["ENGINEERS LED", "ON VERIFI"] },
   { value: "First-gen", label: ["COLLEGE SCHOLAR", "IN SHPE"] },
+  { value: "3rd", label: ["YEAR AT UCSC", "CS + APPLIED MATH"] },
 ];
 
 const gallery = [
