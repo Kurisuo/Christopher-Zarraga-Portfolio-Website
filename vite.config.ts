@@ -14,7 +14,7 @@ export default defineConfig({
   },
   vite: {
     resolve: {
-      dedupe: ["three", "@react-three/fiber", "@react-three/drei"],
+      dedupe: ["react", "react-dom", "three", "@react-three/fiber", "@react-three/drei"],
     },
     optimizeDeps: {
       include: ["three", "@react-three/fiber", "@react-three/drei"],
