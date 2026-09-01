@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { ProfileCard } from "./ProfileCard";
 import { ChessQueen } from "./ChessQueen";
-import { ChessGame } from "./ChessGame";
+import lichessGame from "@/assets/lichess-game.gif.asset.json";
 import galleryChess from "@/assets/gallery-chess.jpg";
 import gallerySwim from "@/assets/gallery-swim.jpg";
 import galleryCalisthenics from "@/assets/gallery-calisthenics.jpg";
@@ -162,7 +162,12 @@ export function Hero() {
             </ul>
             <div className="mt-auto grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] items-center gap-2 pt-6">
               <ChessQueen />
-              <ChessGame />
+              <img
+                src={lichessGame.url}
+                alt="Replay of my Lichess game as White"
+                className="h-40 w-full rounded-xl object-cover sm:h-48"
+                loading="lazy"
+              />
             </div>
             <span
               className="mt-4 flex size-9 items-center justify-center self-end rounded-full border border-volt-foreground/40 transition-transform hover:translate-y-0.5"
