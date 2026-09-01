@@ -48,7 +48,7 @@ const projects = [
 
 export function MoreProjects() {
   return (
-    <section id="work" className="py-20 lg:py-28">
+    <section id="work" className="py-14 lg:py-20">
       <Reveal>
         <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
           03 — Everything else
@@ -60,7 +60,7 @@ export function MoreProjects() {
         </h2>
       </Reveal>
 
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
           <Reveal key={p.name} delay={60 * i}>
             <article className="group h-full rounded-3xl border border-border bg-ink-soft p-6 transition-colors hover:border-flame">
@@ -82,7 +82,7 @@ export function MoreProjects() {
       </div>
 
       <Reveal delay={120}>
-        <div className="mt-10 grid gap-6 rounded-[2rem] border border-border bg-ink-soft p-7 sm:p-10 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-12">
+        <div className="mt-8 grid gap-6 rounded-[2rem] border border-border bg-ink-soft p-7 sm:p-10 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-12">
           <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-volt">
             Right now
           </p>
