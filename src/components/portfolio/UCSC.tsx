@@ -5,7 +5,7 @@ export function UCSC() {
   return (
     <section
       id="ucsc"
-      className="-mx-5 border-y border-border bg-ink-soft/40 px-5 py-20 sm:-mx-8 sm:px-8 lg:py-28"
+      className="-mx-5 border-y border-border bg-ink-soft/40 px-5 py-14 sm:-mx-8 sm:px-8 lg:py-20"
     >
       <div>
         <Reveal>
@@ -20,7 +20,7 @@ export function UCSC() {
         </Reveal>
 
         <Reveal delay={80}>
-          <p className="mt-8 max-w-4xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
+          <p className="mt-6 max-w-4xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
             I came to UC Santa Cruz as the first-ever recipient of the Sabatte
             Family full-ride scholarship — the first full ride in the
             university&apos;s history. It changed what I could afford to be
@@ -31,7 +31,7 @@ export function UCSC() {
           </p>
         </Reveal>
 
-        <div className="mt-14">
+        <div className="mt-8 lg:mt-10">
           {/* NVPilot — featured */}
           <Reveal delay={120}>
             <article className="h-full rounded-[2rem] border border-border bg-ink p-6 sm:p-8">

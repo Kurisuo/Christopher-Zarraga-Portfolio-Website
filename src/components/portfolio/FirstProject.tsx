@@ -5,7 +5,7 @@ export function FirstProject() {
   return (
     <section
       id="origin"
-      className="py-20 lg:py-28"
+      className="py-14 lg:py-20"
     >
       <Reveal>
         <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
@@ -18,7 +18,7 @@ export function FirstProject() {
         </h2>
       </Reveal>
 
-      <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)] lg:items-start lg:gap-12 xl:gap-20">
+      <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)] lg:items-start lg:gap-12 xl:gap-20">
         <Reveal delay={80} className="min-w-0">
           <div className="space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>

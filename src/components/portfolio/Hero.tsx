@@ -41,7 +41,7 @@ export function Hero() {
   const [galleryOpen, setGalleryOpen] = useState(false);
 
   return (
-    <header id="top" className="pb-20 pt-28 lg:pt-36">
+    <header id="top" className="pb-14 pt-24 lg:pb-16 lg:pt-28">
       {/* Profile card — mobile only; desktop shows the pinned left column */}
       <Reveal className="mb-12 lg:hidden">
         <ProfileCard />
@@ -61,7 +61,7 @@ export function Hero() {
         </p>
       </Reveal>
 
-      <Reveal delay={160} className="mt-16">
+      <Reveal delay={160} className="mt-10 lg:mt-12">
         <dl className="flex flex-wrap justify-between gap-x-8 gap-y-6">
           {stats.map((s) => (
             <div key={s.value + s.label[0]} className="min-w-0 flex-1 text-center">
@@ -78,7 +78,7 @@ export function Hero() {
         </dl>
       </Reveal>
 
-      <div className="mt-16 grid gap-4 sm:grid-cols-2">
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12">
         <Reveal delay={200}>
           <div className="flex h-full flex-col rounded-3xl bg-flame p-5 text-flame-foreground">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">
