@@ -100,7 +100,7 @@ export function MoreProjects() {
         <div className="mt-8 grid gap-6 border border-border bg-ink-soft p-7 sm:p-10 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-12">
           <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">Right now</p>
           <p className="max-w-4xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
-            I&apos;m going deeper on autonomous-driving RL at the AIEA Lab and shipping Causeway with the Tech4Good Lab — while digging further into the GPU-adjacent systems work NVPilot opened up for me. Alongside that I&apos;m looking for an internship where I can ship something real and be the least experienced person in the room for a while.
+            I&apos;m going deeper on autonomous-driving RL at the AIEA Lab and building up Compass with the Tech4Good Lab. On my own time I&apos;m re-learning computer architecture before writing an NES emulator in C++, and building AVScope — a C++ tool for benchmarking autonomous-vehicle experiments. Alongside that I&apos;m looking for an internship where I can ship something real and be the least experienced person in the room for a while!
           </p>
         </div>
       </Reveal>
