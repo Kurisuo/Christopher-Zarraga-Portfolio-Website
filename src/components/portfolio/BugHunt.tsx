@@ -377,7 +377,7 @@ export function BugHunt() {
                 const isBad = bad === id && !!id;
                 const body =
                   id === "c" ? (
-                    <span className={TOKEN_CLASS.c}>{text}</span>
+                    <span className={TOKEN_CLASS["c"]}>{text}</span>
                   ) : text ? (
                     paint(text)
                   ) : (
