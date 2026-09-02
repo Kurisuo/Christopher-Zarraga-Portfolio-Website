@@ -34,7 +34,8 @@ export function ProfileCard({ className }: { className?: string }) {
           href="https://github.com/Kurisuo"
           target="_blank"
           rel="noreferrer"
-          className="flex size-10 items-center justify-center rounded-full border border-surface-foreground/20 text-surface-foreground/80 transition-colors duration-200 hover:bg-flame hover:text-flame-foreground"
+          className="flex size-10 items-center justify-center rounded-full border transition-colors duration-200 hover:bg-white/10"
+          style={{ borderColor: "rgba(255,255,255,0.2)", color: "rgba(228,228,231,0.8)" }}
           aria-label="GitHub"
         >
           <Github className="size-[18px]" />
@@ -43,14 +44,16 @@ export function ProfileCard({ className }: { className?: string }) {
           href="https://www.linkedin.com/in/christopher-zarraga/"
           target="_blank"
           rel="noreferrer"
-          className="flex size-10 items-center justify-center rounded-full border border-surface-foreground/20 text-surface-foreground/80 transition-colors duration-200 hover:bg-flame hover:text-flame-foreground"
+          className="flex size-10 items-center justify-center rounded-full border transition-colors duration-200 hover:bg-white/10"
+          style={{ borderColor: "rgba(255,255,255,0.2)", color: "rgba(228,228,231,0.8)" }}
           aria-label="LinkedIn"
         >
           <Linkedin className="size-[18px]" />
         </a>
         <a
           href="mailto:christopherzarraga31@gmail.com"
-          className="flex size-10 items-center justify-center rounded-full border border-surface-foreground/20 text-surface-foreground/80 transition-colors duration-200 hover:bg-flame hover:text-flame-foreground"
+          className="flex size-10 items-center justify-center rounded-full border transition-colors duration-200 hover:bg-white/10"
+          style={{ borderColor: "rgba(255,255,255,0.2)", color: "rgba(228,228,231,0.8)" }}
           aria-label="Email"
         >
           <Mail className="size-[18px]" />
