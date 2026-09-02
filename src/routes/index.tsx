@@ -5,6 +5,7 @@ import { Hero } from "@/components/portfolio/Hero";
 import { FirstProject } from "@/components/portfolio/FirstProject";
 import { UCSC } from "@/components/portfolio/UCSC";
 import { MoreProjects } from "@/components/portfolio/MoreProjects";
+import { OffTheKeyboard } from "@/components/portfolio/OffTheKeyboard";
 import { Contact } from "@/components/portfolio/Contact";
 
 const title = "Christopher Zarraga Jimenez — CS Student & Builder";
