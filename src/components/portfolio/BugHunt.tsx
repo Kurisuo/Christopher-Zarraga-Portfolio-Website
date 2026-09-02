@@ -287,11 +287,11 @@ export function BugHunt() {
     : "All four. Better than I did for four years.";
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:items-center lg:gap-7">
+    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-7">
       {/* left column: cross-fading panes */}
-      <div className="relative min-w-0 lg:flex lg:h-[30rem] lg:items-center">
+      <div className="relative min-w-0 lg:flex lg:h-[30rem]">
 
-        <Pane on={pane === "intro"}>
+        <Pane on={pane === "intro"} align="start">
           <p className="bug-p">
             My first real project was a tiny text RPG I made in Python! I made it to showcase what I
             had learned in my first semester of Highschool computer science. Man, looking back at
