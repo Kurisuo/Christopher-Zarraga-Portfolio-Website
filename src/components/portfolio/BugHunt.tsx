@@ -322,7 +322,7 @@ export function BugHunt() {
           </ol>
         </Pane>
 
-        <Pane on={pane === "full"}>
+        <Pane on={pane === "full"} align="start">
           <p className="bug-p">
             The whole thing, unedited. Roughly 400 lines of high-school me — global state,
             copy-pasted branches, and a shop that recursively calls itself instead of looping.
@@ -332,7 +332,7 @@ export function BugHunt() {
           </p>
         </Pane>
 
-        <Pane on={pane === "res"}>
+        <Pane on={pane === "res"} align="start">
           {result ? (
             <>
               <div
