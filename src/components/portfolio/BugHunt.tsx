@@ -310,8 +310,8 @@ export function BugHunt() {
         </Pane>
 
         <Pane on={pane === "snip"} align="start" flow className="bug-pane-snippets">
-          <p className="bug-p">The two snippets below are the ones that make me laugh most:</p>
-          <ol className="list-decimal space-y-4 pl-5">
+          <p className="bug-p !mb-0">The two snippets below are the ones that make me laugh most:</p>
+          <ol className="bug-list list-decimal space-y-5">
             <li className="bug-p !mb-0">
               Because at the time I did not know how to make an item go &quot;out of stock&quot;
               flag or use dictionary lookup, I simply hyperinflated the price as a form of state
@@ -490,7 +490,7 @@ function Pane({
         "bug-pane lg:flex lg:flex-col lg:transition-opacity lg:duration-200",
         inFlow
           ? "lg:static lg:max-h-full lg:overflow-visible"
-          : "lg:absolute lg:inset-0 lg:overflow-auto",
+          : "lg:absolute lg:inset-0 lg:overflow-visible",
         align === "start" ? "lg:justify-start" : "lg:justify-center",
         on ? "block lg:opacity-100" : "hidden lg:block lg:pointer-events-none lg:opacity-0",
         className,
