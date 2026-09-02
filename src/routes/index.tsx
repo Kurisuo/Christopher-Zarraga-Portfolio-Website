@@ -42,6 +42,7 @@ function Index() {
           <FirstProject />
           <UCSC />
           <MoreProjects />
+          <OffTheKeyboard />
           <Contact />
         </div>
       </div>
