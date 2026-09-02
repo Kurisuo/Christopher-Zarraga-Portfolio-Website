@@ -5,6 +5,7 @@ import ycExpoAsset from "@/assets/slide-yc-expo.jpg.asset.json";
 import berkeleyAsset from "@/assets/slide-berkeley-regents.jpg.asset.json";
 import shpeAsset from "@/assets/slide-shpe-2026.webp.asset.json";
 import { Reveal } from "./Reveal";
+import { Lightbox } from "./Lightbox";
 import { cn } from "@/lib/utils";
 
 const ARTICLE_URL =
@@ -52,9 +53,16 @@ const slides: Slide[] = [
 export function UCSC() {
   const [index, setIndex] = useState(0);
   const [dir, setDir] = useState(1);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const mediaRef = useRef<HTMLDivElement>(null);
+  const imageButtonRef = useRef<HTMLButtonElement>(null);
   const [mediaHeight, setMediaHeight] = useState<number>();
   const touchStart = useRef<number | null>(null);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxOpen(false);
+    imageButtonRef.current?.focus();
+  }, []);
 
   const go = useCallback((next: number, direction: number) => {
     setDir(direction);
