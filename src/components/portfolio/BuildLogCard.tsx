@@ -17,7 +17,7 @@ export function BuildLogCard({ name, tag, blurb, description, metric, href, open
   return (
     <article
       className={cn(
-        "group flex min-w-0 flex-col border border-border bg-ink-soft p-5 transition-[opacity,border-color] duration-200 ease-out",
+        "group flex h-full min-w-0 flex-col border border-border bg-ink-soft p-5 transition-[opacity,border-color] duration-200 ease-out",
         open ? "border-foreground/40" : "hover:border-foreground/40",
       )}
       onMouseEnter={onOpen}
