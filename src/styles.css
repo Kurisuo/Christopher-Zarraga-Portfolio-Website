@@ -197,6 +197,14 @@
   --found: oklch(0.75 0.19 148);
   --miss: oklch(0.68 0.21 25);
 
+  --code-fg: #d4d4dc;
+  --code-key: #c4b5fd;
+  --code-str: #86efac;
+  --code-num: #fdba74;
+  --code-fn: #93c5fd;
+  --code-com: #5b5b63;
+
+
   --primary: oklch(0.235 0.005 60);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.235 0.005 60);
