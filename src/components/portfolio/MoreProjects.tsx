@@ -3,7 +3,31 @@ import { ChevronDown } from "lucide-react";
 import { CodeCard } from "./CodeCard";
 import { Reveal } from "./Reveal";
 
-const projects = [
+const topRow = [
+  {
+    tag: "Research",
+    name: "AIEA Lab",
+    blurb: "Autonomous vehicles research with reinforcement learning.",
+    detail:
+      "Evaluating SAC agents in Gymnasium CarRacing with Stable-Baselines3, and running CARLA workloads on the Nautilus Kubernetes GPU cluster.",
+  },
+  {
+    tag: "Tech4Good",
+    name: "Tech4Good Lab",
+    blurb: "A full-stack learning curriculum app built for social impact.",
+    detail:
+      "Built half the data/event milestone components and architected bulk data pipelines with batch write services for multi-record transactions.",
+  },
+  {
+    tag: "Academics",
+    name: "Current Studies",
+    blurb: "Third-year Computer Science major with an Applied Math minor at UC Santa Cruz.",
+    detail:
+      "Coursework spans data structures, algorithms, computer systems, linear algebra, and probability — supported by the Sabatte Family full-ride scholarship.",
+  },
+];
+
+const bottomRow = [
   {
     tag: "C++ / RAG",
     name: "VeriFi",
@@ -19,28 +43,34 @@ const projects = [
     detail:
       "~8,400 req/s with 99% of requests under ~13ms across 64 connections — thread pool over a bounded queue, reader-writer locks, zero concurrency libraries.",
   },
-  {
-    tag: "Research",
-    name: "AIEA Lab",
-    blurb: "Autonomous vehicles research with reinforcement learning.",
-    detail:
-      "Evaluating SAC agents in Gymnasium CarRacing with Stable-Baselines3, and running CARLA workloads on the Nautilus Kubernetes GPU cluster.",
-  },
-  {
-    tag: "Tech4Good",
-    name: "Causeway",
-    blurb: "A full-stack learning curriculum app built for social impact.",
-    detail:
-      "Built half the data/event milestone components and architected bulk data pipelines with batch write services for multi-record transactions.",
-  },
-  {
-    tag: "Leadership",
-    name: "Sabatte & Regents",
-    blurb: "Co-founded the association for UCSC's scholarship cohort.",
-    detail:
-      "Building community for the Sabatte Family and Regents scholars alongside SHPE, connecting first-gen and underrepresented engineers.",
-  },
 ];
+
+function ProjectCard({
+  project,
+  delay = 0,
+}: {
+  project: (typeof topRow)[number];
+  delay?: number;
+}) {
+  return (
+    <Reveal delay={delay}>
+      <article className="group h-full rounded-3xl border border-border bg-ink-soft p-6 transition-colors hover:border-flame">
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+          {project.tag}
+        </span>
+        <h3 className="mt-3 font-display text-3xl font-bold tracking-tight transition-colors group-hover:text-flame">
+          {project.name}
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          {project.blurb}
+        </p>
+        <p className="mt-2 max-h-0 overflow-hidden text-sm leading-relaxed text-muted-foreground opacity-0 transition-all duration-300 group-hover:max-h-40 group-hover:opacity-100">
+          {project.detail}
+        </p>
+      </article>
+    </Reveal>
+  );
+}
 
 function NVPilotCard() {
   const [open, setOpen] = useState(false);
@@ -183,23 +213,14 @@ export function MoreProjects() {
       </Reveal>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((p, i) => (
-          <Reveal key={p.name} delay={60 * i}>
-            <article className="group h-full rounded-3xl border border-border bg-ink-soft p-6 transition-colors hover:border-flame">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                {p.tag}
-              </span>
-              <h3 className="mt-3 font-display text-3xl font-bold tracking-tight transition-colors group-hover:text-flame">
-                {p.name}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {p.blurb}
-              </p>
-              <p className="mt-2 max-h-0 overflow-hidden text-sm leading-relaxed text-muted-foreground opacity-0 transition-all duration-300 group-hover:max-h-40 group-hover:opacity-100">
-                {p.detail}
-              </p>
-            </article>
-          </Reveal>
+        {topRow.map((p, i) => (
+          <ProjectCard key={p.name} project={p} delay={60 * i} />
+        ))}
+      </div>
+
+      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {bottomRow.map((p, i) => (
+          <ProjectCard key={p.name} project={p} delay={60 * i} />
         ))}
         <NVPilotCard />
       </div>
@@ -211,7 +232,7 @@ export function MoreProjects() {
           </p>
           <p className="max-w-4xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
             I&apos;m going deeper on autonomous-driving RL at the AIEA Lab and
-            shipping Causeway with Tech4Good — while digging further into the
+            shipping Causeway with the Tech4Good Lab — while digging further into the
             GPU-adjacent systems work NVPilot opened up for me. Alongside that
             I&apos;m looking for an internship where I can ship something real
             and be the least experienced person in the room for a while.
