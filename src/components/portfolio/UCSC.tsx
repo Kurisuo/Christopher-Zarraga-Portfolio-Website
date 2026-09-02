@@ -14,7 +14,7 @@ type Slide = {
   image: string;
   alt: string;
   caption: string;
-  body: string;
+  body: React.ReactNode;
 };
 
 const slides: Slide[] = [
