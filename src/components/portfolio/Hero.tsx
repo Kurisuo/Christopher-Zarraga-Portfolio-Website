@@ -14,7 +14,7 @@ const stats = [
   { value: "3rd", label: ["YEAR AT UCSC", "CS + APPLIED MATH"] },
 ];
 
-const TECH = ["C++", "C", "NVML", "TS", "Linux"] as const;
+const TECH = ["C++", "C", "NVML", "TypeScript", "Linux"] as const;
 
 type Project = {
   id: string;
