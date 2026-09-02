@@ -101,13 +101,15 @@ export function MoreProjects() {
       </Reveal>
 
       <div
-        className="mt-8 grid gap-4 lg:grid-cols-[repeat(3,minmax(0,1fr))]"
+        className="mt-8 grid gap-4 transition-[grid-template-columns] duration-[350ms] ease-[cubic-bezier(0.4,0.2,0.2,1)] lg:grid-cols-[repeat(3,minmax(0,1fr))]"
         style={{
-          gridTemplateColumns: active ? "repeat(3, minmax(0, 1fr))" : undefined,
+          gridTemplateColumns: active
+            ? `repeat(3, minmax(0, 1fr))`
+            : undefined,
         }}
       >
         {projects.map((project, index) => (
-          <Reveal key={project.name} delay={60 * index} className="min-w-0">
+          <Reveal key={project.name} delay={60 * index} className={`min-w-0 transition-opacity duration-200 ${active && active !== project.name ? "opacity-60" : "opacity-100"}`}>
             <BuildLogCard
               {...project}
               open={active === project.name}
