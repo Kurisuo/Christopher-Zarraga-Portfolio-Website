@@ -52,7 +52,7 @@ const projects: Project[] = [
     name: "NVPilot",
     descriptor: "autonomous GPU tuning agent, NVIDIA x ASUS Hackathon",
     metric: "~550 ms perception · ~3 s rollback",
-    tech: ["TS", "NVML"],
+    tech: ["TypeScript", "NVML"],
   },
   {
     id: "nes",
