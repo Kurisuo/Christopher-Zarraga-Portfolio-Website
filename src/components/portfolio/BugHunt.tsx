@@ -7,7 +7,7 @@ type Row = [string, string];
 const BUG: Record<string, { t: string; b: string }> = {
   "1": {
     t: "Nothing ever exits this loop",
-    b: "<code>while macheteShop[3] is True</code> runs forever. Nothing inside the loop flips that flag back to False — it pops index 1 and inserts right back at index 1, so the condition never changes. The armor pieces use <code>if</code> for the exact same logic. I wrote the same idea two ways and only one of them hangs the game.",
+    b: "It's skipped on your first visit, since the flag starts False. But the moment you buy anything, the purchase branch sets <code>macheteShop[3] = True</code> — and nothing inside this loop ever sets it back. Second time you walk into the shop, it spins forever. It pops index 1 and inserts right back at index 1, so the condition can never change. The armor pieces use <code>if</code> for the exact same logic. I wrote the same idea two ways and only one of them hangs the game.",
   },
   "2": {
     t: "Every purchase flags the machete",
