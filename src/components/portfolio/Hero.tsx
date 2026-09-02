@@ -3,9 +3,7 @@ import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { ProfileCard } from "./ProfileCard";
 import { Lightbox, type LightboxSlide } from "./Lightbox";
-import hobbySunset from "@/assets/hobby-sunset.jpg.asset.json";
-import hobbyChess from "@/assets/hobby-chess.jpg.asset.json";
-import hobbySwim from "@/assets/hobby-swim.jpg.asset.json";
+import { media } from "@/lib/media";
 
 const stats = [
   { value: "1st", label: ["COHORT FULL RIDE", "RECIPIENT AT UCSC"] },
@@ -16,17 +14,17 @@ const stats = [
 
 const gallery: LightboxSlide[] = [
   {
-    image: hobbySunset.url,
+    image: media("hobby-sunset.jpg"),
     alt: "Three people sitting on a rock ledge watching the sunset over the hills",
     caption: "Fujifilm X-T2, 18–55mm",
   },
   {
-    image: hobbyChess.url,
+    image: media("hobby-chess.jpg"),
     alt: "Playing a timed chess game at an outdoor cafe table",
     caption: "Blitz downtown",
   },
   {
-    image: hobbySwim.url,
+    image: media("hobby-swim.jpg"),
     alt: "Outdoor lap pool with swimmers resting at the wall",
     caption: "Morning laps",
   },

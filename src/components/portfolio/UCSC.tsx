@@ -1,9 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
-import cohortAsset from "@/assets/sabatte-cohort.jpg.asset.json";
-import ycExpoAsset from "@/assets/slide-yc-expo.jpg.asset.json";
-import berkeleyAsset from "@/assets/slide-berkeley-regents.jpg.asset.json";
-import shpeAsset from "@/assets/slide-shpe-2026.webp.asset.json";
+import { media } from "@/lib/media";
 import { Reveal } from "./Reveal";
 import { Lightbox } from "./Lightbox";
 import { cn } from "@/lib/utils";
@@ -21,26 +18,26 @@ type Slide = {
 
 const slides: Slide[] = [
   {
-    image: cohortAsset.url,
+    image: media("sabatte-cohort.jpg"),
     alt: "Christopher Zarraga Jimenez with his Sabatte Family scholarship cohort",
     caption: "Sabatte Family Scholars, first cohort.",
     body: "I came to UC Santa Cruz in the first cohort of Sabatte Family full-ride scholars — the first full ride in the university's history. It changed what I could afford to be curious about. I am so grateful; I got to declare Computer Science with an Applied Math minor because I wanted both halves: the systems themselves, and the math that explains why they behave the way they do.",
     prompt: "There's more — click through the photos!",
   },
   {
-    image: ycExpoAsset.url,
+    image: media("slide-yc-expo.jpg"),
     alt: "Christopher Zarraga Jimenez at the Y Combinator Startup Internship Expo",
     caption: "Y Combinator Expo.",
     body: "I was also accepted to Y Combinator's 2027 Startup Internship Expo and flew out to San Francisco for it! I spent the day around engineers building with AI on problems that truly exist, and even helped pitch for Altera Labs — we brought in around ten potential intern candidates over the course of the event! It was amazing how kind everyone was. I quickly made friends with a group of ambitious, genuinely brilliant people who re-sparked my drive to just start making something.",
   },
   {
-    image: berkeleyAsset.url,
+    image: media("slide-berkeley-regents.jpg"),
     alt: "Christopher Zarraga Jimenez with fellow scholars at the UC Berkeley Regents' and Chancellor's Scholars Inter-UC Conference",
     caption: "UC Berkeley Regents Conference.",
     body: "The Sabatte Family scholarship didn't just cover tuition — it also got me invited to the 2026 Regents' and Chancellor's Scholars Inter-UC Conference at UC Berkeley! It was my first time traveling to represent my university, alongside my fellow Slugs and scholars from across the UC system. I spent my time meeting and networking with people on completely different paths and hearing why they chose them. Networking was one of the most useful skills I got to develop there. In the end, we got to celebrate by going out on a cruise from Berkeley to the Golden Gate Bridge!",
   },
   {
-    image: shpeAsset.url,
+    image: media("slide-shpe-2026.webp"),
     alt: "SHPE 2026 National Convention logo",
     caption: "SHPE 2026 Conference.",
     body: "I got a $500 scholarship to attend the SHPE National Convention, then reached out to departments across UCSC to cover the rest — flights, hotel, the parts a scholarship doesn't touch. Several came through. It's the first time I've had to fund my own way to something, and it turned out the answer was mostly just asking. Last year's convention drew 10,000 attendees and 763 interview booths, and this fall I'll be walking into it.",
