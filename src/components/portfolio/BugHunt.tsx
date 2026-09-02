@@ -303,7 +303,7 @@ export function BugHunt() {
           </p>
         </Pane>
 
-        <Pane on={pane === "snip"}>
+        <Pane on={pane === "snip"} className="[&_.bug-p]:text-[0.9375rem]">
           <p className="bug-p">The two snippets below are the ones that make me laugh most:</p>
           <ol className="list-decimal space-y-4 pl-5">
             <li className="bug-p !mb-0">
