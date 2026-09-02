@@ -28,29 +28,8 @@ const projects: Project[] = [
   { id: "avscope", name: "AVScope", descriptor: "frame-by-frame inspector for AV perception runs", metric: "in progress", wip: true },
 ];
 
-const hobbies = [
-  { name: "Chess", descriptor: "2000 Elo" },
-  { name: "Lap swimming", descriptor: "just finished my first swim class" },
-  { name: "Calisthenics", descriptor: "bodyweight strength, 5 days a week" },
-  { name: "Reading", descriptor: "financial literacy" },
-  { name: "Photography", descriptor: "35mm and coastal landscapes" },
-];
-
-const gallery = [
-  { src: galleryChess, alt: "Chess pieces on a board in warm light" },
-  { src: gallerySwim, alt: "Swimmer doing butterfly stroke in a pool lane" },
-  { src: galleryCalisthenics, alt: "Pull-ups on an outdoor bar at sunset" },
-  { src: galleryPhotography, alt: "Reading a finance book beside a camera" },
-];
-
 export function Hero() {
-  const [galleryOpen, setGalleryOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  const scrollBy = (dir: 1 | -1) => {
-    trackRef.current?.scrollBy({ left: dir * (trackRef.current.clientWidth * 0.7), behavior: "smooth" });
-  };
 
   return (
     <header id="top" className="portfolio-section scroll-mt-28 pb-14 pt-28 lg:pb-16 lg:pt-32">
