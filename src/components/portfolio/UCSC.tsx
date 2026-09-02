@@ -186,7 +186,7 @@ export function UCSC() {
                       {img}
                     </button>
                   ) : (
-                    <div key={i} aria-hidden className="absolute inset-0">
+                    <div key={i} aria-hidden className="pointer-events-none absolute inset-0">
                       {img}
                     </div>
                   );
