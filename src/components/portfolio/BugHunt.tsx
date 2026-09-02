@@ -311,7 +311,7 @@ export function BugHunt() {
 
         <Pane on={pane === "snip"} align="start" flow className="bug-pane-snippets">
           <p className="bug-p !mb-0">The two snippets below are the ones that make me laugh most:</p>
-          <ol className="bug-list list-decimal space-y-5">
+          <ol className="bug-list">
             <li className="bug-p !mb-0">
               Because at the time I did not know how to make an item go &quot;out of stock&quot;
               flag or use dictionary lookup, I simply hyperinflated the price as a form of state

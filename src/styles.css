@@ -254,11 +254,24 @@
 .bug-list {
   margin-top: 10px;
   padding-left: 0;
-  list-style-position: outside;
+  list-style: none;
+  counter-reset: bugitem;
 }
 
 .bug-list > li {
-  padding-left: 0.25em;
+  position: relative;
+  counter-increment: bugitem;
+}
+
+.bug-list > li + li {
+  margin-top: 20px;
+}
+
+.bug-list > li::before {
+  content: counter(bugitem) ".";
+  position: absolute;
+  right: calc(100% + 0.45em);
+  color: var(--muted-foreground);
 }
 
 .terminal-scroll {
