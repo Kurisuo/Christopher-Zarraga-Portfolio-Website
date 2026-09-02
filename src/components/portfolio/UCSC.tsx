@@ -6,15 +6,10 @@ const ARTICLE_URL =
 
 export function UCSC() {
   return (
-    <section
-      id="ucsc"
-      className="-mx-5 border-y border-border bg-ink-soft/40 px-5 py-14 sm:-mx-8 sm:px-8 lg:py-20"
-    >
+    <section id="ucsc" className="-mx-5 border-y border-border bg-ink-soft/40 px-5 py-14 sm:-mx-8 sm:px-8 lg:py-20">
       <div>
         <Reveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-volt">
-            02 — Santa Cruz
-          </p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-volt">02 — Santa Cruz</p>
           <h2 className="mt-4 font-display text-[clamp(2rem,6vw,4.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight">
             First full ride
             <br />
@@ -26,13 +21,10 @@ export function UCSC() {
           {/* Left: description */}
           <Reveal delay={80}>
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
-              I came to UC Santa Cruz as the first-ever recipient of the
-              Sabatte Family full-ride scholarship — the first full ride in the
-              university&apos;s history. It changed what I could afford to be
-              curious about. I declared Computer Science with an Applied Math
-              minor because I wanted both halves — the systems that run and
-              the math that explains why they run the way they do. Two projects
-              from that stretch matter most.
+              I came to UC Santa Cruz in the first cohort of Sabatte Family full-ride scholars — the first full ride in
+              the university's history. It changed what I could afford to be curious about. I declared Computer Science
+              with an Applied Math minor because I wanted both halves: the systems themselves, and the math that
+              explains why they behave the way they do.
             </p>
           </Reveal>
 
