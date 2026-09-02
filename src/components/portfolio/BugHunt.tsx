@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 type Row = [string, string];
@@ -331,13 +332,15 @@ export function BugHunt() {
                 {result.kind === "ok" ? result.title : "This line is fine"}
               </h3>
               <p className="bug-p">{paintProse(result.body)}</p>
-              <button
+              <Button
                 type="button"
+                variant="ghost"
+                size="sm"
                 onClick={() => setPane("intro")}
-                className="font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+                className="h-auto rounded-none px-0 py-0 font-mono text-xs text-muted-foreground hover:bg-transparent hover:text-foreground"
               >
                 ← back to the hunt
-              </button>
+              </Button>
             </>
           ) : null}
         </Pane>
@@ -353,19 +356,21 @@ export function BugHunt() {
               <span className="size-2.5 rounded-full bg-foreground/20" />
             </div>
             {TABS.map((t) => (
-              <button
+              <Button
                 key={t.id}
                 type="button"
+                variant="ghost"
+                size="sm"
                 onClick={() => selectTab(t.id)}
                 className={cn(
-                  "border-b-2 border-transparent px-2.5 py-3 font-mono text-xs transition-colors sm:px-3",
+                  "h-auto rounded-none border-b-2 border-transparent px-2.5 py-3 font-mono text-xs transition-colors hover:bg-transparent sm:px-3",
                   tab === t.id
                     ? "border-flame text-foreground"
                     : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {t.label}
-              </button>
+              </Button>
             ))}
             {live ? (
               <div className="ml-auto shrink-0 font-mono text-[11px] uppercase tracking-[0.1em] text-muted-foreground">
@@ -377,7 +382,7 @@ export function BugHunt() {
           <pre className="min-h-0 flex-1 overflow-auto py-3.5 font-mono text-[12.6px] leading-[1.72]">
             <code className="block">
               {rows.map(([id, text], i) => {
-                const clickable = live && id !== "" && id !== "c";
+                const clickable = live && id !== "";
                 const hit = id.startsWith("bug") && found.includes(id.slice(3));
                 const isBad = bad === id && !!id;
                 const body =
@@ -423,13 +428,15 @@ export function BugHunt() {
         {live ? (
           <div className="mt-3 flex flex-wrap items-center gap-4 font-mono text-xs text-muted-foreground">
             <span>{status}</span>
-            <button
+            <Button
               type="button"
+              variant="outline"
+              size="sm"
               onClick={revealAll}
-              className="rounded-md border border-border px-3 py-1.5 text-[11.5px] transition-colors hover:border-flame hover:text-foreground"
+              className="h-auto rounded-md px-3 py-1.5 font-mono text-[11.5px] hover:border-flame hover:bg-transparent hover:text-foreground"
             >
               Show me all four
-            </button>
+            </Button>
           </div>
         ) : null}
       </div>
