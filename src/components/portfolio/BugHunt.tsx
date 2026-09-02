@@ -460,12 +460,21 @@ export function BugHunt() {
   );
 }
 
-function Pane({ on, children }: { on: boolean; children: ReactNode }) {
+function Pane({
+  on,
+  align = "center",
+  children,
+}: {
+  on: boolean;
+  align?: "start" | "center";
+  children: ReactNode;
+}) {
   return (
     <div
       aria-hidden={!on}
       className={cn(
-        "bug-pane lg:absolute lg:inset-0 lg:flex lg:flex-col lg:justify-center lg:overflow-auto lg:transition-opacity lg:duration-200",
+        "bug-pane lg:absolute lg:inset-0 lg:flex lg:flex-col lg:overflow-auto lg:transition-opacity lg:duration-200",
+        align === "start" ? "lg:justify-start" : "lg:justify-center",
         on ? "block lg:opacity-100" : "hidden lg:block lg:pointer-events-none lg:opacity-0",
       )}
     >
