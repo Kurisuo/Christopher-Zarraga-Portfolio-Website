@@ -7,40 +7,26 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { copyFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import type { Plugin } from "vite";
 
 /**
  * TanStack Start's prerender preview server derives the expected server
  * entry filename from the configured input name ("server" -> "server.js"),
- * but Nitro emits the server bundle as "index.mjs". This plugin copies the
- * emitted entry to the name the preview server looks for so prerendering
+ * but Nitro emits the server bundle as "index.mjs". This Nitro plugin copies
+ * the emitted entry to the name the preview server looks for so prerendering
  * can run; the file is harmless in the final static output.
  */
-function serverEntryShimPlugin(): Plugin {
-  let ran = false;
-  return {
-    name: "gh-pages-server-shim",
-    buildStart() {
-      console.log("[gh-pages-server-shim] buildStart");
-    },
-    buildEnd() {
-      console.log("[gh-pages-server-shim] buildEnd");
-    },
-    closeBundle() {
-      console.log("[gh-pages-server-shim] closeBundle");
-      if (ran) return;
-      ran = true;
-      const outDir = "dist/server";
-      const indexPath = join(outDir, "index.mjs");
-      const serverPath = join(outDir, "server.js");
-      console.log("[gh-pages-server-shim] checking", indexPath, existsSync(indexPath));
+const ghPagesServerShim = {
+  name: "gh-pages-server-shim",
+  hooks: {
+    compiled: (nitro: any) => {
+      const indexPath = join(nitro.options.output.serverDir, "index.mjs");
+      const serverPath = join(nitro.options.output.serverDir, "server.js");
       if (existsSync(indexPath) && !existsSync(serverPath)) {
         copyFileSync(indexPath, serverPath);
-        console.log("[gh-pages-server-shim] copied to", serverPath);
       }
     },
-  };
-}
+  },
+};
 
 export default defineConfig({
   tanstackStart: {
@@ -55,23 +41,9 @@ export default defineConfig({
       failOnError: true,
     },
   },
-  // @ts-ignore — Lovable's typed nitro option is narrow, but the object is still merged.
   nitro: {
-    plugins: [
-      {
-        name: "gh-pages-server-shim",
-        hooks: {
-          compiled: (nitro: any) => {
-            const indexPath = join(nitro.options.output.serverDir, "index.mjs");
-            const serverPath = join(nitro.options.output.serverDir, "server.js");
-            if (existsSync(indexPath) && !existsSync(serverPath)) {
-              copyFileSync(indexPath, serverPath);
-            }
-          },
-        },
-      },
-    ],
-  },
+    plugins: [ghPagesServerShim],
+  } as any,
   vite: {
     base: process.env['VITE_BASE_PATH'] || "/",
     resolve: {
