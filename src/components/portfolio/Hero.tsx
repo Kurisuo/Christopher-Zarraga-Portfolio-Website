@@ -241,18 +241,14 @@ export function Hero() {
       {/* Real artifacts: benchmark output and a latency curve, not another styled box */}
       <div className="mt-10 grid items-start gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-10">
         <Reveal delay={80} className="min-w-0">
-          <CodeCard filename="wrk — http-server" badge="local run">
-            <span className="text-muted-foreground">$ wrk -t4 -c64 -d30s http://127.0.0.1:8080/</span>{"\n"}
-            Running 30s test @ http://127.0.0.1:8080/{"\n"}
-            {"  "}4 threads and 64 connections{"\n"}
-            {"  "}Thread Stats{"   "}Avg{"      "}Stdev{"     "}Max{"\n"}
-            {"    "}Latency{"     "}<span className="text-volt">7.42ms</span>{"   "}2.10ms{"   "}41.3ms{"\n"}
-            {"    "}Req/Sec{"     "}2.11k{"    "}0.19k{"    "}2.048k{"\n"}
-            {"  "}252,431 requests in 30.02s{"\n"}
-            Requests/sec:{"  "}<span className="text-volt">~8,400</span>{"\n"}
-            <span className="text-muted-foreground">
-              # 2.2x over the single-threaded baseline{"\n"}# summarized from my run — full log pending re-capture
-            </span>
+          <CodeCard filename="wrk — http-server" badge="capture pending">
+            <span className="text-muted-foreground">$ wrk -t4 -c64 -d30s http://127.0.0.1:8080/</span>{"\n\n"}
+            <span className="text-volt">[ benchmark output pending ]</span>{"\n"}
+            Paste the real wrk output here to publish:{"\n"}
+            {"  "}• requests/sec{"\n"}
+            {"  "}• latency distribution{"\n"}
+            {"  "}• transfer/sec{"\n\n"}
+            <span className="text-muted-foreground"># no invented benchmark values</span>
           </CodeCard>
         </Reveal>
         <Reveal delay={140} className="min-w-0">
