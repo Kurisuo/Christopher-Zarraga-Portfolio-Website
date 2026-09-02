@@ -160,28 +160,28 @@
 
 /* ---------- Portfolio design system ---------- */
 :root {
-  --radius: 1.25rem;
+  --radius: 0.5rem;
 
   /* #0A0A0C */
   --background: oklch(0.11 0.005 290);
   /* #E4E4E7 */
   --foreground: oklch(0.912 0.004 286);
   --ink: oklch(0.11 0.005 290);
-  /* #0F0D14 -> #1A1523 range */
-  --ink-soft: oklch(0.175 0.019 295);
+  /* #141119 flat surface */
+  --ink-soft: oklch(0.16 0.014 295);
   --muted: oklch(0.2 0.02 295);
   --muted-foreground: oklch(0.68 0.03 292);
   --ghost: oklch(0.22 0.025 295);
-  /* #141119 */
-  --nav: oklch(0.16 0.014 295);
+  /* #0F0D14 nav */
+  --nav: oklch(0.14 0.011 295);
 
-  /* dark card surface (was pure white) */
-  --surface: oklch(0.185 0.021 295);
+  /* flat card surface */
+  --surface: oklch(0.16 0.014 295);
   --surface-foreground: oklch(0.912 0.004 286);
 
-  --card: oklch(0.175 0.019 295);
+  --card: oklch(0.16 0.014 295);
   --card-foreground: oklch(0.912 0.004 286);
-  --popover: oklch(0.175 0.019 295);
+  --popover: oklch(0.16 0.014 295);
   --popover-foreground: oklch(0.912 0.004 286);
 
   /* accent #7C3AED */
@@ -197,27 +197,21 @@
   --secondary-foreground: oklch(0.912 0.004 286);
   --accent: oklch(0.2 0.02 295);
   --accent-foreground: oklch(0.912 0.004 286);
-  --border: oklch(0.541 0.245 293 / 25%);
-  --input: oklch(0.541 0.245 293 / 30%);
+  /* hairline rgba(255,255,255,0.08) */
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
   --ring: oklch(0.541 0.245 293);
 }
 
+/* Flat surface, no gradient, no bloom. */
 @utility card-surface {
-  background-image: linear-gradient(
-    160deg,
-    oklch(0.195 0.024 295) 0%,
-    oklch(0.145 0.014 295) 100%
-  );
+  background-color: var(--surface);
 }
 
 @utility card-lift {
-  transition:
-    border-color 180ms ease,
-    transform 180ms ease,
-    box-shadow 180ms ease;
+  transition: border-color 180ms ease;
   &:hover {
-    border-color: oklch(0.541 0.245 293 / 50%);
-    transform: translateY(-2px);
+    border-color: oklch(0.541 0.245 293 / 45%);
   }
 }
 
@@ -234,16 +228,28 @@
 
 @utility reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(20px);
   transition:
-    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 400ms ease-out,
+    transform 400ms ease-out;
 }
 
 @utility reveal-in {
   opacity: 1;
   transform: none;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 
 /* Cursor glow trail */
 .glow-dot {
