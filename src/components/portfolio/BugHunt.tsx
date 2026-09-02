@@ -100,7 +100,6 @@ const SNIP: Row[] = [
   ["", "    <s>' Increases Speed by +1'</s>]"],
 ];
 
-
 const FULL: Row[] = [
   ["", "<k>import</k> time"],
   ["", "<k>import</k> sys"],
@@ -173,9 +172,11 @@ const TOKEN_CLASS: Record<string, string> = {
 
 /** A row is a whole-line comment when its text (minus markup) starts with '#'. */
 function isComment(text: string): boolean {
-  return text.replace(/<\/?[knscf]>/g, "").trimStart().startsWith("#");
+  return text
+    .replace(/<\/?[knscf]>/g, "")
+    .trimStart()
+    .startsWith("#");
 }
-
 
 /** Renders the tiny <k>/<s>/<n>/<c>/<f> markup used by the code data. */
 function paint(text: string): ReactNode {
@@ -295,7 +296,6 @@ export function BugHunt() {
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-7">
       {/* left column: cross-fading panes */}
       <div className="relative min-w-0 lg:flex lg:h-[30rem]">
-
         <Pane on={pane === "intro"} align="start">
           <p className="bug-p">
             My first real project was a tiny text RPG I made in Python! I made it to showcase what I
@@ -309,12 +309,7 @@ export function BugHunt() {
           </p>
         </Pane>
 
-        <Pane
-          on={pane === "snip"}
-          align="start"
-          flow
-          className="bug-pane-snippets"
-        >
+        <Pane on={pane === "snip"} align="start" flow className="bug-pane-snippets">
           <p className="bug-p">The two snippets below are the ones that make me laugh most:</p>
           <ol className="list-decimal space-y-4 pl-5">
             <li className="bug-p !mb-0">
@@ -421,7 +416,6 @@ export function BugHunt() {
                     paint(text)
                   ) : (
                     "\u00a0"
-
                   );
                 return (
                   <span
@@ -494,7 +488,9 @@ function Pane({
       aria-hidden={!on}
       className={cn(
         "bug-pane lg:flex lg:flex-col lg:transition-opacity lg:duration-200",
-        inFlow ? "lg:static lg:max-h-full lg:overflow-visible" : "lg:absolute lg:inset-0 lg:overflow-auto",
+        inFlow
+          ? "lg:static lg:max-h-full lg:overflow-visible"
+          : "lg:absolute lg:inset-0 lg:overflow-auto",
         align === "start" ? "lg:justify-start" : "lg:justify-center",
         on ? "block lg:opacity-100" : "hidden lg:block lg:pointer-events-none lg:opacity-0",
         className,
