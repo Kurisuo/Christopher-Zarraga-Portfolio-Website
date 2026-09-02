@@ -76,7 +76,7 @@ export function Contact() {
       {showResume && (
         <div
           id="inline-resume"
-          className="mt-10 flex flex-col overflow-hidden rounded-xl border border-border bg-ink-soft shadow-2xl"
+          className="mt-10 flex flex-col overflow-hidden rounded-lg border border-border bg-ink-soft"
         >
           <div className="flex items-center justify-between border-b border-border px-5 py-3">
             <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
@@ -88,7 +88,7 @@ export function Contact() {
               aria-label="Close resume"
               variant="outline"
               size="sm"
-              className="rounded-full border-border bg-transparent font-mono text-[11px] uppercase tracking-[0.15em] text-foreground shadow-none hover:border-flame hover:bg-transparent hover:text-flame"
+              className="rounded-full border-border bg-transparent font-mono text-[11px] uppercase tracking-[0.15em] text-foreground shadow-none hover:border-foreground hover:bg-foreground/10 hover:text-foreground"
             >
               Close
             </Button>
