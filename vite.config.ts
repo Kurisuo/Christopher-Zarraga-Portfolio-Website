@@ -17,20 +17,18 @@ import type { Plugin } from "vite";
  * can run; the file is harmless in the final static output.
  */
 function serverEntryShimPlugin(): Plugin {
+  let ran = false;
   return {
     name: "gh-pages-server-shim",
-    writeBundle: {
-      order: "post",
-      handler(options) {
-        // Only run for the server environment bundle.
-        if ((this as any).environment?.name !== "server") return;
-        const outDir = (options.dir as string) || "dist/server";
-        const indexPath = join(outDir, "index.mjs");
-        const serverPath = join(outDir, "server.js");
-        if (existsSync(indexPath) && !existsSync(serverPath)) {
-          copyFileSync(indexPath, serverPath);
-        }
-      },
+    closeBundle() {
+      if (ran) return;
+      ran = true;
+      const outDir = "dist/server";
+      const indexPath = join(outDir, "index.mjs");
+      const serverPath = join(outDir, "server.js");
+      if (existsSync(indexPath) && !existsSync(serverPath)) {
+        copyFileSync(indexPath, serverPath);
+      }
     },
   };
 }
