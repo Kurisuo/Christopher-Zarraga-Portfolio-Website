@@ -30,6 +30,9 @@
   --color-volt: var(--volt);
   --color-volt-foreground: var(--volt-foreground);
   --color-hairline: var(--hairline);
+  --color-found: var(--found);
+  --color-miss: var(--miss);
+
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
   --color-ghost: var(--ghost);
