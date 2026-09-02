@@ -167,7 +167,7 @@ function paint(text: string): ReactNode {
   parts.forEach((part, i) => {
     const open = /^<([knscf])>$/.exec(part);
     if (open) {
-      cls = TOKEN_CLASS[open[1]!]!;
+      cls = TOKEN_CLASS[open[1]] ?? null;
       return;
     }
     if (/^<\/[knscf]>$/.test(part)) {
@@ -238,8 +238,10 @@ export function BugHunt() {
   function clickLine(id: string) {
     if (id.startsWith("bug")) {
       const n = id.slice(3);
+      const bug = BUG[n];
+      if (!bug) return;
       setFound((f) => (f.includes(n) ? f : [...f, n]));
-      setResult({ kind: "ok", n, title: BUG[n]!.t, body: BUG[n]!.b });
+      setResult({ kind: "ok", n, title: bug.t, body: bug.b });
     } else {
       setBad(id);
       if (badTimer.current) clearTimeout(badTimer.current);
@@ -250,8 +252,10 @@ export function BugHunt() {
   }
 
   function revealAll() {
+    const firstBug = BUG["1"];
+    if (!firstBug) return;
     setFound(["1", "2", "3", "4"]);
-    setResult({ kind: "ok", n: "1", title: BUG["1"]!.t, body: BUG["1"]!.b });
+    setResult({ kind: "ok", n: "1", title: firstBug.t, body: firstBug.b });
     setPane("res");
   }
 

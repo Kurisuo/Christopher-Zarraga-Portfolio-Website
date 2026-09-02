@@ -231,13 +231,10 @@
 
 .bug-p {
   margin-bottom: 1rem;
-  font-size: 0.9375rem;
-  line-height: 1.62;
   max-width: 47ch;
   color: var(--muted-foreground);
-}
-
-  scroll-snap-type: y proximity;
+  font-size: 0.9375rem;
+  line-height: 1.62;
 }
 
 @media (prefers-reduced-motion: reduce) {
