@@ -18,7 +18,7 @@ export function PillNav() {
               href={href}
               aria-label={label}
               title={label}
-              className="flex size-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-flame hover:text-flame-foreground"
+              className="flex size-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-foreground"
             >
               <Icon className="size-[18px]" strokeWidth={1.75} />
             </a>

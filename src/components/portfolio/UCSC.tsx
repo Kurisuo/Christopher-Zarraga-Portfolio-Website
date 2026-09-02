@@ -44,7 +44,7 @@ export function UCSC() {
                 href={ARTICLE_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground transition-colors duration-200 hover:text-violet-muted"
+                className="mt-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground transition-colors duration-200 hover:text-muted-foreground"
               >
                 Read the scholarship story
                 <ArrowUpRight className="h-4 w-4" />

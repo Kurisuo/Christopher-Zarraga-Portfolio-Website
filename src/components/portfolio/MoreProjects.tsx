@@ -62,10 +62,10 @@ const projects = [
     detail: "~550ms perception, sub-millisecond planning, and reversible system mutations.",
     code: (
       <>
-        <span className="text-violet-muted">import</span> {"{ perceive, reflect }"} <span className="text-violet-muted">from</span> <span className="text-muted-foreground">&quot;./core/agent&quot;</span>;{"\n\n"}
-        <span className="text-violet-muted">const</span> snapshot = <span className="text-foreground">perceive</span>();{"\n"}
-        <span className="text-violet-muted">const</span> plan = <span className="text-foreground">reflect</span>(snapshot);{"\n"}
-        <span className="text-violet-muted">await</span> <span className="text-foreground">runDaemon</span>(plan);
+        <span className="text-muted-foreground">import</span> {"{ perceive, reflect }"} <span className="text-muted-foreground">from</span> <span className="text-muted-foreground">&quot;./core/agent&quot;</span>;{"\n\n"}
+        <span className="text-muted-foreground">const</span> snapshot = <span className="text-foreground">perceive</span>();{"\n"}
+        <span className="text-muted-foreground">const</span> plan = <span className="text-foreground">reflect</span>(snapshot);{"\n"}
+        <span className="text-muted-foreground">await</span> <span className="text-foreground">runDaemon</span>(plan);
       </>
     ),
   },

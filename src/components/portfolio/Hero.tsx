@@ -83,7 +83,7 @@ export function Hero() {
         </dl>
       </div>
 
-      <div className="mt-10 grid items-start gap-4 sm:grid-cols-2 lg:mt-12">
+      <div className="mt-10 grid items-stretch gap-4 sm:grid-cols-2 lg:mt-12">
         <Reveal delay={200} className="flex">
           <div className="flex w-full flex-col border border-violet/50 bg-violet p-4 text-violet-foreground">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">Selected work</p>
