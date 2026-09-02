@@ -55,9 +55,25 @@ export default defineConfig({
       failOnError: true,
     },
   },
+  // @ts-ignore — Lovable's typed nitro option is narrow, but the object is still merged.
+  nitro: {
+    plugins: [
+      {
+        name: "gh-pages-server-shim",
+        hooks: {
+          compiled: (nitro: any) => {
+            const indexPath = join(nitro.options.output.serverDir, "index.mjs");
+            const serverPath = join(nitro.options.output.serverDir, "server.js");
+            if (existsSync(indexPath) && !existsSync(serverPath)) {
+              copyFileSync(indexPath, serverPath);
+            }
+          },
+        },
+      },
+    ],
+  },
   vite: {
     base: process.env['VITE_BASE_PATH'] || "/",
-    plugins: [serverEntryShimPlugin()],
     resolve: {
       dedupe: ["react", "react-dom", "three", "@react-three/fiber", "@react-three/drei"],
     },
