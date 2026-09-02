@@ -41,7 +41,7 @@ jobs:
         run: |
           set -e
           PREVIEW_URL="https://id-preview--fd986499-66f3-45cf-bf86-4a0416ab12c0.lovable.app"
-          grep -raoE '/__l5e/assets-v1/[^"<> `\'\]+' dist/client | sed 's|^[^:]*:||' | sort -u | while read -r path; do
+          grep -raoE '/__l5e/assets-v1/[a-f0-9-]+/[^"`,<> ]+' dist/client | sed 's|^[^:]*:||' | sort -u | while read -r path; do
             out="dist/client$path"
             mkdir -p "$(dirname "$out")"
             curl -fsS -o "$out" "$PREVIEW_URL$path"
