@@ -82,15 +82,24 @@ const SNIP: Row[] = [
   ["", ""],
   ["c", "# 2 — the cereal aisle"],
   ["c", "# [name, cost, hunger, stat effect]"],
-  ["", "fruity_circlesShop = [<s>'Fruity Circles'</s>, fruity_circlesCost,"],
-  ["", "    <s>'+2 Hunger'</s>, <s>'Increases DEF by +2'</s>]"],
+  ["", "fruity_circlesShop = ["],
+  ["", "    <s>'Fruity Circles'</s>, fruity_circlesCost,"],
+  ["", "    <s>'+2 Hunger'</s>,"],
+  ["", "    <s>'Increases DEF by +2'</s>]"],
   ["", ""],
-  ["", "unfortunate_mellowsShop = [<s>'Unfortunate Mellows'</s>, unfortunate_mellowsCost,"],
-  ["", "    <s>'Max Hunger'</s>, <s>'Maxes ALL Stats to 50'</s>]"],
+  ["", "unfortunate_mellowsShop = ["],
+  ["", "    <s>'Unfortunate Mellows'</s>,"],
+  ["", "    unfortunate_mellowsCost,"],
+  ["", "    <s>'Max Hunger'</s>,"],
+  ["", "    <s>'Maxes ALL Stats to 50'</s>]"],
   ["", ""],
-  ["", "muffin_rufflesShop = [<s>'Muffin Ruffles'</s>, muffin_rufflesCost,"],
-  ["", "    <s>'+4 Hunger'</s>, <s>'Decreases STM by -1 and Increases Speed by +1'</s>]"],
+  ["", "muffin_rufflesShop = ["],
+  ["", "    <s>'Muffin Ruffles'</s>, muffin_rufflesCost,"],
+  ["", "    <s>'+4 Hunger'</s>,"],
+  ["", "    <s>'Decreases STM by -1 and'</s>"],
+  ["", "    <s>' Increases Speed by +1'</s>]"],
 ];
+
 
 const FULL: Row[] = [
   ["", "<k>import</k> time"],
@@ -155,12 +164,18 @@ const FULL: Row[] = [
 ];
 
 const TOKEN_CLASS: Record<string, string> = {
-  k: "text-flame",
-  s: "text-volt",
-  n: "text-amber-300",
-  c: "text-muted-foreground/70",
-  f: "text-sky-300",
+  k: "text-code-key",
+  s: "text-code-str",
+  n: "text-code-num",
+  c: "text-code-com",
+  f: "text-code-fn",
 };
+
+/** A row is a whole-line comment when its text (minus markup) starts with '#'. */
+function isComment(text: string): boolean {
+  return text.replace(/<\/?[knscf]>/g, "").trimStart().startsWith("#");
+}
+
 
 /** Renders the tiny <k>/<s>/<n>/<c>/<f> markup used by the code data. */
 function paint(text: string): ReactNode {
@@ -272,9 +287,10 @@ export function BugHunt() {
     : "All four. Better than I did for four years.";
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-start lg:gap-12">
+    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:items-center lg:gap-7">
       {/* left column: cross-fading panes */}
-      <div className="relative min-w-0 lg:h-[30rem]">
+      <div className="relative min-w-0 lg:flex lg:h-[30rem] lg:items-center">
+
         <Pane on={pane === "intro"}>
           <p className="bug-p">
             My first real project was a tiny text RPG I made in Python! I made it to showcase what I
@@ -378,19 +394,20 @@ export function BugHunt() {
             ) : null}
           </div>
 
-          <pre className="min-h-0 flex-1 overflow-auto py-3.5 font-mono text-[12.6px] leading-[1.72]">
+          <pre className="min-h-0 flex-1 overflow-auto py-3.5 font-mono text-[13.5px] leading-[1.8] text-code-fg">
             <code className="block">
               {rows.map(([id, text], i) => {
                 const clickable = live && id !== "";
                 const hit = id.startsWith("bug") && found.includes(id.slice(3));
                 const isBad = bad === id && !!id;
                 const body =
-                  id === "c" ? (
-                    <span className={TOKEN_CLASS["c"]}>{text}</span>
+                  text && isComment(text) ? (
+                    <span className={TOKEN_CLASS["c"]}>{text.replace(/<\/?[knscf]>/g, "")}</span>
                   ) : text ? (
                     paint(text)
                   ) : (
                     "\u00a0"
+
                   );
                 return (
                   <span
@@ -448,7 +465,7 @@ function Pane({ on, children }: { on: boolean; children: ReactNode }) {
     <div
       aria-hidden={!on}
       className={cn(
-        "bug-pane lg:absolute lg:inset-0 lg:overflow-auto lg:transition-opacity lg:duration-200",
+        "bug-pane lg:absolute lg:inset-0 lg:flex lg:flex-col lg:justify-center lg:overflow-auto lg:transition-opacity lg:duration-200",
         on ? "block lg:opacity-100" : "hidden lg:block lg:pointer-events-none lg:opacity-0",
       )}
     >

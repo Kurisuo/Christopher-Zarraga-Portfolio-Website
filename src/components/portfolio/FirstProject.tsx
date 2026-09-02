@@ -3,7 +3,10 @@ import { Reveal } from "./Reveal";
 
 export function FirstProject() {
   return (
-    <section id="origin" className="portfolio-section snap-start scroll-mt-28 py-14 lg:py-20">
+    <section
+      id="origin"
+      className="portfolio-section snap-start scroll-mt-32 pb-14 pt-24 lg:pb-20 lg:pt-28"
+    >
       <Reveal>
         <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
           01 — Where it started

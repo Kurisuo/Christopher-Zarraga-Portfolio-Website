@@ -32,6 +32,13 @@
   --color-hairline: var(--hairline);
   --color-found: var(--found);
   --color-miss: var(--miss);
+  --color-code-fg: var(--code-fg);
+  --color-code-key: var(--code-key);
+  --color-code-str: var(--code-str);
+  --color-code-num: var(--code-num);
+  --color-code-fn: var(--code-fn);
+  --color-code-com: var(--code-com);
+
 
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
@@ -190,6 +197,14 @@
   --found: oklch(0.75 0.19 148);
   --miss: oklch(0.68 0.21 25);
 
+  --code-fg: #d4d4dc;
+  --code-key: #c4b5fd;
+  --code-str: #86efac;
+  --code-num: #fdba74;
+  --code-fn: #93c5fd;
+  --code-com: #5b5b63;
+
+
   --primary: oklch(0.235 0.005 60);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.235 0.005 60);
@@ -230,7 +245,7 @@
 
 .bug-p {
   margin-bottom: 1rem;
-  max-width: 47ch;
+  max-width: 48ch;
   color: var(--muted-foreground);
   font-size: 0.9375rem;
   line-height: 1.62;
