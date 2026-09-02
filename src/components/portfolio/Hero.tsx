@@ -88,40 +88,16 @@ const gallery = [
   { src: galleryPhotography, alt: "Reading a finance book beside a camera" },
 ];
 
-/** p50 latency (ms) against vector-store size — VeriFi. */
-const latency = [
-  { n: "10k", ms: 0.11 },
-  { n: "50k", ms: 0.19 },
-  { n: "100k", ms: 0.25 },
-  { n: "250k", ms: 0.36 },
-];
-
+/** VeriFi benchmark plot; only the published 250k-vector point is known. */
 function LatencyChart() {
-  const w = 320;
-  const h = 130;
-  const max = 0.4;
-  const pts = latency.map((d, i) => {
-    const x = 24 + (i * (w - 48)) / (latency.length - 1);
-    const y = h - 26 - (d.ms / max) * (h - 50);
-    return { ...d, x, y };
-  });
-  const path = pts.map((p, i) => `${i === 0 ? "M" : "L"}${p.x} ${p.y}`).join(" ");
-
   return (
-    <svg viewBox={`0 0 ${w} ${h}`} className="w-full" role="img" aria-label="VeriFi p50 latency scaling from 10k to 250k vectors">
-      <line x1="24" y1={h - 26} x2={w - 24} y2={h - 26} stroke="currentColor" strokeOpacity="0.15" />
-      <path d={path} fill="none" stroke="var(--volt)" strokeWidth="1.75" />
-      {pts.map((p) => (
-        <g key={p.n}>
-          <circle cx={p.x} cy={p.y} r="3" fill="var(--volt)" />
-          <text x={p.x} y={p.y - 8} textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" fillOpacity="0.7">
-            {p.ms}
-          </text>
-          <text x={p.x} y={h - 12} textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" fillOpacity="0.45">
-            {p.n}
-          </text>
-        </g>
-      ))}
+    <svg viewBox="0 0 320 130" className="w-full" role="img" aria-label="VeriFi p50 latency benchmark pending logged data">
+      <line x1="24" y1="104" x2="296" y2="104" stroke="currentColor" strokeOpacity="0.15" />
+      <line x1="24" y1="28" x2="24" y2="104" stroke="currentColor" strokeOpacity="0.15" />
+      <circle cx="272" cy="36" r="3" fill="var(--volt)" />
+      <text x="272" y="24" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" fillOpacity="0.7">0.36 ms</text>
+      <text x="272" y="120" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" fillOpacity="0.45">250k</text>
+      <text x="160" y="70" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" fillOpacity="0.45">logged points pending</text>
     </svg>
   );
 }
