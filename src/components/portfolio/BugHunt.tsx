@@ -7,11 +7,11 @@ type Row = [string, string];
 const BUG: Record<string, { t: string; b: string }> = {
   "1": {
     t: "Nothing ever exits this loop",
-    b: "<code>while macheteShop[3] is True</code> runs forever. Nothing inside the loop flips that flag back to False — it pops index 1 and inserts right back at index 1, so the condition never changes. The armor pieces use <code>if</code> for the exact same logic. I wrote the same idea two ways and only one of them hangs the game.",
+    b: "It's skipped on your first visit, since the flag starts False. But the moment you buy anything, the purchase branch sets <code>macheteShop[3] = True</code> — and nothing inside this loop ever sets it back. Second time you walk into the shop, it spins forever. It pops index 1 and inserts right back at index 1, so the condition can never change. The armor pieces use <code>if</code> for the exact same logic. I wrote the same idea two ways and only one of them hangs the game.",
   },
   "2": {
     t: "Every purchase flags the machete",
-    b: "Buy the boots and <code>macheteShop[3] = True</code> runs anyway. I copy-pasted the purchase branches and never changed the variable. So buying anything at all arms the infinite loop above for your next visit to the shop.",
+    b: "Buy the boots and <code>macheteShop[3] = True</code> runs anyway — I copy-pasted the purchase branches and never changed the variable. On its own that's just wrong bookkeeping. Combined with the loop above, it's what turns a harmless mistake into a game that hangs on your second visit to the shop.",
   },
   "3": {
     t: "This line does nothing",
@@ -100,7 +100,6 @@ const SNIP: Row[] = [
   ["", "    <s>' Increases Speed by +1'</s>]"],
 ];
 
-
 const FULL: Row[] = [
   ["", "<k>import</k> time"],
   ["", "<k>import</k> sys"],
@@ -173,9 +172,11 @@ const TOKEN_CLASS: Record<string, string> = {
 
 /** A row is a whole-line comment when its text (minus markup) starts with '#'. */
 function isComment(text: string): boolean {
-  return text.replace(/<\/?[knscf]>/g, "").trimStart().startsWith("#");
+  return text
+    .replace(/<\/?[knscf]>/g, "")
+    .trimStart()
+    .startsWith("#");
 }
-
 
 /** Renders the tiny <k>/<s>/<n>/<c>/<f> markup used by the code data. */
 function paint(text: string): ReactNode {
@@ -295,7 +296,6 @@ export function BugHunt() {
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-7">
       {/* left column: cross-fading panes */}
       <div className="relative min-w-0 lg:flex lg:h-[30rem]">
-
         <Pane on={pane === "intro"} align="start">
           <p className="bug-p">
             My first real project was a tiny text RPG I made in Python! I made it to showcase what I
@@ -304,16 +304,12 @@ export function BugHunt() {
           </p>
           <p className="bug-p font-semibold text-foreground">
             There are four bugs in the shop code on the right. I shipped every one of them and never
-            noticed. Click any line you think is broken.
+            noticed. Click any line you think is broken. Two of them are harmless on their own —
+            they only break the game when they line up.
           </p>
         </Pane>
 
-        <Pane
-          on={pane === "snip"}
-          align="start"
-          flow
-          className="bug-pane-snippets"
-        >
+        <Pane on={pane === "snip"} align="start" flow className="bug-pane-snippets">
           <p className="bug-p">The two snippets below are the ones that make me laugh most:</p>
           <ol className="list-decimal space-y-4 pl-5">
             <li className="bug-p !mb-0">
@@ -406,7 +402,7 @@ export function BugHunt() {
 
           <pre
             ref={codeScrollRef}
-            className="min-h-0 flex-1 overflow-auto py-3.5 font-mono text-[13.5px] leading-[1.8] text-code-fg"
+            className="terminal-scroll min-h-0 flex-1 overflow-auto py-3.5 font-mono text-[13.5px] leading-[1.8] text-code-fg"
           >
             <code className="block">
               {rows.map(([id, text], i) => {
@@ -420,7 +416,6 @@ export function BugHunt() {
                     paint(text)
                   ) : (
                     "\u00a0"
-
                   );
                 return (
                   <span
@@ -493,7 +488,9 @@ function Pane({
       aria-hidden={!on}
       className={cn(
         "bug-pane lg:flex lg:flex-col lg:transition-opacity lg:duration-200",
-        inFlow ? "lg:static lg:max-h-full lg:overflow-visible" : "lg:absolute lg:inset-0 lg:overflow-auto",
+        inFlow
+          ? "lg:static lg:max-h-full lg:overflow-visible"
+          : "lg:absolute lg:inset-0 lg:overflow-auto",
         align === "start" ? "lg:justify-start" : "lg:justify-center",
         on ? "block lg:opacity-100" : "hidden lg:block lg:pointer-events-none lg:opacity-0",
         className,
