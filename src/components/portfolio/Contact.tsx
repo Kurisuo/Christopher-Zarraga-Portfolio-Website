@@ -9,11 +9,11 @@ export function Contact() {
   return (
     <footer
       id="contact"
-      className="-mx-5 border-t border-border bg-ink-soft/40 px-5 py-14 sm:-mx-8 sm:px-8 lg:py-20"
+      className="portfolio-section snap-start scroll-mt-28 -mx-5 border-t border-border bg-ink-soft/40 px-5 py-14 sm:-mx-8 sm:px-8 lg:py-20"
     >
       <div>
         <Reveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
+          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-violet-muted">
             04 — Say hello
           </p>
           <h2 className="mt-4 font-display text-[clamp(2.25rem,7vw,5.5rem)] font-extrabold uppercase leading-[0.88] tracking-tight">
@@ -34,7 +34,7 @@ export function Contact() {
           <div className="mt-7 flex flex-wrap gap-3">
             <a
               href="mailto:christopherzarraga31@gmail.com"
-              className="rounded-full bg-flame px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-flame-foreground transition-colors hover:bg-volt hover:text-volt-foreground"
+              className="rounded-full border border-border bg-foreground px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-background transition-colors duration-200 hover:bg-muted-foreground"
             >
               christopherzarraga31@gmail.com
             </a>
@@ -44,7 +44,7 @@ export function Contact() {
               aria-expanded={showResume}
               aria-controls="inline-resume"
               variant="outline"
-              className="h-auto rounded-full border-border bg-transparent px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground shadow-none hover:border-flame hover:bg-transparent hover:text-flame"
+              className="h-auto rounded-full border-border bg-transparent px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground shadow-none transition-colors duration-200 hover:border-foreground hover:bg-foreground/10 hover:text-foreground"
             >
               {showResume ? "Hide resume" : "View resume"}
             </Button>
@@ -52,7 +52,7 @@ export function Contact() {
               href="https://github.com/Kurisuo"
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors hover:border-flame hover:text-flame"
+              className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors duration-200 hover:border-foreground hover:text-foreground"
             >
               GitHub
             </a>
@@ -60,7 +60,7 @@ export function Contact() {
               href="https://www.linkedin.com/in/christopher-zarraga/"
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors hover:border-flame hover:text-flame"
+              className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors duration-200 hover:border-foreground hover:text-foreground"
             >
               LinkedIn
             </a>
@@ -76,7 +76,7 @@ export function Contact() {
       {showResume && (
         <div
           id="inline-resume"
-          className="mt-10 flex flex-col overflow-hidden rounded-xl border border-border bg-ink-soft shadow-2xl"
+          className="mt-10 flex flex-col overflow-hidden rounded-lg border border-border bg-ink-soft"
         >
           <div className="flex items-center justify-between border-b border-border px-5 py-3">
             <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
@@ -88,7 +88,7 @@ export function Contact() {
               aria-label="Close resume"
               variant="outline"
               size="sm"
-              className="rounded-full border-border bg-transparent font-mono text-[11px] uppercase tracking-[0.15em] text-foreground shadow-none hover:border-flame hover:bg-transparent hover:text-flame"
+              className="rounded-full border-border bg-transparent font-mono text-[11px] uppercase tracking-[0.15em] text-foreground shadow-none hover:border-foreground hover:bg-foreground/10 hover:text-foreground"
             >
               Close
             </Button>
