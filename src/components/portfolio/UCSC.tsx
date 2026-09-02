@@ -3,7 +3,7 @@ import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import cohortAsset from "@/assets/sabatte-cohort.jpg.asset.json";
 import ycExpoAsset from "@/assets/slide-yc-expo.jpg.asset.json";
 import berkeleyAsset from "@/assets/slide-berkeley-regents.jpg.asset.json";
-import shpePhoto from "@/assets/slide-shpe-2026.jpg";
+import shpeAsset from "@/assets/slide-shpe-2026.webp.asset.json";
 import { Reveal } from "./Reveal";
 import { cn } from "@/lib/utils";
 
@@ -42,10 +42,10 @@ const slides: Slide[] = [
     body: "The Sabatte Family scholarship didn't just cover tuition — it also got me invited to the 2026 Regents' and Chancellor's Scholars Inter-UC Conference at UC Berkeley! It was my first time traveling to represent my university, alongside my fellow Slugs and scholars from across the UC system. I spent my time meeting and networking with people on completely different paths and hearing why they chose them. Networking was one of the most useful skills I got to develop there. In the end, we got to celebrate by going out on a cruise from Berkeley to the Golden Gate Bridge!",
   },
   {
-    image: shpePhoto,
-    alt: "Placeholder image for the SHPE 2026 Conference",
+    image: shpeAsset.url,
+    alt: "SHPE 2026 National Convention logo",
     caption: "SHPE 2026 Conference.",
-    body: "",
+    body: "I got a $500 scholarship to attend the SHPE National Convention, then reached out to departments across UCSC to cover the rest — flights, hotel, the parts a scholarship doesn't touch. Several came through. It's the first time I've had to fund my own way to something, and it turned out the answer was mostly just asking. Last year's convention drew 10,000 attendees and 763 interview booths, and this fall I'll be walking into it.",
   },
 ];
 
