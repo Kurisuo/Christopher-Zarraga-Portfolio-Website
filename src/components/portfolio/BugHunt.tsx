@@ -42,8 +42,8 @@ const OK: Record<string, string> = {
 };
 
 const HUNT: Row[] = [
-  ["c", "# shop state: bare list, index contract in a comment"],
-  ["c", "# [name, display, cost, purchased]"],
+  ["c1", "# shop state: bare list, index contract in a comment"],
+  ["c2", "# [name, display, cost, purchased]"],
   ["a", "<k>macheteShop</k> = [<s>'Machete'</s>, <s>\"$200\"</s>, macheteCost, <k>False</k>]"],
   ["", ""],
   ["m", "<k>def</k> <f>Market</f>():"],
