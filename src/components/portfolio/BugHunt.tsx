@@ -155,12 +155,18 @@ const FULL: Row[] = [
 ];
 
 const TOKEN_CLASS: Record<string, string> = {
-  k: "text-flame",
-  s: "text-volt",
-  n: "text-amber-300",
-  c: "text-muted-foreground/70",
-  f: "text-sky-300",
+  k: "text-code-key",
+  s: "text-code-str",
+  n: "text-code-num",
+  c: "text-code-com",
+  f: "text-code-fn",
 };
+
+/** A row is a whole-line comment when its text (minus markup) starts with '#'. */
+function isComment(text: string): boolean {
+  return text.replace(/<\/?[knscf]>/g, "").trimStart().startsWith("#");
+}
+
 
 /** Renders the tiny <k>/<s>/<n>/<c>/<f> markup used by the code data. */
 function paint(text: string): ReactNode {
