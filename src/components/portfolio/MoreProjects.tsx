@@ -4,85 +4,56 @@ import { BuildLogCard } from "./BuildLogCard";
 
 const projects = [
   {
-    tag: "Research",
+    tag: "Python / Stable-Baselines3 / CARLA",
     name: "AIEA Lab",
-    blurb: "Autonomous vehicles research with reinforcement learning.",
-    detail: "SAC agents, Gymnasium CarRacing, CARLA, and Kubernetes GPU workloads.",
-    code: (
-      <>
-        <span className="text-muted-foreground"># autonomous driving research</span>{"\n"}
-        <span className="text-foreground">agent</span> = <span className="text-muted-foreground">SAC</span>(policy=<span className="text-muted-foreground">&quot;MlpPolicy&quot;</span>){"\n"}
-        <span className="text-foreground">agent</span>.<span className="text-muted-foreground">learn</span>(total_timesteps=<span className="text-foreground">250_000</span>)
-      </>
-    ),
+    blurb: "Autonomous-vehicle research with reinforcement learning.",
+    description:
+      "I evaluate SAC agents in Gymnasium's CarRacing environment and run CARLA workloads headless on the Nautilus Kubernetes GPU cluster. Most of the work isn't the algorithms — it's making the experiments reproducible, which meant learning GPU-scheduled jobs, PVC-backed storage, and writing pod specs by hand. I'm currently building a one-click benchmarking framework so multiple RL algorithms can be compared under one pipeline instead of being rerun by hand.",
+    metric: "SAC on CarRacing · Kubernetes GPU cluster",
   },
   {
-    tag: "Tech4Good",
+    tag: "Angular / Firebase / RxJS",
     name: "Tech4Good Lab",
     blurb: "A full-stack learning curriculum app built for social impact.",
-    detail: "Milestone components and batch data pipelines for multi-record transactions.",
-    code: (
-      <>
-        <span className="text-muted-foreground">// ship learning milestones</span>{"\n"}
-        <span className="text-foreground">await</span> <span className="text-muted-foreground">batchWrite</span>(milestones, {"{"}{"\n"}
-        {"  "}atomic: <span className="text-foreground">true</span>{"\n"}
-        {"}"})
-      </>
-    ),
+    description:
+      "I own the data and event layer across four goal-tracking components in Causeway, which means I'm the one making sure state stays consistent when a user's actions have to reach the database. I architected the bulk write pipeline that queues and reorders multi-record transactions rather than firing them individually. It's the least low-level thing I work on and it taught me the most about designing an interface other people build against.",
+    metric: "50% of data/event milestone components",
   },
   {
-    tag: "Academics",
-    name: "Current Studies",
-    blurb: "Third-year Computer Science major with an Applied Math minor at UC Santa Cruz.",
-    detail: "Data structures, algorithms, systems, linear algebra, and probability.",
-    code: (
-      <>
-        <span className="text-muted-foreground">// current course load</span>{"\n"}
-        <span className="text-foreground">focus</span> = [<span className="text-muted-foreground">&quot;systems&quot;</span>, <span className="text-muted-foreground">&quot;algorithms&quot;</span>, <span className="text-muted-foreground">&quot;linear algebra&quot;</span>]
-      </>
-    ),
+    tag: "C++17 / PyTorch",
+    name: "Neural Inference Engine",
+    blurb: "An MNIST inference engine with zero ML libraries at runtime.",
+    description:
+      "I wanted to know exactly what a framework does when it runs a forward pass instead of trusting it, so I wrote the matrix multiply, ReLU, and argmax myself and built a binary weight format to carry a trained PyTorch model into C++. The bar wasn't whether it ran — it was whether it was provably the same model. Along the way I found my own test suite was passing against a stale baseline, which was a more useful lesson than the engine itself.",
+    metric: "100% output agreement across 10,000 MNIST test images · ~24,000 images/sec",
+    href: "https://github.com/Kurisuo/neural-inference-engine",
   },
   {
-    tag: "C++ / RAG",
+    tag: "C++17 / RAG",
     name: "VeriFi",
-    blurb: "A RAG pipeline that answers queries from verified, sourced company policy documents.",
-    detail: "Led 5 engineers; 0.36ms p50 at 250k vectors and 33k chunks/sec ingestion.",
-    code: (
-      <>
-        <span className="text-muted-foreground">// cosine-similarity top-k</span>{"\n"}
-        <span className="text-foreground">auto</span> results = index.<span className="text-muted-foreground">search</span>(query, k);{"\n"}
-        <span className="text-foreground">return</span> results.<span className="text-muted-foreground">verifiedOnly</span>();
-      </>
-    ),
+    blurb: "A vector store that grounds LLM answers in sourced documents.",
+    description:
+      "I founded this and led a five-person team, which meant most of my time went to defining interface contracts — chunk format, search API, response schema — so five people could build in parallel instead of blocking on each other. I own the retrieval engine itself: exact cosine-similarity k-NN, written as a correctness baseline before any optimization. Partial-sort selection and SIMD are the obvious next steps and I deliberately didn't take them yet.",
+    metric: "0.36ms p50 at 1k vectors · 96ms at 250k · 33k chunks/sec ingestion",
+    href: "https://github.com/Kurisuo/VeriFi",
   },
   {
     tag: "TypeScript / NVML",
     name: "NVPilot",
-    blurb: "An autonomous agent that watches live GPU telemetry and tunes the machine itself.",
-    detail: "~550ms perception, sub-millisecond planning, and reversible system mutations.",
-    code: (
-      <>
-        <span className="text-muted-foreground">import</span> {"{ perceive, reflect }"} <span className="text-muted-foreground">from</span> <span className="text-muted-foreground">&quot;./core/agent&quot;</span>;{"\n\n"}
-        <span className="text-muted-foreground">const</span> snapshot = <span className="text-foreground">perceive</span>();{"\n"}
-        <span className="text-muted-foreground">const</span> plan = <span className="text-foreground">reflect</span>(snapshot);{"\n"}
-        <span className="text-muted-foreground">await</span> <span className="text-foreground">runDaemon</span>(plan);
-      </>
-    ),
+    blurb: "An autonomous agent that reads GPU telemetry and tunes the machine.",
+    description:
+      "Built at the NVIDIA × ASUS hackathon and finished on my own after the team moved on. The interesting part isn't the tuning — it's the safety model. An LLM proposes changes, but my code validates every one against legal ranges and overwrites state fields from live telemetry, so the model can't misreport what it's changing. Every mutation is journaled with its inverse. If the LLM is offline, a deterministic rule engine takes over.",
+    metric: "~550ms perception · <1ms planning · ~3s byte-identical rollback",
+    href: "https://github.com/Kurisuo/NVPilot",
   },
   {
     tag: "C / POSIX",
-    name: "HTTP Server",
-    blurb: "A multi-threaded HTTP server over raw POSIX syscalls.",
-    detail: "~8,400 req/s with 99% of requests under ~13ms across 64 connections.",
-    code: (
-      <>
-        <span className="text-muted-foreground">/* bounded queue + thread pool */</span>{"\n"}
-        <span className="text-muted-foreground">while</span> (running) {"{"}{"\n"}
-        {"  "}<span className="text-foreground">request</span> = queue.<span className="text-muted-foreground">pop</span>();{"\n"}
-        {"  "}<span className="text-foreground">serve</span>(request);{"\n"}
-        {"}"}
-      </>
-    ),
+    name: "Multi-Threaded HTTP Server",
+    blurb: "A concurrent web server built on hand-rolled primitives.",
+    description:
+      "The constraint that made this worth doing was writing the concurrency myself — a bounded producer-consumer queue and per-URI reader-writer locks over raw syscalls, no library concurrency. Getting honest numbers took two passes: my first benchmark silently linked the reference library instead of my code, so I verified symbol provenance with nm and reran everything.",
+    metric: "~8,400 req/s · 99% of requests under ~13ms · 2.2× single-threaded",
+    href: "https://github.com/Kurisuo/multithreaded-http-server",
   },
 ];
 
