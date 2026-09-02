@@ -32,6 +32,7 @@
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
   --color-ghost: var(--ghost);
+  --color-nav: var(--nav);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -171,6 +172,8 @@
   --muted: oklch(0.2 0.02 295);
   --muted-foreground: oklch(0.68 0.03 292);
   --ghost: oklch(0.22 0.025 295);
+  /* #141119 */
+  --nav: oklch(0.16 0.014 295);
 
   /* dark card surface (was pure white) */
   --surface: oklch(0.185 0.021 295);
