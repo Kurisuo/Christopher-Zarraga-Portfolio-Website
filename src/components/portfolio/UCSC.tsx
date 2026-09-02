@@ -31,10 +31,10 @@ const slides: Slide[] = [
     body: "I was also accepted to Y Combinator's 2027 Startup Internship Expo and flew out to San Francisco for it! I spent the day around engineers building with AI on problems that truly exist, and even helped pitch for Altera Labs — we brought in around ten potential intern candidates over the course of the event! It was amazing how kind everyone was. I quickly made friends with a group of ambitious, genuinely brilliant people who re-sparked my drive to just start making something.",
   },
   {
-    image: berkeleyPhoto,
-    alt: "Placeholder image for the UC Berkeley Regents Conference",
+    image: berkeleyAsset.url,
+    alt: "Christopher Zarraga Jimenez with fellow scholars at the UC Berkeley Regents' and Chancellor's Scholars Inter-UC Conference",
     caption: "UC Berkeley Regents Conference.",
-    body: "",
+    body: "The Sabatte Family scholarship didn't just cover tuition — it also got me invited to the 2026 Regents' and Chancellor's Scholars Inter-UC Conference at UC Berkeley! It was my first time traveling to represent my university, alongside my fellow Slugs and scholars from across the UC system. I spent my time meeting and networking with people on completely different paths and hearing why they chose them. Networking was one of the most useful skills I got to develop there. In the end, we got to celebrate the close of the conference by going out on a cruise from Berkeley to the Golden Gate Bridge!",
   },
   {
     image: shpePhoto,
