@@ -104,7 +104,7 @@ export function MoreProjects() {
         className="mt-8 grid gap-4 transition-[grid-template-columns] duration-[350ms] ease-[cubic-bezier(0.4,0.2,0.2,1)] lg:grid-cols-[repeat(3,minmax(0,1fr))]"
         style={{
           gridTemplateColumns: active
-            ? `repeat(3, minmax(0, 1fr))`
+            ? [0, 1, 2].map((column) => (projects.some((project, index) => index % 3 === column && project.name === active) ? "2fr" : "1fr")).join(" ")
             : undefined,
         }}
       >

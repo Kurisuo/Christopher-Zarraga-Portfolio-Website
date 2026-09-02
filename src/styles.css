@@ -187,22 +187,22 @@
   --volt: oklch(0.9 0.23 128);
   --volt-foreground: oklch(0.155 0.004 60);
 
-  /* Purple accent palette */
-  --violet: oklch(0.548 0.246 292.7); /* #7C3AED */
+  /* Purple accents are reserved for the profile, hero cards, and section labels. */
+  --violet: oklch(0.548 0.246 292.7);
   --violet-foreground: oklch(0.985 0 0);
-  --violet-muted: oklch(0.735 0.14 293); /* #A78BFA */
-  --plum: oklch(0.196 0.021 300); /* #1A1523 */
-  --hairline: rgb(255 255 255 / 0.08);
+  --violet-muted: oklch(0.735 0.14 293);
+  --plum: oklch(0.196 0.021 300);
+  --hairline: oklch(1 0 0 / 8%);
 
-  --primary: oklch(0.66 0.19 38);
-  --primary-foreground: oklch(0.155 0.004 60);
+  --primary: oklch(0.235 0.005 60);
+  --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.235 0.005 60);
   --secondary-foreground: oklch(0.985 0 0);
   --accent: oklch(0.235 0.005 60);
   --accent-foreground: oklch(0.985 0 0);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.66 0.19 38);
+  --ring: oklch(0.548 0.246 292.7);
 }
 
 @layer base {
@@ -217,10 +217,10 @@
 
 @utility reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(20px);
   transition:
-    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 400ms ease-out var(--reveal-delay, 0ms),
+    transform 400ms ease-out var(--reveal-delay, 0ms);
 }
 
 @utility reveal-in {
@@ -228,31 +228,22 @@
   transform: none;
 }
 
-/* Cursor glow trail */
-.glow-dot {
-  position: absolute;
-  width: 90px;
-  height: 90px;
-  border-radius: 9999px;
-  background: radial-gradient(
-    circle,
-    rgb(168 85 247 / 0.55) 0%,
-    rgb(168 85 247 / 0.18) 45%,
-    transparent 70%
-  );
-  filter: blur(6px);
-  pointer-events: none;
-  mix-blend-mode: screen;
-  animation: glow-fade 1.5s ease-out forwards;
+.portfolio-scroll {
+  scroll-snap-type: y proximity;
 }
 
-@keyframes glow-fade {
-  from {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(0.55);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  to {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1.5);
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .portfolio-scroll {
+    scroll-snap-type: none;
   }
 }
