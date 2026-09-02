@@ -85,26 +85,26 @@ export function Hero() {
 
       <div className="mt-10 grid items-stretch gap-4 sm:grid-cols-2 lg:mt-12">
         <Reveal delay={200} className="flex">
-          <div className="flex w-full flex-col border border-violet/50 bg-violet p-4 text-violet-foreground">
+          <div className="flex w-full flex-col bg-flame p-4 text-flame-foreground">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">Selected work</p>
             <ul className="mt-2 space-y-1">
               {projects.map((project) => {
                 const isActive = active === project.id;
                 return (
                   <li key={project.id}>
-                    <button type="button" onMouseEnter={() => setActive(project.id)} onMouseLeave={() => setActive(null)} onFocus={() => setActive(project.id)} onBlur={() => setActive(null)} onClick={() => setActive(isActive ? null : project.id)} aria-expanded={isActive} className="w-full rounded-md px-1.5 py-1 text-left transition-colors duration-200 ease-out hover:bg-violet-foreground/10">
-                      <span className="block font-display text-base font-semibold leading-snug">{project.name}{project.wip && <span className="ml-2 font-mono text-[9px] uppercase tracking-[0.18em] text-violet-foreground/70">in progress</span>}</span>
-                      <span className="block text-[0.85em] font-normal leading-snug text-violet-foreground/75">{project.descriptor}</span>
+                    <button type="button" onMouseEnter={() => setActive(project.id)} onMouseLeave={() => setActive(null)} onFocus={() => setActive(project.id)} onBlur={() => setActive(null)} onClick={() => setActive(isActive ? null : project.id)} aria-expanded={isActive} className="w-full rounded-md px-1.5 py-1 text-left transition-colors duration-200 ease-out hover:bg-flame-foreground/10">
+                      <span className="block font-display text-base font-semibold leading-snug">{project.name}{project.wip && <span className="ml-2 font-mono text-[9px] uppercase tracking-[0.18em] text-flame-foreground/70">in progress</span>}</span>
+                      <span className="block text-[0.85em] font-normal leading-snug text-flame-foreground/75">{project.descriptor}</span>
                       <span className={`grid transition-all duration-200 ease-out ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}><span className="overflow-hidden"><span className="mt-1 block font-mono text-[11px] leading-snug text-violet-foreground">{project.metric}</span></span></span>
                     </button>
                   </li>
                 );
               })}
             </ul>
-            <div className="mt-5 flex flex-col items-center gap-2 border-t border-violet-foreground/15 pt-4">
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-violet-foreground/70">Building with</p>
+            <div className="mt-5 flex flex-col items-center gap-2 border-t border-flame-foreground/15 pt-4">
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-flame-foreground/70">Building with</p>
               <div className="flex flex-wrap items-center justify-center gap-2">
-                {TECH.map((name) => <span key={name} title={name} className={`flex size-10 shrink-0 items-center justify-center rounded-full border border-violet-foreground/35 bg-violet-foreground/10 font-mono text-[10px] font-semibold text-violet-foreground transition-opacity duration-200 ${activeProject && !activeProject.tech.includes(name) ? "opacity-30" : "opacity-100"}`}>{name}</span>)}
+                {TECH.map((name) => <span key={name} title={name} className={`flex size-10 shrink-0 items-center justify-center rounded-full border border-flame-foreground/35 bg-flame-foreground/10 font-mono text-[10px] font-semibold text-violet-foreground transition-opacity duration-200 ${activeProject && !activeProject.tech.includes(name) ? "opacity-30" : "opacity-100"}`}>{name}</span>)}
               </div>
             </div>
           </div>
