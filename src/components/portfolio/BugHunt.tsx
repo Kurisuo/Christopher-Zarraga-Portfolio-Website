@@ -264,9 +264,7 @@ export function BugHunt() {
   const allFound = found.length === 4;
   const status = !allFound
     ? "Four bugs. Click the lines."
-    : result?.kind === "ok" && found.length === 4 && pane === "res" && result.n === "1"
-      ? "Click any green line to read it."
-      : "All four. Better than I did for four years.";
+    : "All four. Better than I did for four years.";
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-start lg:gap-12">
