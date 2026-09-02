@@ -24,7 +24,9 @@ const BUG: Record<string, { t: string; b: string }> = {
 };
 
 const OK: Record<string, string> = {
-  a: "Ugly, but not broken. The index contract only lives in a comment above it — bad design, working code.",
+  c1: "The index contract only lives in a comment above it — bad design, working code.",
+  c2: "A useful comment, not a bug. The list shape is just documented instead of modeled.",
+  a: "Ugly, but not broken. The list shape is documented in a comment — bad design, working code.",
   b: "Global mutation is a smell, not a bug. It does exactly what I told it to do.",
   c: "This is the hack, and it works. Hyperinflating the price is how I faked an out-of-stock flag.",
   d: "Fine on its own. It's the loop wrapped around it that never ends.",
