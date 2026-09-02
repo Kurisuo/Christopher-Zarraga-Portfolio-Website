@@ -20,14 +20,23 @@ function serverEntryShimPlugin(): Plugin {
   let ran = false;
   return {
     name: "gh-pages-server-shim",
+    buildStart() {
+      console.log("[gh-pages-server-shim] buildStart");
+    },
+    buildEnd() {
+      console.log("[gh-pages-server-shim] buildEnd");
+    },
     closeBundle() {
+      console.log("[gh-pages-server-shim] closeBundle");
       if (ran) return;
       ran = true;
       const outDir = "dist/server";
       const indexPath = join(outDir, "index.mjs");
       const serverPath = join(outDir, "server.js");
+      console.log("[gh-pages-server-shim] checking", indexPath, existsSync(indexPath));
       if (existsSync(indexPath) && !existsSync(serverPath)) {
         copyFileSync(indexPath, serverPath);
+        console.log("[gh-pages-server-shim] copied to", serverPath);
       }
     },
   };
