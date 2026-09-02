@@ -240,6 +240,11 @@ export function BugHunt() {
   const [bad, setBad] = useState<string | null>(null);
   const [result, setResult] = useState<Result | null>(null);
   const badTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const codeScrollRef = useRef<HTMLPreElement>(null);
+
+  useEffect(() => {
+    codeScrollRef.current?.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [tab]);
 
   useEffect(
     () => () => {
@@ -303,7 +308,12 @@ export function BugHunt() {
           </p>
         </Pane>
 
-        <Pane on={pane === "snip"} className="[&_.bug-p]:text-[0.8125rem] [&_.bug-p]:leading-[1.5]">
+        <Pane
+          on={pane === "snip"}
+          align="start"
+          flow
+          className="bug-pane-snippets"
+        >
           <p className="bug-p">The two snippets below are the ones that make me laugh most:</p>
           <ol className="list-decimal space-y-4 pl-5">
             <li className="bug-p !mb-0">
@@ -394,7 +404,10 @@ export function BugHunt() {
             ) : null}
           </div>
 
-          <pre className="min-h-0 flex-1 overflow-auto py-3.5 font-mono text-[13.5px] leading-[1.8] text-code-fg">
+          <pre
+            ref={codeScrollRef}
+            className="min-h-0 flex-1 overflow-auto py-3.5 font-mono text-[13.5px] leading-[1.8] text-code-fg"
+          >
             <code className="block">
               {rows.map(([id, text], i) => {
                 const clickable = live && id !== "";
@@ -463,19 +476,24 @@ export function BugHunt() {
 function Pane({
   on,
   align = "center",
+  flow = false,
   className,
   children,
 }: {
   on: boolean;
   align?: "start" | "center";
+  flow?: boolean;
   className?: string;
   children: ReactNode;
 }) {
+  const inFlow = flow && on;
+
   return (
     <div
       aria-hidden={!on}
       className={cn(
-        "bug-pane lg:absolute lg:inset-0 lg:flex lg:flex-col lg:overflow-auto lg:transition-opacity lg:duration-200",
+        "bug-pane lg:flex lg:flex-col lg:transition-opacity lg:duration-200",
+        inFlow ? "lg:static lg:max-h-full lg:overflow-visible" : "lg:absolute lg:inset-0 lg:overflow-auto",
         align === "start" ? "lg:justify-start" : "lg:justify-center",
         on ? "block lg:opacity-100" : "hidden lg:block lg:pointer-events-none lg:opacity-0",
         className,
