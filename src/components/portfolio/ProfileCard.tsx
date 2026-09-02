@@ -1,46 +1,18 @@
-import { useRef, useState } from "react";
-import type { MouseEvent } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import portrait from "@/assets/portrait.jpg";
 import { cn } from "@/lib/utils";
 
-type TrailDot = { id: number; x: number; y: number };
-
 export function ProfileCard({ className }: { className?: string }) {
-  const [trail, setTrail] = useState<TrailDot[]>([]);
-  const lastSpawn = useRef(0);
-
-  function spawnGlow(e: MouseEvent<HTMLDivElement>) {
-    const now = performance.now();
-    if (now - lastSpawn.current < 45) return;
-    lastSpawn.current = now;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const dot: TrailDot = {
-      id: now,
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    };
-    setTrail((t) => [...t.slice(-24), dot]);
-    window.setTimeout(() => {
-      setTrail((t) => t.filter((d) => d.id !== dot.id));
-    }, 1500);
-  }
-
   const link =
     "flex size-10 items-center justify-center rounded-full border border-border text-volt transition-colors duration-150 hover:border-primary hover:bg-primary hover:text-primary-foreground";
 
   return (
     <div
-      onMouseMove={spawnGlow}
       className={cn(
         "card-surface relative overflow-hidden rounded-lg border border-border p-6 text-foreground",
         className,
       )}
     >
-      {trail.map((d) => (
-        <span key={d.id} className="glow-dot" style={{ left: d.x, top: d.y }} />
-      ))}
-
       <img
         src={portrait}
         alt="Christopher Zarraga Jimenez"

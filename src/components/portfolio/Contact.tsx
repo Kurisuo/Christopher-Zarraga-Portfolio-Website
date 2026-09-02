@@ -18,10 +18,10 @@ export function Contact() {
         </Reveal>
         <Reveal delay={140}>
           <div className="mt-7 flex flex-wrap gap-3">
-            <a href="mailto:christopherzarraga31@gmail.com" className="rounded-full bg-flame px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-flame-foreground transition-colors duration-180 hover:bg-volt hover:text-volt-foreground">christopherzarraga31@gmail.com</a>
-            <Button type="button" onClick={() => setShowResume((v) => !v)} aria-expanded={showResume} aria-controls="inline-resume" variant="outline" className="h-auto rounded-full border-border bg-transparent px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground shadow-none hover:border-flame hover:bg-transparent hover:text-flame">{showResume ? "Hide resume" : "View resume"}</Button>
-            <a href="https://github.com/Kurisuo" target="_blank" rel="noreferrer" className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors duration-180 hover:border-flame hover:text-flame">GitHub</a>
-            <a href="https://www.linkedin.com/in/christopher-zarraga/" target="_blank" rel="noreferrer" className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors duration-180 hover:border-flame hover:text-flame">LinkedIn</a>
+            <a href="mailto:christopherzarraga31@gmail.com" className="rounded-lg bg-flame px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-flame-foreground transition-colors duration-180 hover:bg-volt hover:text-volt-foreground">christopherzarraga31@gmail.com</a>
+            <Button type="button" onClick={() => setShowResume((v) => !v)} aria-expanded={showResume} aria-controls="inline-resume" variant="outline" className="h-auto rounded-lg border-border bg-transparent px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground shadow-none hover:border-flame hover:bg-transparent hover:text-flame">{showResume ? "Hide resume" : "View resume"}</Button>
+            <a href="https://github.com/Kurisuo" target="_blank" rel="noreferrer" className="rounded-lg border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors duration-180 hover:border-flame hover:text-flame">GitHub</a>
+            <a href="https://www.linkedin.com/in/christopher-zarraga/" target="_blank" rel="noreferrer" className="rounded-lg border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors duration-180 hover:border-flame hover:text-flame">LinkedIn</a>
           </div>
         </Reveal>
         <div className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground"><span>Christopher Zarraga Jimenez</span><span>Santa Cruz, CA</span></div>
