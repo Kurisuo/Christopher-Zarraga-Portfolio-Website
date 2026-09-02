@@ -245,15 +245,33 @@
 
 .bug-p {
   margin-bottom: 1rem;
-  max-width: 48ch;
-  color: oklch(0.9 0 0);
-  font-size: 1.0625rem;
-  line-height: 1.62;
+  max-width: 58ch;
+  color: #c8c8d0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
 }
 
-.bug-pane-snippets .bug-p {
-  font-size: 0.875rem;
-  line-height: 1.55;
+.bug-list {
+  margin-top: 10px;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: bugitem;
+}
+
+.bug-list > li {
+  position: relative;
+  counter-increment: bugitem;
+}
+
+.bug-list > li + li {
+  margin-top: 20px;
+}
+
+.bug-list > li::before {
+  content: counter(bugitem) ".";
+  position: absolute;
+  right: calc(100% + 0.45em);
+  color: var(--muted-foreground);
 }
 
 .terminal-scroll {
