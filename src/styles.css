@@ -183,11 +183,6 @@
   --volt: oklch(0.9 0.23 128);
   --volt-foreground: oklch(0.155 0.004 60);
 
-  /* Purple accents are reserved for the profile, hero cards, and section labels. */
-  --violet: oklch(0.548 0.246 292.7);
-  --violet-foreground: oklch(0.985 0 0);
-  --violet-muted: oklch(0.735 0.14 293);
-  --plum: oklch(0.196 0.021 300);
   --hairline: oklch(1 0 0 / 8%);
 
   --primary: oklch(0.235 0.005 60);
