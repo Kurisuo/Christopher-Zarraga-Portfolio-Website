@@ -187,6 +187,13 @@
   --volt: oklch(0.9 0.23 128);
   --volt-foreground: oklch(0.155 0.004 60);
 
+  /* Purple accent palette */
+  --violet: oklch(0.548 0.246 292.7); /* #7C3AED */
+  --violet-foreground: oklch(0.985 0 0);
+  --violet-muted: oklch(0.735 0.14 293); /* #A78BFA */
+  --plum: oklch(0.196 0.021 300); /* #1A1523 */
+  --hairline: rgb(255 255 255 / 0.08);
+
   --primary: oklch(0.66 0.19 38);
   --primary-foreground: oklch(0.155 0.004 60);
   --secondary: oklch(0.235 0.005 60);
