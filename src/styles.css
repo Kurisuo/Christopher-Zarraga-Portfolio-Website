@@ -30,6 +30,9 @@
   --color-volt: var(--volt);
   --color-volt-foreground: var(--volt-foreground);
   --color-hairline: var(--hairline);
+  --color-found: var(--found);
+  --color-miss: var(--miss);
+
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
   --color-ghost: var(--ghost);
@@ -184,6 +187,8 @@
   --volt-foreground: oklch(0.155 0.004 60);
 
   --hairline: oklch(1 0 0 / 8%);
+  --found: oklch(0.75 0.19 148);
+  --miss: oklch(0.68 0.21 25);
 
   --primary: oklch(0.235 0.005 60);
   --primary-foreground: oklch(0.985 0 0);
@@ -221,6 +226,14 @@
 
 .portfolio-scroll {
   scroll-snap-type: y proximity;
+}
+
+.bug-p {
+  margin-bottom: 1rem;
+  max-width: 47ch;
+  color: var(--muted-foreground);
+  font-size: 0.9375rem;
+  line-height: 1.62;
 }
 
 @media (prefers-reduced-motion: reduce) {
