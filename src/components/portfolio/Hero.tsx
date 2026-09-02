@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { ProfileCard } from "./ProfileCard";
-import galleryChess from "@/assets/gallery-chess.jpg";
-import gallerySwim from "@/assets/gallery-swim.jpg";
-import galleryCalisthenics from "@/assets/gallery-calisthenics.jpg";
-import galleryPhotography from "@/assets/gallery-photography.jpg";
+import { Lightbox, type LightboxSlide } from "./Lightbox";
+import hobbySunset from "@/assets/hobby-sunset.jpg.asset.json";
+import hobbyChess from "@/assets/hobby-chess.jpg.asset.json";
+import hobbySwim from "@/assets/hobby-swim.jpg.asset.json";
 
 const stats = [
   { value: "1st", label: ["COHORT FULL RIDE", "RECIPIENT AT UCSC"] },
@@ -14,50 +14,35 @@ const stats = [
   { value: "3rd", label: ["YEAR AT UCSC", "CS + APPLIED MATH"] },
 ];
 
-const gallery = [
-  { src: galleryChess, alt: "Chess pieces on a board in warm light" },
-  { src: gallerySwim, alt: "Swimmer doing butterfly stroke in a pool lane" },
-  { src: galleryCalisthenics, alt: "Pull-ups on an outdoor bar at sunset" },
-  { src: galleryPhotography, alt: "Reading a finance book beside a camera" },
+const gallery: LightboxSlide[] = [
+  {
+    image: hobbySunset.url,
+    alt: "Three people sitting on a rock ledge watching the sunset over the hills",
+    caption: "Fujifilm X-T2, 18–55mm",
+  },
+  {
+    image: hobbyChess.url,
+    alt: "Playing a timed chess game at an outdoor cafe table",
+    caption: "Blitz downtown",
+  },
+  {
+    image: hobbySwim.url,
+    alt: "Outdoor lap pool with swimmers resting at the wall",
+    caption: "Morning laps",
+  },
 ];
 
 export function Hero() {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const imageButtonRef = useRef<HTMLButtonElement>(null);
 
-  const goTo = (next: number) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const target = ((next % gallery.length) + gallery.length) % gallery.length;
-    const slide = track.children[target] as HTMLElement | undefined;
-    if (slide) {
-      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const left = track.scrollLeft + slide.getBoundingClientRect().left - track.getBoundingClientRect().left;
-      track.scrollTo({ left, behavior: reduced ? "auto" : "smooth" });
-    }
-  };
+  const goTo = (next: number) =>
+    setIndex(((next % gallery.length) + gallery.length) % gallery.length);
 
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track || !open) return;
-    const onScroll = () => {
-      const slides = Array.from(track.children) as HTMLElement[];
-      const trackLeft = track.getBoundingClientRect().left;
-      let best = 0;
-      let bestDist = Infinity;
-      slides.forEach((slide, i) => {
-        const dist = Math.abs(slide.getBoundingClientRect().left - trackLeft);
-        if (dist < bestDist) {
-          bestDist = dist;
-          best = i;
-        }
-      });
-      setIndex(best);
-    };
-    track.addEventListener("scroll", onScroll, { passive: true });
-    return () => track.removeEventListener("scroll", onScroll);
-  }, [open]);
+  const slide = gallery[index]!;
 
   return (
     <header id="top" className="portfolio-section scroll-mt-36 pb-8 pt-28 lg:pb-10 lg:pt-32">
@@ -74,8 +59,8 @@ export function Hero() {
 
       <div className="mt-7 border-t border-border py-5 lg:mt-8">
         <dl className="grid grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, index) => (
-            <div key={stat.value + stat.label[0]} className={`flex min-w-0 flex-col items-center justify-center px-3 text-center ${index > 0 ? "border-l border-hairline" : ""}`}>
+          {stats.map((stat, i) => (
+            <div key={stat.value + stat.label[0]} className={`flex min-w-0 flex-col items-center justify-center px-3 text-center ${i > 0 ? "border-l border-hairline" : ""}`}>
               <dt className="whitespace-nowrap font-display text-xl font-bold leading-none tracking-tight sm:text-3xl">{stat.value}</dt>
               <dd className="mt-2 font-mono text-[9px] uppercase leading-tight tracking-[0.12em] text-muted-foreground sm:text-[10px]">{stat.label[0]}<br />{stat.label[1]}</dd>
             </div>
@@ -113,29 +98,46 @@ export function Hero() {
                   if (e.key === "ArrowLeft") { e.preventDefault(); goTo(index - 1); }
                   if (e.key === "ArrowRight") { e.preventDefault(); goTo(index + 1); }
                 }}
+                onTouchStart={(e) => {
+                  const t = e.touches[0];
+                  if (t) touchStart.current = { x: t.clientX, y: t.clientY };
+                }}
+                onTouchEnd={(e) => {
+                  const start = touchStart.current;
+                  touchStart.current = null;
+                  const t = e.changedTouches[0];
+                  if (!start || !t) return;
+                  const dx = t.clientX - start.x;
+                  const dy = t.clientY - start.y;
+                  if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) goTo(index + (dx < 0 ? 1 : -1));
+                }}
                 className="outline-none focus-visible:ring-1 focus-visible:ring-foreground/40"
               >
-                <div
-                  ref={trackRef}
-                  className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-1 motion-reduce:scroll-auto"
+                <button
+                  ref={imageButtonRef}
+                  type="button"
+                  onClick={() => setLightboxOpen(true)}
+                  aria-label={`Open photo ${index + 1} of ${gallery.length} in full view`}
+                  className="flex h-[320px] w-full cursor-zoom-in items-center justify-center rounded-[6px] bg-black/20 outline-none transition-opacity duration-200 focus-visible:ring-2 focus-visible:ring-foreground lg:h-[420px]"
                 >
-                  {gallery.map((image) => (
-                    <img
-                      key={image.src}
-                      src={image.src}
-                      alt={image.alt}
-                      loading="lazy"
-                      width={1024}
-                      height={1024}
-                      className="aspect-square w-[70%] shrink-0 snap-start rounded-lg object-cover sm:w-[45%] lg:w-[30%]"
-                    />
-                  ))}
-                </div>
+                  <img
+                    key={slide.image}
+                    src={slide.image}
+                    alt={slide.alt}
+                    loading="lazy"
+                    className="max-h-full max-w-full rounded-[4px] object-contain"
+                  />
+                </button>
+
+                <p className="mt-3 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                  {slide.caption}
+                </p>
+
                 <div className="mt-4 flex items-center justify-between gap-3">
                   <div className="flex gap-2">
                     {gallery.map((image, i) => (
                       <button
-                        key={image.src}
+                        key={image.image}
                         type="button"
                         onClick={() => goTo(i)}
                         aria-label={`Go to photo ${i + 1}`}
@@ -171,6 +173,18 @@ export function Hero() {
           </div>
         </div>
       </Reveal>
+
+      {lightboxOpen && (
+        <Lightbox
+          slides={gallery}
+          index={index}
+          onNavigate={(next) => goTo(next)}
+          onClose={() => {
+            setLightboxOpen(false);
+            imageButtonRef.current?.focus();
+          }}
+        />
+      )}
     </header>
   );
 }
