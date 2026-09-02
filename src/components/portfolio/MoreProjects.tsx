@@ -86,6 +86,8 @@ const projects = [
   },
 ];
 
+const rows = [projects.slice(0, 3), projects.slice(3, 6)];
+
 export function MoreProjects() {
   const [active, setActive] = useState<string | null>(null);
 
