@@ -77,7 +77,7 @@ const projects = [
     code: (
       <>
         <span className="text-muted-foreground">/* bounded queue + thread pool */</span>{"\n"}
-        <span className="text-violet-muted">while</span> (running) {"{"}{"\n"}
+        <span className="text-muted-foreground">while</span> (running) {"{"}{"\n"}
         {"  "}<span className="text-foreground">request</span> = queue.<span className="text-muted-foreground">pop</span>();{"\n"}
         {"  "}<span className="text-foreground">serve</span>(request);{"\n"}
         {"}"}
