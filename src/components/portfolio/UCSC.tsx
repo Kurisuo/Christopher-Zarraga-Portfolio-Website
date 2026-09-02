@@ -196,7 +196,7 @@ export function UCSC() {
               </div>
 
               <figcaption className="mt-3 font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] text-muted-foreground">
-                {slides[index].caption}
+                {slides[index]?.caption}
               </figcaption>
 
               <a
