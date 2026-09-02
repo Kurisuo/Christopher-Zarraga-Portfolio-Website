@@ -7,7 +7,7 @@ type BuildLogCardProps = {
   tag: string;
   blurb: string;
   detail: string;
-  code: ReactNode;
+  code?: ReactNode;
   open: boolean;
   onToggle: () => void;
   onOpen: () => void;
