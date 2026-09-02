@@ -86,6 +86,8 @@ const projects = [
   },
 ];
 
+const rows = [projects.slice(0, 3), projects.slice(3, 6)];
+
 export function MoreProjects() {
   const [active, setActive] = useState<string | null>(null);
 
@@ -100,24 +102,26 @@ export function MoreProjects() {
         </h2>
       </Reveal>
 
-      <div
-        className="mt-8 grid gap-4 transition-[grid-template-columns] duration-[350ms] ease-[cubic-bezier(0.4,0.2,0.2,1)] lg:grid-cols-[repeat(3,minmax(0,1fr))]"
-        style={{
-          gridTemplateColumns: active
-            ? [0, 1, 2].map((column) => (projects.some((project, index) => index % 3 === column && project.name === active) ? "2fr" : "1fr")).join(" ")
-            : undefined,
-        }}
-      >
-        {projects.map((project, index) => (
-          <Reveal key={project.name} delay={60 * index} className={`min-w-0 transition-opacity duration-200 ${active && active !== project.name ? "opacity-60" : "opacity-100"}`}>
-            <BuildLogCard
-              {...project}
-              open={active === project.name}
-              onOpen={() => setActive(project.name)}
-              onClose={() => setActive(null)}
-              onToggle={() => setActive((value) => (value === project.name ? null : project.name))}
-            />
-          </Reveal>
+      <div className="mt-8 flex flex-col gap-4">
+        {rows.map((row, rowIndex) => (
+          <div key={rowIndex} className="flex flex-col gap-4 lg:flex-row">
+            {row.map((project, columnIndex) => (
+              <Reveal
+                key={project.name}
+                delay={60 * (rowIndex * 3 + columnIndex)}
+                className={`min-w-0 basis-0 transition-[flex-grow,opacity] duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${active && active !== project.name ? "opacity-60" : "opacity-100"}`}
+                style={{ flexGrow: active === project.name ? 2 : 1 }}
+              >
+                <BuildLogCard
+                  {...project}
+                  open={active === project.name}
+                  onOpen={() => setActive(project.name)}
+                  onClose={() => setActive(null)}
+                  onToggle={() => setActive((value) => (value === project.name ? null : project.name))}
+                />
+              </Reveal>
+            ))}
+          </div>
         ))}
       </div>
 
