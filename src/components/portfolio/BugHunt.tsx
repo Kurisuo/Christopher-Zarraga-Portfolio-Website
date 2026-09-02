@@ -303,7 +303,7 @@ export function BugHunt() {
           </p>
         </Pane>
 
-        <Pane on={pane === "snip"}>
+        <Pane on={pane === "snip"} className="[&_.bug-p]:text-[0.9375rem]">
           <p className="bug-p">The two snippets below are the ones that make me laugh most:</p>
           <ol className="list-decimal space-y-4 pl-5">
             <li className="bug-p !mb-0">
@@ -463,10 +463,12 @@ export function BugHunt() {
 function Pane({
   on,
   align = "center",
+  className,
   children,
 }: {
   on: boolean;
   align?: "start" | "center";
+  className?: string;
   children: ReactNode;
 }) {
   return (
@@ -476,6 +478,7 @@ function Pane({
         "bug-pane lg:absolute lg:inset-0 lg:flex lg:flex-col lg:overflow-auto lg:transition-opacity lg:duration-200",
         align === "start" ? "lg:justify-start" : "lg:justify-center",
         on ? "block lg:opacity-100" : "hidden lg:block lg:pointer-events-none lg:opacity-0",
+        className,
       )}
     >
       {children}
