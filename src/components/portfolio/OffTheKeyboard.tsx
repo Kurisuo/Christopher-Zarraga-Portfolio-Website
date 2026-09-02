@@ -33,7 +33,8 @@ export function OffTheKeyboard() {
     const slide = track.children[target] as HTMLElement | undefined;
     if (slide) {
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      track.scrollTo({ left: slide.offsetLeft, behavior: reduced ? "auto" : "smooth" });
+      const left = track.scrollLeft + slide.getBoundingClientRect().left - track.getBoundingClientRect().left;
+      track.scrollTo({ left, behavior: reduced ? "auto" : "smooth" });
     }
   };
 
