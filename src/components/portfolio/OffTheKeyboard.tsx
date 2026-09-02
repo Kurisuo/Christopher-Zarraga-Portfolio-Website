@@ -43,10 +43,11 @@ export function OffTheKeyboard() {
     if (!track || !open) return;
     const onScroll = () => {
       const slides = Array.from(track.children) as HTMLElement[];
+      const trackLeft = track.getBoundingClientRect().left;
       let best = 0;
       let bestDist = Infinity;
       slides.forEach((slide, i) => {
-        const dist = Math.abs(slide.offsetLeft - track.scrollLeft);
+        const dist = Math.abs(slide.getBoundingClientRect().left - trackLeft);
         if (dist < bestDist) {
           bestDist = dist;
           best = i;
