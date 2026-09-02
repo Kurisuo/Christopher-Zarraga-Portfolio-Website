@@ -89,10 +89,7 @@ export function Hero() {
             <span>Off the keyboard I play chess (1900 bullet), trade actively, swim, do calisthenics, and shoot 35mm.</span>
             <button
               type="button"
-              onClick={() => {
-                console.log("TOGGLE CLICKED, current open:", open);
-                setOpen((v) => !v);
-              }}
+              onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="hero-hobby-gallery"
               aria-label="Toggle hobby photo gallery"
