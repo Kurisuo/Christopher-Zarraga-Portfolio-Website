@@ -27,7 +27,7 @@ export function ProfileCard({ className }: { className?: string }) {
       </h2>
       <p className="mt-4 text-center text-sm leading-relaxed" style={{ color: "#A1A1AA" }}>
         CS + Applied Math at UC Santa Cruz — Sabatte Family full-ride
-        scholar, systems builder, 2000-Elo chess player.
+        scholar, systems builder, 1900-bullet chess player.
       </p>
       <div className="mt-7 flex justify-center gap-3 pb-1">
         <a

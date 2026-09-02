@@ -11,7 +11,10 @@ const items = [
 export function PillNav() {
   return (
     <nav className="fixed inset-x-0 top-5 z-50 flex justify-center px-4">
-      <ul className="flex items-center gap-1 rounded-full border border-border bg-background px-2 py-2">
+      <ul
+        className="flex items-center gap-1 rounded-full border border-border px-2 py-2"
+        style={{ backgroundColor: "oklch(0.155 0.004 60)" }}
+      >
         {items.map(({ href, label, Icon }) => (
           <li key={href}>
             <a

@@ -10,7 +10,7 @@ const stats = [
 
 export function Hero() {
   return (
-    <header id="top" className="portfolio-section scroll-mt-28 pb-14 pt-28 lg:pb-16 lg:pt-32">
+    <header id="top" className="portfolio-section scroll-mt-36 pb-8 pt-28 lg:pb-10 lg:pt-32">
       <Reveal className="mb-12 lg:hidden"><ProfileCard /></Reveal>
 
       <Reveal delay={80}>
@@ -22,7 +22,7 @@ export function Hero() {
         </p>
       </Reveal>
 
-      <div className="mt-10 border-y border-border py-5 lg:mt-12">
+      <div className="mt-7 border-t border-border py-5 lg:mt-8">
         <dl className="grid grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <div key={stat.value + stat.label[0]} className={`flex min-w-0 flex-col items-center justify-center px-3 text-center ${index > 0 ? "border-l border-hairline" : ""}`}>

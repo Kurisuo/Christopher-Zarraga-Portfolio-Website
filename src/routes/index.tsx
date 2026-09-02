@@ -32,7 +32,7 @@ function Index() {
       <PillNav />
       <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:grid lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)] lg:gap-12 xl:grid-cols-[minmax(0,360px)_minmax(0,1fr)] xl:gap-16 2xl:gap-20">
         <aside className="hidden lg:block">
-          <div className="sticky top-0 flex h-screen items-center py-24">
+          <div className="sticky top-0 flex h-screen items-start py-12">
             <ProfileCard />
           </div>
         </aside>
