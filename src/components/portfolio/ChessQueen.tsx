@@ -101,11 +101,8 @@ export function ChessQueen() {
         gl={{ alpha: true, antialias: true }}
         style={{ background: "transparent" }}
       >
-        <ambientLight intensity={0.55} />
-        <directionalLight position={[3, 5, 4]} intensity={1.6} />
-        {/* Purple rim light to echo the site's glow accent */}
-        <pointLight position={[-3, 2, -2]} intensity={6} color="#a855f7" />
-        <pointLight position={[2, -1, 3]} intensity={2} color="#ffffff" />
+        <ambientLight intensity={0.65} />
+        <directionalLight position={[3, 5, 4]} intensity={1.5} />
         <QueenMesh />
       </Canvas>
     </div>

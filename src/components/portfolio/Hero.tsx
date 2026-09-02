@@ -284,7 +284,7 @@ export function Hero() {
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">VeriFi — p50 latency vs. vectors</p>
             <div className="mt-4 text-foreground"><LatencyChart /></div>
             <p className="mt-3 font-mono text-[10px] leading-relaxed text-muted-foreground">
-              milliseconds, single node. 250k vectors at 0.36 ms p50 — intermediate points are from my own runs and will be replaced with the logged benchmark set.
+              milliseconds, single node. 250k vectors at 0.36 ms p50 — intermediate points are placeholders until the logged benchmark set is available.
             </p>
           </div>
         </Reveal>
