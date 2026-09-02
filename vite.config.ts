@@ -5,6 +5,35 @@
 //     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { copyFileSync, existsSync } from "node:fs";
+import { join } from "node:path";
+import type { Plugin } from "vite";
+
+/**
+ * TanStack Start's prerender preview server derives the expected server
+ * entry filename from the configured input name ("server" -> "server.js"),
+ * but Nitro emits the server bundle as "index.mjs". This plugin copies the
+ * emitted entry to the name the preview server looks for so prerendering
+ * can run; the file is harmless in the final static output.
+ */
+function serverEntryShimPlugin(): Plugin {
+  return {
+    name: "gh-pages-server-shim",
+    writeBundle: {
+      order: "post",
+      handler(options) {
+        // Only run for the server environment bundle.
+        if ((this as any).environment?.name !== "server") return;
+        const outDir = (options.dir as string) || "dist/server";
+        const indexPath = join(outDir, "index.mjs");
+        const serverPath = join(outDir, "server.js");
+        if (existsSync(indexPath) && !existsSync(serverPath)) {
+          copyFileSync(indexPath, serverPath);
+        }
+      },
+    },
+  };
+}
 
 export default defineConfig({
   tanstackStart: {
@@ -19,17 +48,9 @@ export default defineConfig({
       failOnError: true,
     },
   },
-  nitro: {
-    // Make Nitro emit the server entry with the filename TanStack Start's
-    // prerender preview server expects (server.js, derived from the input name).
-    rollupConfig: {
-      output: {
-        entryFileNames: "server.js",
-      },
-    },
-  },
   vite: {
     base: process.env['VITE_BASE_PATH'] || "/",
+    plugins: [serverEntryShimPlugin()],
     resolve: {
       dedupe: ["react", "react-dom", "three", "@react-three/fiber", "@react-three/drei"],
     },
