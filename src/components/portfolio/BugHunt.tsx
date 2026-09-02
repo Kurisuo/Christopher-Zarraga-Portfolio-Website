@@ -11,7 +11,7 @@ const BUG: Record<string, { t: string; b: string }> = {
   },
   "2": {
     t: "Every purchase flags the machete",
-    b: "Buy the boots and <code>macheteShop[3] = True</code> runs anyway. I copy-pasted the purchase branches and never changed the variable. So buying anything at all arms the infinite loop above for your next visit to the shop.",
+    b: "Buy the boots and <code>macheteShop[3] = True</code> runs anyway — I copy-pasted the purchase branches and never changed the variable. On its own that's just wrong bookkeeping. Combined with the loop above, it's what turns a harmless mistake into a game that hangs on your second visit to the shop.",
   },
   "3": {
     t: "This line does nothing",
@@ -304,7 +304,8 @@ export function BugHunt() {
           </p>
           <p className="bug-p font-semibold text-foreground">
             There are four bugs in the shop code on the right. I shipped every one of them and never
-            noticed. Click any line you think is broken.
+            noticed. Click any line you think is broken. Two of them are harmless on their own —
+            they only break the game when they line up.
           </p>
         </Pane>
 
@@ -406,7 +407,7 @@ export function BugHunt() {
 
           <pre
             ref={codeScrollRef}
-            className="min-h-0 flex-1 overflow-auto py-3.5 font-mono text-[13.5px] leading-[1.8] text-code-fg"
+            className="terminal-scroll min-h-0 flex-1 overflow-auto py-3.5 font-mono text-[13.5px] leading-[1.8] text-code-fg"
           >
             <code className="block">
               {rows.map(([id, text], i) => {
