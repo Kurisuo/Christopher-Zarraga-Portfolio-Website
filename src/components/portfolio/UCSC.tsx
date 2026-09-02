@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import cohortAsset from "@/assets/sabatte-cohort.jpg.asset.json";
-import ycExpoPhoto from "@/assets/slide-yc-expo.jpg";
+import ycExpoAsset from "@/assets/slide-yc-expo.jpg.asset.json";
 import berkeleyPhoto from "@/assets/slide-berkeley-regents.jpg";
 import shpePhoto from "@/assets/slide-shpe-2026.jpg";
 import { Reveal } from "./Reveal";
