@@ -51,18 +51,18 @@ const HUNT: Row[] = [
   ["b", "        <k>global</k> macheteCost"],
   ["c", "        macheteCost = <n>10000000</n>"],
   ["d", "        macheteShop.pop(<n>1</n>)"],
-  ["e", "        macheteShop.insert(<n>1</n>, <s>\"$10000000\"</s>)"],
+  ["e", '        macheteShop.insert(<n>1</n>, <s>"$10000000"</s>)'],
   ["", ""],
-  ["f", "    marketchoice = <f>input</f>(<s>\"\"</s>)"],
+  ["f", '    marketchoice = <f>input</f>(<s>""</s>)'],
   ["bug3", "    marketchoice.lower()"],
   ["", ""],
-  ["g", "    <k>if</k> gearChoice == <s>\"boots\"</s>:"],
+  ["g", '    <k>if</k> gearChoice == <s>"boots"</s>:'],
   ["h", "        <k>if</k> playerMoney < bootsShop[<n>2</n>]:"],
-  ["i", "            <f>flavor</f>(<s>\"You don't have enough...\"</s>)"],
+  ["i", '            <f>flavor</f>(<s>"You don\'t have enough..."</s>)'],
   ["j", "            <f>Market</f>()"],
   ["", ""],
   ["bug4", "    <k>else</k>:"],
-  ["k", "        playerInventory.append(<s>\"Boots\"</s>)"],
+  ["k", '        playerInventory.append(<s>"Boots"</s>)'],
   ["bug2", "        macheteShop[<n>3</n>] = <k>True</k>"],
   ["l", "        playerMoney -= bootsCost"],
 ];
@@ -76,7 +76,7 @@ const SNIP: Row[] = [
   ["", "    <k>global</k> macheteCost"],
   ["", "    macheteCost = <n>10000000</n>"],
   ["", "    macheteShop.pop(<n>1</n>)"],
-  ["", "    macheteShop.insert(<n>1</n>, <s>\"$10000000\"</s>)"],
+  ["", '    macheteShop.insert(<n>1</n>, <s>"$10000000"</s>)'],
   ["", "    macheteShop[<n>2</n>] = macheteCost"],
   ["", ""],
   ["", ""],
@@ -128,28 +128,28 @@ const FULL: Row[] = [
   ["", ""],
   ["", "<k>def</k> <f>MarketSpotted</f>():"],
   ["", "    <f>print</f>()"],
-  ["", "    <f>flavor</f>(<s>\"You have walked %d kilometers...\"</s> % ("],
+  ["", '    <f>flavor</f>(<s>"You have walked %d kilometers..."</s> % ('],
   ["", "        kilometersWalked))"],
-  ["", "    marketYN = <f>input</f>(<s>\"\"</s>)"],
+  ["", '    marketYN = <f>input</f>(<s>""</s>)'],
   ["", "    marketYN.lower()"],
-  ["", "    <k>if</k> marketYN == <s>\"yes\"</s>:"],
+  ["", '    <k>if</k> marketYN == <s>"yes"</s>:'],
   ["", "        <f>EnteredMarket</f>()"],
-  ["", "    <k>elif</k> marketYN == <s>\"no\"</s>:"],
-  ["", "        <f>print</f>(<s>\"oh, fine then be like that...\"</s>)"],
+  ["", '    <k>elif</k> marketYN == <s>"no"</s>:'],
+  ["", '        <f>print</f>(<s>"oh, fine then be like that..."</s>)'],
   ["", ""],
   ["", "<k>def</k> <f>Market</f>():"],
   ["", "    <k>while</k> macheteShop[<n>3</n>] <k>is</k> <k>True</k>:"],
   ["", "        <k>global</k> macheteCost"],
   ["", "        macheteCost = <n>10000000</n>"],
   ["", "        macheteShop.pop(<n>1</n>)"],
-  ["", "        macheteShop.insert(<n>1</n>, <s>\"$10000000\"</s>)"],
+  ["", '        macheteShop.insert(<n>1</n>, <s>"$10000000"</s>)'],
   ["", "        macheteShop[<n>2</n>] = macheteCost"],
   ["", ""],
   ["", "    <k>if</k> helmetShop[<n>3</n>] <k>is</k> <k>True</k>:"],
   ["", "        <k>global</k> helmetCost"],
   ["", "        helmetCost = <n>10000000</n>"],
   ["", "        helmetShop.pop(<n>1</n>)"],
-  ["", "        helmetShop.insert(<n>1</n>, <s>\"$10000000\"</s>)"],
+  ["", '        helmetShop.insert(<n>1</n>, <s>"$10000000"</s>)'],
   ["", ""],
   ["c", "    # ... 300 more lines of this"],
 ];
@@ -210,9 +210,7 @@ function paintProse(text: string): ReactNode {
 
 type Tab = "hunt" | "snip" | "full";
 type Pane = "intro" | "snip" | "full" | "res";
-type Result =
-  | { kind: "ok"; n: string; title: string; body: string }
-  | { kind: "no"; body: string };
+type Result = { kind: "ok"; n: string; title: string; body: string } | { kind: "no"; body: string };
 
 const TABS: { id: Tab; label: string }[] = [
   { id: "hunt", label: "shop.py" },
@@ -228,7 +226,12 @@ export function BugHunt() {
   const [result, setResult] = useState<Result | null>(null);
   const badTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => () => { if (badTimer.current) clearTimeout(badTimer.current); }, []);
+  useEffect(
+    () => () => {
+      if (badTimer.current) clearTimeout(badTimer.current);
+    },
+    [],
+  );
 
   const rows = tab === "hunt" ? HUNT : tab === "snip" ? SNIP : FULL;
   const live = tab === "hunt";
@@ -274,14 +277,13 @@ export function BugHunt() {
       <div className="relative min-w-0 lg:h-[30rem]">
         <Pane on={pane === "intro"}>
           <p className="bug-p">
-            My first real project was a tiny text RPG I made in Python! I made it
-            to showcase what I had learned in my first semester of Highschool
-            computer science. Man, looking back at this code is so crazy, it helps
-            me appreciate how far I&apos;ve come in this field!
+            My first real project was a tiny text RPG I made in Python! I made it to showcase what I
+            had learned in my first semester of Highschool computer science. Man, looking back at
+            this code is so crazy, it helps me appreciate how far I&apos;ve come in this field!
           </p>
           <p className="bug-p font-semibold text-foreground">
-            There are four bugs in the shop code on the right. I shipped every one
-            of them and never noticed. Click any line you think is broken.
+            There are four bugs in the shop code on the right. I shipped every one of them and never
+            noticed. Click any line you think is broken.
           </p>
         </Pane>
 
@@ -289,18 +291,16 @@ export function BugHunt() {
           <p className="bug-p">The two snippets below are the ones that make me laugh most:</p>
           <ol className="list-decimal space-y-4 pl-5">
             <li className="bug-p !mb-0">
-              Because at the time I did not know how to make an item go &quot;out
-              of stock&quot; flag or use dictionary lookup, I simply hyperinflated
-              the price as a form of state management! Definitely not the cleanest
-              architecture, but as the forbidden rules of CS say: if it works,
-              don&apos;t you touch it again!
+              Because at the time I did not know how to make an item go &quot;out of stock&quot;
+              flag or use dictionary lookup, I simply hyperinflated the price as a form of state
+              management! Definitely not the cleanest architecture, but as the forbidden rules of CS
+              say: if it works, don&apos;t you touch it again!
             </li>
             <li className="bug-p !mb-0">
-              The second snippet brings back fun memories! I debated for hours with
-              my best friend on what to name the items – and forgot to balance the
-              item stats. But hey, I added a fire weapon – impossible to buy –
-              named The Sir. Jaffe, and figured out fun remixed names to my in-game
-              items inspired by real cereal brands; remind me of just how fun
+              The second snippet brings back fun memories! I debated for hours with my best friend
+              on what to name the items – and forgot to balance the item stats. But hey, I added a
+              fire weapon – impossible to buy – named The Sir. Jaffe, and figured out fun remixed
+              names to my in-game items inspired by real cereal brands; remind me of just how fun
               software can be!
             </li>
           </ol>
@@ -308,9 +308,8 @@ export function BugHunt() {
 
         <Pane on={pane === "full"}>
           <p className="bug-p">
-            The whole thing, unedited. Roughly 400 lines of high-school me — global
-            state, copy-pasted branches, and a shop that recursively calls itself
-            instead of looping.
+            The whole thing, unedited. Roughly 400 lines of high-school me — global state,
+            copy-pasted branches, and a shop that recursively calls itself instead of looping.
           </p>
           <p className="bug-p">
             I have not touched it. It runs exactly as badly as it did in 2022.
