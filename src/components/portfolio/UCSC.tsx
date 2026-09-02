@@ -16,6 +16,7 @@ type Slide = {
   alt: string;
   caption: string;
   body: React.ReactNode;
+  prompt?: string;
 };
 
 const slides: Slide[] = [
@@ -23,12 +24,8 @@ const slides: Slide[] = [
     image: cohortAsset.url,
     alt: "Christopher Zarraga Jimenez with his Sabatte Family scholarship cohort",
     caption: "Sabatte Family Scholars, first cohort.",
-    body: (
-      <>
-        I came to UC Santa Cruz in the first cohort of Sabatte Family full-ride scholars — the first full ride in the university's history. It changed what I could afford to be curious about. I am so grateful; I got to declare Computer Science with an Applied Math minor because I wanted both halves: the systems themselves, and the math that explains why they behave the way they do.{" "}
-        <strong className="text-foreground">There's more — click through the photos!</strong>
-      </>
-    ),
+    body: "I came to UC Santa Cruz in the first cohort of Sabatte Family full-ride scholars — the first full ride in the university's history. It changed what I could afford to be curious about. I am so grateful; I got to declare Computer Science with an Applied Math minor because I wanted both halves: the systems themselves, and the math that explains why they behave the way they do.",
+    prompt: "There's more — click through the photos!",
   },
   {
     image: ycExpoAsset.url,
@@ -90,7 +87,7 @@ export function UCSC() {
   return (
     <section
       id="ucsc"
-      className="portfolio-section snap-start scroll-mt-28 border-y border-border bg-ink-soft/40 px-5 py-14 sm:px-8 lg:py-20"
+      className="portfolio-section snap-start scroll-mt-[120px] border-y border-border bg-ink-soft/40 px-5 py-14 sm:px-8 lg:py-20"
     >
       <div>
         <Reveal>
@@ -134,7 +131,7 @@ export function UCSC() {
               style={{ "--pane-h": mediaHeight ? `${mediaHeight}px` : "auto" } as React.CSSProperties}
             >
               {slides.map((slide, i) => (
-                <p
+                <div
                   key={i}
                   aria-hidden={i !== index}
                   className={cn(
@@ -145,8 +142,13 @@ export function UCSC() {
                       : "pointer-events-none opacity-0 max-lg:absolute max-lg:inset-x-0 max-lg:top-0",
                   )}
                 >
-                  {slide.body}
-                </p>
+                  <p>{slide.body}</p>
+                  {slide.prompt ? (
+                    <p className="mt-4 font-mono text-[10px] font-normal uppercase leading-relaxed tracking-[0.16em] text-muted-foreground">
+                      {slide.prompt}
+                    </p>
+                  ) : null}
+                </div>
               ))}
             </div>
           </Reveal>

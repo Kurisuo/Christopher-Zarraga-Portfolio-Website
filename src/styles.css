@@ -43,6 +43,7 @@
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
   --color-ghost: var(--ghost);
+  --color-nav-pill: var(--nav-pill);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -179,6 +180,7 @@
   --muted: oklch(0.235 0.005 60);
   --muted-foreground: oklch(0.66 0.008 60);
   --ghost: oklch(0.235 0.006 60);
+  --nav-pill: oklch(0.165 0.0148 297.85);
 
   --surface: oklch(0.985 0 0);
   --surface-foreground: oklch(0.155 0.004 60);

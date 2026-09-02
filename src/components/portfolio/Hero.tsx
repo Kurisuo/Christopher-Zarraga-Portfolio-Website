@@ -45,7 +45,7 @@ export function Hero() {
   const slide = gallery[index]!;
 
   return (
-    <header id="top" className="portfolio-section scroll-mt-36 pb-8 pt-28 lg:pb-10 lg:pt-32">
+    <header id="top" className="portfolio-section scroll-mt-[120px] pb-8 pt-28 lg:pb-10 lg:pt-32">
       <Reveal className="mb-12 lg:hidden"><ProfileCard /></Reveal>
 
       <Reveal delay={80}>
@@ -71,7 +71,7 @@ export function Hero() {
       <Reveal delay={120}>
         <div className="mt-6 flex flex-col items-center">
           <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 text-center text-[15px] leading-relaxed" style={{ color: "#B4B4BC" }}>
-            <span>Off the keyboard I play chess (1900 bullet), trade actively, swim, do calisthenics, and shoot 19 - 55mm.</span>
+            <span>Off the keyboard I play chess (1900 bullet), trade actively, swim, do calisthenics, and shoot 18–55mm.</span>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
