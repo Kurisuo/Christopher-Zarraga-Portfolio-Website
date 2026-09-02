@@ -18,7 +18,7 @@ const BUG: Record<string, { t: string; b: string }> = {
     b: "<code>.lower()</code> returns a lowercased copy and throws it away — strings are immutable in Python. Every input check in the file is silently case-sensitive. Type <code>Boots</code> and the shop pretends it never heard of them.",
   },
   "4": {
-    t: "The homeless else",
+    t: "The lonely else",
     b: "This <code>else</code> is dedented one level too far, so it attaches to the whole gear chain instead of the boots check. Type anything unrecognized and you get free boots — charged, of course. Type <code>boots</code> correctly and nothing happens at all.",
   },
 };
