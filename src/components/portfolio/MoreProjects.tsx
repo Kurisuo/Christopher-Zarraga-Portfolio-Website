@@ -16,8 +16,8 @@ const projects = [
     name: "Tech4Good Lab",
     blurb: "A full-stack learning curriculum app built for social impact.",
     description:
-      "I own the data and event layer across four goal-tracking components in Causeway, which means I'm the one making sure state stays consistent when a user's actions have to reach the database. I architected the bulk write pipeline that queues and reorders multi-record transactions rather than firing them individually. It's the least low-level thing I work on and it taught me the most about designing an interface other people build against.",
-    metric: "50% of data/event milestone components",
+      "I helped build and complete four goal-tracking components for Compass, the lab's goal-setting and reflection app — owning the data and event layer, which meant keeping state consistent from a user's action all the way through NgRx Signal Store to Firestore. The lab is also studying how to use AI agents properly in development rather than just faster: we work inside Google Antigravity with a shared set of in-house agent skills, where the Angular feature pipeline splits every stage into a plan skill and an implement skill, and the implement stage refuses to run until a plan is finalized. Watching a codebase enforce that separation changed how I think about my own workflow.",
+    metric: "Four goal-tracking components · NgRx Signal Store to Firestore",
   },
   {
     tag: "C++17 / PyTorch",
