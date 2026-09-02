@@ -19,6 +19,15 @@ export default defineConfig({
       failOnError: true,
     },
   },
+  nitro: {
+    // Make Nitro emit the server entry with the filename TanStack Start's
+    // prerender preview server expects (server.js, derived from the input name).
+    rollupConfig: {
+      output: {
+        entryFileNames: "server.js",
+      },
+    },
+  },
   vite: {
     base: process.env['VITE_BASE_PATH'] || "/",
     resolve: {
