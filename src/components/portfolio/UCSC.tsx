@@ -1,6 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
-import cohortPhoto from "@/assets/sabatte-cohort.jpg";
+import cohortAsset from "@/assets/sabatte-cohort.jpg.asset.json";
 import { Reveal } from "./Reveal";
+
+const cohortPhoto = cohortAsset.url;
 
 const ARTICLE_URL =
   "https://lookout.co/uc-santa-cruz-students-talk-about-impact-of-full-ride-scholarships-from-historic-alumnus-gift/story";
