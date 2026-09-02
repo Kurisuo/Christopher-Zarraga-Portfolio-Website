@@ -39,7 +39,7 @@ const slides: Slide[] = [
     image: berkeleyAsset.url,
     alt: "Christopher Zarraga Jimenez with fellow scholars at the UC Berkeley Regents' and Chancellor's Scholars Inter-UC Conference",
     caption: "UC Berkeley Regents Conference.",
-    body: "The Sabatte Family scholarship didn't just cover tuition — it also got me invited to the 2026 Regents' and Chancellor's Scholars Inter-UC Conference at UC Berkeley! It was my first time traveling to represent my university, alongside my fellow Slugs and scholars from across the UC system. I spent my time meeting and networking with people on completely different paths and hearing why they chose them. Networking was one of the most useful skills I got to develop there. In the end, we got to celebrate the close of the conference by going out on a cruise from Berkeley to the Golden Gate Bridge!",
+    body: "The Sabatte Family scholarship didn't just cover tuition — it also got me invited to the 2026 Regents' and Chancellor's Scholars Inter-UC Conference at UC Berkeley! It was my first time traveling to represent my university, alongside my fellow Slugs and scholars from across the UC system. I spent my time meeting and networking with people on completely different paths and hearing why they chose them. Networking was one of the most useful skills I got to develop there. In the end, we got to celebrate by going out on a cruise from Berkeley to the Golden Gate Bridge!",
   },
   {
     image: shpePhoto,
