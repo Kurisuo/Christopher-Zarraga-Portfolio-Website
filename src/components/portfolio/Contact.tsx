@@ -34,7 +34,7 @@ export function Contact() {
           <div className="mt-7 flex flex-wrap gap-3">
             <a
               href="mailto:christopherzarraga31@gmail.com"
-              className="rounded-full bg-flame px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-flame-foreground transition-colors hover:bg-volt hover:text-volt-foreground"
+              className="rounded-full border border-border bg-foreground px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-background transition-colors duration-200 hover:bg-muted-foreground"
             >
               christopherzarraga31@gmail.com
             </a>
@@ -44,7 +44,7 @@ export function Contact() {
               aria-expanded={showResume}
               aria-controls="inline-resume"
               variant="outline"
-              className="h-auto rounded-full border-border bg-transparent px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground shadow-none hover:border-flame hover:bg-transparent hover:text-flame"
+              className="h-auto rounded-full border-border bg-transparent px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground shadow-none transition-colors duration-200 hover:border-foreground hover:bg-foreground/10 hover:text-foreground"
             >
               {showResume ? "Hide resume" : "View resume"}
             </Button>
@@ -52,7 +52,7 @@ export function Contact() {
               href="https://github.com/Kurisuo"
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors hover:border-flame hover:text-flame"
+              className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors duration-200 hover:border-foreground hover:text-foreground"
             >
               GitHub
             </a>
@@ -60,7 +60,7 @@ export function Contact() {
               href="https://www.linkedin.com/in/christopher-zarraga/"
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors hover:border-flame hover:text-flame"
+              className="rounded-full border border-border px-6 py-3 font-mono text-xs uppercase tracking-[0.15em] text-foreground transition-colors duration-200 hover:border-foreground hover:text-foreground"
             >
               LinkedIn
             </a>
