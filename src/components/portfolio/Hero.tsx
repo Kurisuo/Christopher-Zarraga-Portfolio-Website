@@ -86,27 +86,27 @@ export function Hero() {
           <div
             className="flex w-full flex-col rounded-lg border p-4"
             style={{
-              background: "linear-gradient(180deg, #2D1B4E 0%, #160E28 100%)",
-              borderColor: "rgba(139,92,246,0.3)",
+              background: "linear-gradient(180deg, #16141A 0%, #0E0D11 100%)",
+              borderColor: "rgba(255,255,255,0.08)",
             }}
           >
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em]" style={{ color: "#A78BFA" }}>Selected work</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em]" style={{ color: "#A1A1AA" }}>Selected work</p>
             <ul className="mt-2 space-y-1">
               {projects.map((project) => {
                 const isActive = active === project.id;
                 return (
                   <li key={project.id}>
                     <button type="button" onMouseEnter={() => setActive(project.id)} onMouseLeave={() => setActive(null)} onFocus={() => setActive(project.id)} onBlur={() => setActive(null)} onClick={() => setActive(isActive ? null : project.id)} aria-expanded={isActive} className="w-full rounded-md px-1.5 py-1 text-left transition-colors duration-200 ease-out hover:bg-white/5">
-                      <span className="block font-display text-base font-semibold leading-snug" style={{ color: "#F4F4F5" }}>{project.name}{project.wip && <span className="ml-2 font-mono text-[9px] uppercase tracking-[0.18em]" style={{ color: "rgba(196,181,253,0.7)" }}>in progress</span>}</span>
-                      <span className="block text-[0.85em] font-normal leading-snug" style={{ color: "#C4B5FD" }}>{project.descriptor}</span>
-                      <span className={`grid transition-all duration-200 ease-out ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}><span className="overflow-hidden"><span className="mt-1 block font-mono text-[11px] leading-snug" style={{ color: "#F4F4F5" }}>{project.metric}</span></span></span>
+                      <span className="block font-display text-base font-semibold leading-snug" style={{ color: "#E4E4E7" }}>{project.name}{project.wip && <span className="ml-2 font-mono text-[9px] uppercase tracking-[0.18em]" style={{ color: "rgba(161,161,170,0.7)" }}>in progress</span>}</span>
+                      <span className="block text-[0.85em] font-normal leading-snug" style={{ color: "#A1A1AA" }}>{project.descriptor}</span>
+                      <span className={`grid transition-all duration-200 ease-out ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}><span className="overflow-hidden"><span className="mt-1 block font-mono text-[11px] leading-snug" style={{ color: "#E4E4E7" }}>{project.metric}</span></span></span>
                     </button>
                   </li>
                 );
               })}
             </ul>
-            <div className="mt-5 border-t pt-4" style={{ borderColor: "rgba(139,92,246,0.2)" }}>
-              <p className="text-center font-mono text-[10px] uppercase tracking-[0.2em]" style={{ color: "rgba(167,139,250,0.7)" }}>
+            <div className="mt-5 border-t pt-4" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
+              <p className="text-center font-mono text-[10px] uppercase tracking-[0.2em]" style={{ color: "rgba(161,161,170,0.7)" }}>
                 {TECH_LABELS.join(" · ")}
               </p>
             </div>
