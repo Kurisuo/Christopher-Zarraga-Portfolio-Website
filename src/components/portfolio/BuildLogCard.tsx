@@ -27,11 +27,11 @@ export function BuildLogCard({ name, tag, blurb, description, metric, href, open
         <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{tag}</span>
         <h3 className="mt-3 font-display text-2xl font-bold leading-tight tracking-tight transition-colors duration-200 group-hover:text-foreground">{name}</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{blurb}</p>
+        <p className="mt-3 font-mono text-xs leading-relaxed text-code-key">{metric}</p>
       </button>
       <div className={cn("grid transition-[grid-template-rows,opacity] duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)]", open ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0")}>
         <div className="min-h-0 overflow-hidden">
           <p className="text-[14.5px] leading-[1.65] text-[#B4B4BC]">{description}</p>
-          <p className="mt-3 font-mono text-[12.5px] leading-relaxed text-code-key">{metric}</p>
           {href ? (
             <a
               href={href}

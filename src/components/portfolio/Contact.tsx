@@ -9,7 +9,7 @@ export function Contact() {
   return (
     <footer
       id="contact"
-      className="portfolio-section snap-start scroll-mt-28 -mx-5 border-t border-border bg-ink-soft/40 px-5 py-14 sm:-mx-8 sm:px-8 lg:py-20"
+      className="portfolio-section snap-start scroll-mt-[120px] -mx-5 border-t border-border bg-ink-soft/40 px-5 py-14 sm:-mx-8 sm:px-8 lg:py-20"
     >
       <div>
         <Reveal>
