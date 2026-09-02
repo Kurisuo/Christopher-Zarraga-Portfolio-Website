@@ -33,7 +33,7 @@ function Index() {
         {/* Pinned profile column — stays put while the right side scrolls */}
         <aside className="hidden lg:block">
           <div className="sticky top-0 flex h-screen items-center py-24">
-            <ProfileCard className="w-full" />
+            <ProfileCard />
           </div>
         </aside>
 

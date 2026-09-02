@@ -32,7 +32,6 @@
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
   --color-ghost: var(--ghost);
-  --color-nav: var(--nav);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -160,52 +159,38 @@
 
 /* ---------- Portfolio design system ---------- */
 :root {
-  --radius: 0.5rem;
+  --radius: 1.25rem;
 
-  /* #0A0A0C */
-  --background: oklch(0.11 0.005 290);
-  /* #E4E4E7 */
-  --foreground: oklch(0.912 0.004 286);
-  --ink: oklch(0.11 0.005 290);
-  /* #141119 flat surface */
-  --ink-soft: oklch(0.16 0.014 295);
-  --muted: oklch(0.2 0.02 295);
-  --muted-foreground: oklch(0.68 0.03 292);
-  --ghost: oklch(0.22 0.025 295);
-  /* #0F0D14 nav */
-  --nav: oklch(0.14 0.011 295);
+  --background: oklch(0.155 0.004 60);
+  --foreground: oklch(0.985 0 0);
+  --ink: oklch(0.155 0.004 60);
+  --ink-soft: oklch(0.205 0.005 60);
+  --muted: oklch(0.235 0.005 60);
+  --muted-foreground: oklch(0.66 0.008 60);
+  --ghost: oklch(0.235 0.006 60);
 
-  /* flat card surface */
-  --surface: oklch(0.16 0.014 295);
-  --surface-foreground: oklch(0.912 0.004 286);
+  --surface: oklch(0.985 0 0);
+  --surface-foreground: oklch(0.155 0.004 60);
 
-  --card: oklch(0.16 0.014 295);
-  --card-foreground: oklch(0.912 0.004 286);
-  --popover: oklch(0.16 0.014 295);
-  --popover-foreground: oklch(0.912 0.004 286);
+  --card: oklch(0.205 0.005 60);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0.005 60);
+  --popover-foreground: oklch(0.985 0 0);
 
-  /* accent #7C3AED */
-  --flame: oklch(0.541 0.245 293);
-  --flame-foreground: oklch(0.985 0 0);
-  /* muted purple #A78BFA */
-  --volt: oklch(0.75 0.13 293);
-  --volt-foreground: oklch(0.11 0.005 290);
+  --flame: oklch(0.66 0.19 38);
+  --flame-foreground: oklch(0.155 0.004 60);
+  --volt: oklch(0.9 0.23 128);
+  --volt-foreground: oklch(0.155 0.004 60);
 
-  --primary: oklch(0.541 0.245 293);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.2 0.02 295);
-  --secondary-foreground: oklch(0.912 0.004 286);
-  --accent: oklch(0.2 0.02 295);
-  --accent-foreground: oklch(0.912 0.004 286);
-  /* hairline rgba(255,255,255,0.08) */
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.541 0.245 293);
-}
-
-/* Flat surface, no gradient, no bloom. */
-@utility card-surface {
-  background-color: var(--surface);
+  --primary: oklch(0.66 0.19 38);
+  --primary-foreground: oklch(0.155 0.004 60);
+  --secondary: oklch(0.235 0.005 60);
+  --secondary-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.235 0.005 60);
+  --accent-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.66 0.19 38);
 }
 
 @layer base {
@@ -220,10 +205,10 @@
 
 @utility reveal {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(28px);
   transition:
-    opacity 400ms ease-out,
-    transform 400ms ease-out;
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @utility reveal-in {
@@ -231,14 +216,31 @@
   transform: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  html {
-    scroll-behavior: auto;
-  }
+/* Cursor glow trail */
+.glow-dot {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgb(168 85 247 / 0.55) 0%,
+    rgb(168 85 247 / 0.18) 45%,
+    transparent 70%
+  );
+  filter: blur(6px);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: glow-fade 1.5s ease-out forwards;
 }
 
+@keyframes glow-fade {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.55);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}

@@ -10,17 +10,17 @@ const items = [
 
 export function PillNav() {
   return (
-    <nav className="pointer-events-none fixed inset-x-0 top-5 z-50 flex justify-center px-4">
-      <ul className="pointer-events-auto flex items-center gap-1 rounded-full border border-border bg-nav px-2 py-2">
+    <nav className="fixed inset-x-0 top-5 z-50 flex justify-center px-4">
+      <ul className="flex items-center gap-1 rounded-full border border-border bg-ink-soft px-2 py-2 shadow-lg shadow-background/60">
         {items.map(({ href, label, Icon }) => (
           <li key={href}>
             <a
               href={href}
               aria-label={label}
               title={label}
-              className="flex size-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+              className="flex size-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-flame hover:text-flame-foreground"
             >
-              <Icon className="size-[18px]" />
+              <Icon className="size-[18px]" strokeWidth={1.75} />
             </a>
           </li>
         ))}
