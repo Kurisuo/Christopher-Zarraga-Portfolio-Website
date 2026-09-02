@@ -9,11 +9,11 @@ export function Contact() {
   return (
     <footer
       id="contact"
-      className="-mx-5 border-t border-border bg-ink-soft/40 px-5 py-14 sm:-mx-8 sm:px-8 lg:py-20"
+      className="portfolio-section snap-start scroll-mt-28 -mx-5 border-t border-border bg-ink-soft/40 px-5 py-14 sm:-mx-8 sm:px-8 lg:py-20"
     >
       <div>
         <Reveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
+          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-violet-muted">
             04 — Say hello
           </p>
           <h2 className="mt-4 font-display text-[clamp(2.25rem,7vw,5.5rem)] font-extrabold uppercase leading-[0.88] tracking-tight">
