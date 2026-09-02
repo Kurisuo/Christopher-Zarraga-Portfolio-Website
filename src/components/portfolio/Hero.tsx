@@ -55,7 +55,7 @@ export function Hero() {
         </dl>
       </div>
 
-      <div className="mt-10 grid items-stretch gap-4 sm:grid-cols-2 lg:mt-12">
+      <div className="mt-10 lg:mt-12">
         <Reveal delay={200} className="flex">
           <div
             className="flex w-full flex-col rounded-lg border p-4"
@@ -86,41 +86,6 @@ export function Hero() {
             </div>
           </div>
         </Reveal>
-
-        <Reveal delay={260} className="flex">
-          <div
-            className="flex w-full flex-col rounded-lg border p-4"
-            style={{
-              background: "linear-gradient(180deg, #16141A 0%, #0E0D11 100%)",
-              borderColor: "rgba(255,255,255,0.08)",
-            }}
-          >
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em]" style={{ color: "#A1A1AA" }}>Off the keyboard</p>
-            <ul className="mt-2 space-y-1">
-              {hobbies.map((hobby) => (
-                <li key={hobby.name} className="px-1.5 py-1">
-                  <span className="block font-display text-base font-semibold leading-snug" style={{ color: "#E4E4E7" }}>{hobby.name}</span>
-                  <span className="block text-[0.85em] font-normal leading-snug" style={{ color: "#A1A1AA" }}>{hobby.descriptor}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-5 flex items-center justify-between gap-2 border-t pt-4" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
-              <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "rgba(161,161,170,0.7)" }}>Photo gallery — {gallery.length} shots</p>
-              <button type="button" onClick={() => setGalleryOpen((value) => !value)} aria-expanded={galleryOpen} aria-label="Toggle hobby photo gallery" className="flex size-8 shrink-0 items-center justify-center rounded-full border transition-colors duration-200 hover:bg-white/5" style={{ borderColor: "rgba(255,255,255,0.2)", color: "#E4E4E7" }}>
-                <ChevronDown className={`size-4 transition-transform duration-200 ${galleryOpen ? "rotate-180" : ""}`} />
-              </button>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-
-      <div className={`grid transition-[grid-template-rows,opacity] duration-200 ease-out ${galleryOpen ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
-        <div className="overflow-hidden">
-          <div className="rounded-lg border p-4 sm:p-5" style={{ background: "linear-gradient(180deg, #16141A 0%, #0E0D11 100%)", borderColor: "rgba(255,255,255,0.08)" }}>
-            <div className="mb-3 flex items-center justify-between gap-3"><p className="font-mono text-[11px] uppercase tracking-[0.2em]" style={{ color: "#A1A1AA" }}>Off the keyboard — gallery</p><div className="flex shrink-0 gap-2"><button type="button" onClick={() => scrollBy(-1)} aria-label="Previous photos" className="flex size-8 items-center justify-center border transition-colors duration-200 hover:bg-white/5" style={{ borderColor: "rgba(255,255,255,0.2)", color: "#E4E4E7" }}><ChevronLeft className="size-4" /></button><button type="button" onClick={() => scrollBy(1)} aria-label="Next photos" className="flex size-8 items-center justify-center border transition-colors duration-200 hover:bg-white/5" style={{ borderColor: "rgba(255,255,255,0.2)", color: "#E4E4E7" }}><ChevronRight className="size-4" /></button></div></div>
-            <div ref={trackRef} className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-1">{gallery.map((image) => <img key={image.src} src={image.src} alt={image.alt} loading="lazy" width={1024} height={1024} className="aspect-square w-[70%] shrink-0 snap-start rounded-lg object-cover sm:w-[45%] lg:w-[30%]" />)}</div>
-          </div>
-        </div>
       </div>
     </header>
   );
