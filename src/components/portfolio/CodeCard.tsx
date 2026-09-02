@@ -33,7 +33,7 @@ export function CodeCard({
           </span>
         ) : null}
       </div>
-      <pre className="min-h-0 flex-1 overflow-auto p-5 font-mono text-[12px] leading-relaxed text-foreground/85 sm:p-6 sm:text-[13px]">
+      <pre className="terminal-scroll min-h-0 flex-1 overflow-auto p-5 font-mono text-[12px] leading-relaxed text-foreground/85 sm:p-6 sm:text-[13px]">
         <code>{children}</code>
       </pre>
     </div>
