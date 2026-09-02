@@ -385,19 +385,20 @@ export function BugHunt() {
             ) : null}
           </div>
 
-          <pre className="min-h-0 flex-1 overflow-auto py-3.5 font-mono text-[12.6px] leading-[1.72]">
+          <pre className="min-h-0 flex-1 overflow-auto py-3.5 font-mono text-[13.5px] leading-[1.8] text-code-fg">
             <code className="block">
               {rows.map(([id, text], i) => {
                 const clickable = live && id !== "";
                 const hit = id.startsWith("bug") && found.includes(id.slice(3));
                 const isBad = bad === id && !!id;
                 const body =
-                  id === "c" ? (
-                    <span className={TOKEN_CLASS["c"]}>{text}</span>
+                  text && isComment(text) ? (
+                    <span className={TOKEN_CLASS["c"]}>{text.replace(/<\/?[knscf]>/g, "")}</span>
                   ) : text ? (
                     paint(text)
                   ) : (
                     "\u00a0"
+
                   );
                 return (
                   <span
