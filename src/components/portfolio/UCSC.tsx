@@ -22,7 +22,12 @@ const slides: Slide[] = [
     image: cohortAsset.url,
     alt: "Christopher Zarraga Jimenez with his Sabatte Family scholarship cohort",
     caption: "Sabatte Family Scholars, first cohort.",
-    body: "I came to UC Santa Cruz in the first cohort of Sabatte Family full-ride scholars — the first full ride in the university's history. It changed what I could afford to be curious about. I am so grateful; I got to declare Computer Science with an Applied Math minor because I wanted both halves: the systems themselves, and the math that explains why they behave the way they do. There's more — click through the photos!",
+    body: (
+      <>
+        I came to UC Santa Cruz in the first cohort of Sabatte Family full-ride scholars — the first full ride in the university's history. It changed what I could afford to be curious about. I am so grateful; I got to declare Computer Science with an Applied Math minor because I wanted both halves: the systems themselves, and the math that explains why they behave the way they do.{" "}
+        <strong className="text-foreground">There's more — click through the photos!</strong>
+      </>
+    ),
   },
   {
     image: ycExpoAsset.url,
