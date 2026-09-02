@@ -7,11 +7,11 @@ export function Contact() {
   const [showResume, setShowResume] = useState(false);
 
   return (
-    <footer id="contact" className="scroll-mt-28 -mx-5 border-t border-primary/25 bg-ink-soft/40 px-5 py-14 sm:-mx-8 sm:px-8 lg:py-20">
+    <footer id="contact" className="scroll-mt-32 -mx-5 border-t border-border bg-ink-soft/40 px-5 py-14 sm:-mx-8 sm:px-8 lg:py-20">
       <div>
         <Reveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">04 — Say hello</p>
-          <h2 className="mt-4 font-display text-[clamp(2.25rem,7vw,5rem)] font-extrabold uppercase leading-[0.88] tracking-tight">Let&apos;s build<br />something</h2>
+          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-volt">04 — Say hello</p>
+          <h2 className="mt-4 font-display text-[clamp(1.6rem,4vw,2.8rem)] font-extrabold uppercase leading-[0.95] tracking-tight">Let&apos;s build<br />something</h2>
         </Reveal>
         <Reveal delay={80}>
           <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">Internships, side projects, or a question about anything above — my inbox is genuinely open.</p>
