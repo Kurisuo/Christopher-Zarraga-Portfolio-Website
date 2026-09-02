@@ -6,7 +6,7 @@ export function ProfileCard({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-lg border border-violet/40 bg-plum p-6 text-foreground",
+        "relative overflow-hidden rounded-lg bg-surface p-6 text-surface-foreground",
         className,
       )}
     >
@@ -20,7 +20,7 @@ export function ProfileCard({ className }: { className?: string }) {
       <h2 className="mt-7 text-center font-display text-2xl font-bold tracking-tight">
         Christopher Zarraga Jimenez
       </h2>
-      <p className="mt-4 text-center text-sm leading-relaxed text-foreground/60">
+      <p className="mt-4 text-center text-sm leading-relaxed text-surface-foreground/60">
         CS + Applied Math at UC Santa Cruz — Sabatte Family full-ride
         scholar, systems builder, 2000-Elo chess player.
       </p>
@@ -29,7 +29,7 @@ export function ProfileCard({ className }: { className?: string }) {
           href="https://github.com/Kurisuo"
           target="_blank"
           rel="noreferrer"
-          className="flex size-10 items-center justify-center rounded-full border border-violet/30 bg-foreground/5 text-violet-muted transition-colors duration-200 hover:bg-violet hover:text-violet-foreground"
+          className="flex size-10 items-center justify-center rounded-full border border-surface-foreground/20 text-surface-foreground/80 transition-colors duration-200 hover:bg-flame hover:text-flame-foreground"
           aria-label="GitHub"
         >
           <Github className="size-[18px]" />
@@ -38,14 +38,14 @@ export function ProfileCard({ className }: { className?: string }) {
           href="https://www.linkedin.com/in/christopher-zarraga/"
           target="_blank"
           rel="noreferrer"
-          className="flex size-10 items-center justify-center rounded-full border border-violet/30 bg-foreground/5 text-violet-muted transition-colors duration-200 hover:bg-violet hover:text-violet-foreground"
+          className="flex size-10 items-center justify-center rounded-full border border-surface-foreground/20 text-surface-foreground/80 transition-colors duration-200 hover:bg-flame hover:text-flame-foreground"
           aria-label="LinkedIn"
         >
           <Linkedin className="size-[18px]" />
         </a>
         <a
           href="mailto:christopherzarraga31@gmail.com"
-          className="flex size-10 items-center justify-center rounded-full border border-violet/30 bg-foreground/5 text-violet-muted transition-colors duration-200 hover:bg-violet hover:text-violet-foreground"
+          className="flex size-10 items-center justify-center rounded-full border border-surface-foreground/20 text-surface-foreground/80 transition-colors duration-200 hover:bg-flame hover:text-flame-foreground"
           aria-label="Email"
         >
           <Mail className="size-[18px]" />

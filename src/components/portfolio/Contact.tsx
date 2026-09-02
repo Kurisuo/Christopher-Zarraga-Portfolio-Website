@@ -13,7 +13,7 @@ export function Contact() {
     >
       <div>
         <Reveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-violet-muted">
+          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
             04 — Say hello
           </p>
           <h2 className="mt-4 font-display text-[clamp(2.25rem,7vw,5.5rem)] font-extrabold uppercase leading-[0.88] tracking-tight">

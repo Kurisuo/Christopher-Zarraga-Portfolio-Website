@@ -85,42 +85,42 @@ export function Hero() {
 
       <div className="mt-10 grid items-stretch gap-4 sm:grid-cols-2 lg:mt-12">
         <Reveal delay={200} className="flex">
-          <div className="flex w-full flex-col border border-violet/50 bg-violet p-4 text-violet-foreground">
+          <div className="flex w-full flex-col bg-flame p-4 text-flame-foreground">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em]">Selected work</p>
             <ul className="mt-2 space-y-1">
               {projects.map((project) => {
                 const isActive = active === project.id;
                 return (
                   <li key={project.id}>
-                    <button type="button" onMouseEnter={() => setActive(project.id)} onMouseLeave={() => setActive(null)} onFocus={() => setActive(project.id)} onBlur={() => setActive(null)} onClick={() => setActive(isActive ? null : project.id)} aria-expanded={isActive} className="w-full rounded-md px-1.5 py-1 text-left transition-colors duration-200 ease-out hover:bg-violet-foreground/10">
-                      <span className="block font-display text-base font-semibold leading-snug">{project.name}{project.wip && <span className="ml-2 font-mono text-[9px] uppercase tracking-[0.18em] text-violet-foreground/70">in progress</span>}</span>
-                      <span className="block text-[0.85em] font-normal leading-snug text-violet-foreground/75">{project.descriptor}</span>
-                      <span className={`grid transition-all duration-200 ease-out ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}><span className="overflow-hidden"><span className="mt-1 block font-mono text-[11px] leading-snug text-violet-foreground">{project.metric}</span></span></span>
+                    <button type="button" onMouseEnter={() => setActive(project.id)} onMouseLeave={() => setActive(null)} onFocus={() => setActive(project.id)} onBlur={() => setActive(null)} onClick={() => setActive(isActive ? null : project.id)} aria-expanded={isActive} className="w-full rounded-md px-1.5 py-1 text-left transition-colors duration-200 ease-out hover:bg-flame-foreground/10">
+                      <span className="block font-display text-base font-semibold leading-snug">{project.name}{project.wip && <span className="ml-2 font-mono text-[9px] uppercase tracking-[0.18em] text-flame-foreground/70">in progress</span>}</span>
+                      <span className="block text-[0.85em] font-normal leading-snug text-flame-foreground/75">{project.descriptor}</span>
+                      <span className={`grid transition-all duration-200 ease-out ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}><span className="overflow-hidden"><span className="mt-1 block font-mono text-[11px] leading-snug text-flame-foreground">{project.metric}</span></span></span>
                     </button>
                   </li>
                 );
               })}
             </ul>
-            <div className="mt-5 flex flex-col items-center gap-2 border-t border-violet-foreground/15 pt-4">
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-violet-foreground/70">Building with</p>
+            <div className="mt-5 flex flex-col items-center gap-2 border-t border-flame-foreground/15 pt-4">
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-flame-foreground/70">Building with</p>
               <div className="flex flex-wrap items-center justify-center gap-2">
-                {TECH.map((name) => <span key={name} title={name} className={`flex size-10 shrink-0 items-center justify-center rounded-full border border-violet-foreground/35 bg-violet-foreground/10 font-mono text-[10px] font-semibold text-violet-foreground transition-opacity duration-200 ${activeProject && !activeProject.tech.includes(name) ? "opacity-30" : "opacity-100"}`}>{name}</span>)}
+                {TECH.map((name) => <span key={name} title={name} className={`flex size-10 shrink-0 items-center justify-center rounded-full border border-flame-foreground/35 bg-flame-foreground/10 font-mono text-[10px] font-semibold text-flame-foreground transition-opacity duration-200 ${activeProject && !activeProject.tech.includes(name) ? "opacity-30" : "opacity-100"}`}>{name}</span>)}
               </div>
             </div>
           </div>
         </Reveal>
 
         <Reveal delay={260} className="flex">
-          <div className="flex w-full flex-col border border-violet/35 bg-plum p-4 text-foreground">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-violet-muted">Off the keyboard</p>
+          <div className="flex w-full flex-col bg-volt p-4 text-volt-foreground">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-volt-foreground/70">Off the keyboard</p>
             <ul className="mt-2 space-y-1">
-              {hobbies.map((hobby) => <li key={hobby.name} className="px-1.5 py-1"><span className="block font-display text-base font-semibold leading-snug">{hobby.name}</span><span className="block text-[0.85em] font-normal leading-snug text-muted-foreground">{hobby.descriptor}</span></li>)}
+              {hobbies.map((hobby) => <li key={hobby.name} className="px-1.5 py-1"><span className="block font-display text-base font-semibold leading-snug">{hobby.name}</span><span className="block text-[0.85em] font-normal leading-snug text-volt-foreground/75">{hobby.descriptor}</span></li>)}
             </ul>
-            <div className="mt-5 flex flex-col items-center gap-2 border-t border-violet/20 pt-4">
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-violet-muted">Photo gallery</p>
+            <div className="mt-5 flex flex-col items-center gap-2 border-t border-volt-foreground/15 pt-4">
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-volt-foreground/70">Photo gallery</p>
               <p className="text-center font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground/70">{gallery.length} shots — open below</p>
             </div>
-            <button type="button" onClick={() => setGalleryOpen((value) => !value)} aria-expanded={galleryOpen} aria-label="Toggle hobby photo gallery" className="mt-3 flex size-8 items-center justify-center self-end rounded-full border border-violet/40 transition-colors duration-200 hover:bg-violet/15">
+            <button type="button" onClick={() => setGalleryOpen((value) => !value)} aria-expanded={galleryOpen} aria-label="Toggle hobby photo gallery" className="mt-3 flex size-8 items-center justify-center self-end rounded-full border border-volt-foreground/35 transition-colors duration-200 hover:bg-volt-foreground/10">
               <ChevronDown className={`size-4 transition-transform duration-200 ${galleryOpen ? "rotate-180" : ""}`} />
             </button>
           </div>
@@ -129,8 +129,8 @@ export function Hero() {
 
       <div className={`grid transition-[grid-template-rows,opacity] duration-200 ease-out ${galleryOpen ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
         <div className="overflow-hidden">
-          <div className="border border-violet/30 bg-plum p-4 sm:p-5">
-            <div className="mb-3 flex items-center justify-between gap-3"><p className="font-mono text-[11px] uppercase tracking-[0.2em] text-violet-muted">Off the keyboard — gallery</p><div className="flex shrink-0 gap-2"><button type="button" onClick={() => scrollBy(-1)} aria-label="Previous photos" className="flex size-8 items-center justify-center border border-violet/40 transition-colors duration-200 hover:bg-violet/15"><ChevronLeft className="size-4" /></button><button type="button" onClick={() => scrollBy(1)} aria-label="Next photos" className="flex size-8 items-center justify-center border border-violet/40 transition-colors duration-200 hover:bg-violet/15"><ChevronRight className="size-4" /></button></div></div>
+          <div className="bg-ink-soft p-4 sm:p-5">
+            <div className="mb-3 flex items-center justify-between gap-3"><p className="font-mono text-[11px] uppercase tracking-[0.2em] text-volt-foreground/70">Off the keyboard — gallery</p><div className="flex shrink-0 gap-2"><button type="button" onClick={() => scrollBy(-1)} aria-label="Previous photos" className="flex size-8 items-center justify-center border border-volt-foreground/35 transition-colors duration-200 hover:bg-volt-foreground/10"><ChevronLeft className="size-4" /></button><button type="button" onClick={() => scrollBy(1)} aria-label="Next photos" className="flex size-8 items-center justify-center border border-volt-foreground/35 transition-colors duration-200 hover:bg-volt-foreground/10"><ChevronRight className="size-4" /></button></div></div>
             <div ref={trackRef} className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-1">{gallery.map((image) => <img key={image.src} src={image.src} alt={image.alt} loading="lazy" width={1024} height={1024} className="aspect-square w-[70%] shrink-0 snap-start object-cover sm:w-[45%] lg:w-[30%]" />)}</div>
           </div>
         </div>

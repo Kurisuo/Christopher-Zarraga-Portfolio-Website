@@ -92,7 +92,7 @@ export function MoreProjects() {
   return (
     <section id="work" className="portfolio-section snap-start py-14 lg:py-20">
       <Reveal>
-        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-violet-muted">03 — Everything else</p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">03 — Everything else</p>
         <h2 className="mt-4 font-display text-[clamp(2rem,6vw,4.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight">
           The rest of
           <br />
@@ -123,7 +123,7 @@ export function MoreProjects() {
 
       <Reveal delay={120}>
         <div className="mt-8 grid gap-6 border border-border bg-ink-soft p-7 sm:p-10 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-12">
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-violet-muted">Right now</p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">Right now</p>
           <p className="max-w-4xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
             I&apos;m going deeper on autonomous-driving RL at the AIEA Lab and shipping Causeway with the Tech4Good Lab — while digging further into the GPU-adjacent systems work NVPilot opened up for me. Alongside that I&apos;m looking for an internship where I can ship something real and be the least experienced person in the room for a while.
           </p>
