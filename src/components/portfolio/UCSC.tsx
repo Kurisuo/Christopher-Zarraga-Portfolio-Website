@@ -10,7 +10,7 @@ export function UCSC() {
     <section id="ucsc" className="portfolio-section snap-start scroll-mt-28 border-y border-border bg-ink-soft/40 px-5 py-14 sm:px-8 lg:py-20">
       <div>
         <Reveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-violet-muted">02 — Santa Cruz</p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">02 — Santa Cruz</p>
           <h2 className="mt-4 font-display text-[clamp(2rem,6vw,4.5rem)] font-extrabold uppercase leading-[0.9] tracking-tight">
             A full ride
             <br />
