@@ -5,6 +5,7 @@ import ycExpoAsset from "@/assets/slide-yc-expo.jpg.asset.json";
 import berkeleyAsset from "@/assets/slide-berkeley-regents.jpg.asset.json";
 import shpeAsset from "@/assets/slide-shpe-2026.webp.asset.json";
 import { Reveal } from "./Reveal";
+import { Lightbox } from "./Lightbox";
 import { cn } from "@/lib/utils";
 
 const ARTICLE_URL =
@@ -52,9 +53,16 @@ const slides: Slide[] = [
 export function UCSC() {
   const [index, setIndex] = useState(0);
   const [dir, setDir] = useState(1);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const mediaRef = useRef<HTMLDivElement>(null);
+  const imageButtonRef = useRef<HTMLButtonElement>(null);
   const [mediaHeight, setMediaHeight] = useState<number>();
   const touchStart = useRef<number | null>(null);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxOpen(false);
+    imageButtonRef.current?.focus();
+  }, []);
 
   const go = useCallback((next: number, direction: number) => {
     setDir(direction);
@@ -149,22 +157,40 @@ export function UCSC() {
                 ref={mediaRef}
                 className="carousel-media relative aspect-[16/10] w-full overflow-hidden rounded-[8px] bg-ink"
               >
-                {slides.map((slide, i) => (
-                  <img
-                    key={i}
-                    src={slide.image}
-                    alt={slide.alt}
-                    width={1600}
-                    height={1000}
-                    loading={i === 0 ? undefined : "lazy"}
-                    aria-hidden={i !== index}
-                    className="absolute inset-0 h-full w-full object-cover transition-[transform,opacity] duration-300 ease-out"
-                    style={{
-                      transform: i === index ? "translateX(0)" : `translateX(${dir > 0 ? (i > index ? 100 : -100) : i < index ? -100 : 100}%)`,
-                      opacity: i === index ? 1 : 0,
-                    }}
-                  />
-                ))}
+                {slides.map((slide, i) => {
+                  const active = i === index;
+                  const img = (
+                    <img
+                      src={slide.image}
+                      alt={slide.alt}
+                      width={1600}
+                      height={1000}
+                      loading={i === 0 ? undefined : "lazy"}
+                      aria-hidden={!active}
+                      className="absolute inset-0 h-full w-full object-cover transition-[transform,opacity] duration-300 ease-out"
+                      style={{
+                        transform: active ? "translateX(0)" : `translateX(${dir > 0 ? (i > index ? 100 : -100) : i < index ? -100 : 100}%)`,
+                        opacity: active ? 1 : 0,
+                      }}
+                    />
+                  );
+                  return active ? (
+                    <button
+                      key={i}
+                      ref={imageButtonRef}
+                      type="button"
+                      aria-label={`Open photo: ${slide.caption}`}
+                      onClick={() => setLightboxOpen(true)}
+                      className="absolute inset-0 cursor-zoom-in rounded-[8px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                    >
+                      {img}
+                    </button>
+                  ) : (
+                    <div key={i} aria-hidden className="pointer-events-none absolute inset-0">
+                      {img}
+                    </div>
+                  );
+                })}
 
                 <button
                   type="button"
@@ -217,6 +243,10 @@ export function UCSC() {
           </Reveal>
         </div>
       </div>
+
+      {lightboxOpen && (
+        <Lightbox slides={slides} index={index} onNavigate={go} onClose={closeLightbox} />
+      )}
     </section>
   );
 }
