@@ -1,0 +1,65 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build
+        run: bunx vite build --config vite.config.gh.ts
+        env:
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
+
+      # Lovable asset pointers resolve to /__l5e/... URLs in the prerendered
+      # output. GitHub Pages cannot reach the Lovable preview server, so we
+      # mirror those assets into the static artifact.
+      - name: Mirror Lovable assets
+        run: |
+          set -e
+          PREVIEW_URL="https://id-preview--fd986499-66f3-45cf-bf86-4a0416ab12c0.lovable.app"
+          grep -raoE '/__l5e/assets-v1/[a-f0-9-]+/[^"`,<> ]+' dist/client | sed 's|^[^:]*:||' | sort -u | while read -r path; do
+            out="dist/client$path"
+            mkdir -p "$(dirname "$out")"
+            curl -fsS -o "$out" "$PREVIEW_URL$path"
+            echo "mirrored $path"
+          done
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist/client
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
