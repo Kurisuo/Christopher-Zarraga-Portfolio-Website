@@ -161,37 +161,63 @@
 :root {
   --radius: 1.25rem;
 
-  --background: oklch(0.155 0.004 60);
-  --foreground: oklch(0.985 0 0);
-  --ink: oklch(0.155 0.004 60);
-  --ink-soft: oklch(0.205 0.005 60);
-  --muted: oklch(0.235 0.005 60);
-  --muted-foreground: oklch(0.66 0.008 60);
-  --ghost: oklch(0.235 0.006 60);
+  /* #0A0A0C */
+  --background: oklch(0.11 0.005 290);
+  /* #E4E4E7 */
+  --foreground: oklch(0.912 0.004 286);
+  --ink: oklch(0.11 0.005 290);
+  /* #0F0D14 -> #1A1523 range */
+  --ink-soft: oklch(0.175 0.019 295);
+  --muted: oklch(0.2 0.02 295);
+  --muted-foreground: oklch(0.68 0.03 292);
+  --ghost: oklch(0.22 0.025 295);
 
-  --surface: oklch(0.985 0 0);
-  --surface-foreground: oklch(0.155 0.004 60);
+  /* dark card surface (was pure white) */
+  --surface: oklch(0.185 0.021 295);
+  --surface-foreground: oklch(0.912 0.004 286);
 
-  --card: oklch(0.205 0.005 60);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0.005 60);
-  --popover-foreground: oklch(0.985 0 0);
+  --card: oklch(0.175 0.019 295);
+  --card-foreground: oklch(0.912 0.004 286);
+  --popover: oklch(0.175 0.019 295);
+  --popover-foreground: oklch(0.912 0.004 286);
 
-  --flame: oklch(0.66 0.19 38);
-  --flame-foreground: oklch(0.155 0.004 60);
-  --volt: oklch(0.9 0.23 128);
-  --volt-foreground: oklch(0.155 0.004 60);
+  /* accent #7C3AED */
+  --flame: oklch(0.541 0.245 293);
+  --flame-foreground: oklch(0.985 0 0);
+  /* muted purple #A78BFA */
+  --volt: oklch(0.75 0.13 293);
+  --volt-foreground: oklch(0.11 0.005 290);
 
-  --primary: oklch(0.66 0.19 38);
-  --primary-foreground: oklch(0.155 0.004 60);
-  --secondary: oklch(0.235 0.005 60);
-  --secondary-foreground: oklch(0.985 0 0);
-  --accent: oklch(0.235 0.005 60);
-  --accent-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.66 0.19 38);
+  --primary: oklch(0.541 0.245 293);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.2 0.02 295);
+  --secondary-foreground: oklch(0.912 0.004 286);
+  --accent: oklch(0.2 0.02 295);
+  --accent-foreground: oklch(0.912 0.004 286);
+  --border: oklch(0.541 0.245 293 / 25%);
+  --input: oklch(0.541 0.245 293 / 30%);
+  --ring: oklch(0.541 0.245 293);
 }
+
+@utility card-surface {
+  background-image: linear-gradient(
+    160deg,
+    oklch(0.195 0.024 295) 0%,
+    oklch(0.145 0.014 295) 100%
+  );
+}
+
+@utility card-lift {
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+  &:hover {
+    border-color: oklch(0.541 0.245 293 / 50%);
+    transform: translateY(-2px);
+  }
+}
+
 
 @layer base {
   html {
