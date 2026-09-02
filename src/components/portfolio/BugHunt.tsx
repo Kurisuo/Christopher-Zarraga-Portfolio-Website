@@ -166,8 +166,9 @@ function paint(text: string): ReactNode {
   let cls: string | null = null;
   parts.forEach((part, i) => {
     const open = /^<([knscf])>$/.exec(part);
-    if (open) {
-      cls = TOKEN_CLASS[open[1]] ?? null;
+    const token = open?.[1];
+    if (token) {
+      cls = TOKEN_CLASS[token] ?? null;
       return;
     }
     if (/^<\/[knscf]>$/.test(part)) {
