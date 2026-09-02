@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { PillNav } from "@/components/portfolio/PillNav";
 import { ProfileCard } from "@/components/portfolio/ProfileCard";
@@ -27,20 +26,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const heroSentinel = useRef<HTMLDivElement>(null);
-  const [collapsed, setCollapsed] = useState(false);
-
-  useEffect(() => {
-    const el = heroSentinel.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => setCollapsed(!entry?.isIntersecting),
-      { rootMargin: "-120px 0px 0px 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
   return (
     <main className="min-h-screen bg-background text-foreground">
       <PillNav />
@@ -48,14 +33,13 @@ function Index() {
         {/* Pinned profile column — stays put while the right side scrolls */}
         <aside className="hidden lg:block">
           <div className="sticky top-0 flex h-screen items-center py-24">
-            <ProfileCard className="w-full" collapsed={collapsed} />
+            <ProfileCard className="w-full" />
           </div>
         </aside>
 
         {/* Scrollable content column */}
         <div className="min-w-0">
           <Hero />
-          <div ref={heroSentinel} aria-hidden="true" className="h-px w-full" />
           <FirstProject />
           <UCSC />
           <MoreProjects />

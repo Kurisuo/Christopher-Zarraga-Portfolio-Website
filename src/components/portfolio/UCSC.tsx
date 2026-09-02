@@ -6,11 +6,11 @@ const ARTICLE_URL =
 
 export function UCSC() {
   return (
-    <section id="ucsc" className="scroll-mt-28 -mx-5 border-y border-primary/25 bg-ink-soft/40 px-5 py-14 sm:-mx-8 sm:px-8 lg:py-20">
+    <section id="ucsc" className="scroll-mt-32 -mx-5 border-y border-border bg-ink-soft/40 px-5 py-14 sm:-mx-8 sm:px-8 lg:py-20">
       <div>
         <Reveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">02 — Santa Cruz</p>
-          <h2 className="mt-4 max-w-3xl font-display text-[clamp(2rem,6vw,4rem)] font-extrabold uppercase leading-[0.9] tracking-tight">
+          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-volt">02 — Santa Cruz</p>
+          <h2 className="mt-4 max-w-3xl font-display text-[clamp(1.5rem,3.6vw,2.4rem)] font-extrabold uppercase leading-[0.95] tracking-tight">
             First full ride<br />in school history
           </h2>
         </Reveal>
@@ -23,7 +23,7 @@ export function UCSC() {
           </Reveal>
 
           <Reveal delay={120}>
-            <article className="card-surface card-lift rounded-3xl border border-primary/25 p-6 sm:p-7">
+            <article className="card-surface rounded-lg border border-border p-6 sm:p-7">
               <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-volt">Lookout Santa Cruz</p>
               <h3 className="mt-4 font-display text-2xl font-bold leading-tight sm:text-3xl">
                 UC Santa Cruz students talk about the impact of full-ride scholarships from a historic alumnus gift

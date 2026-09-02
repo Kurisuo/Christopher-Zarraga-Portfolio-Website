@@ -15,7 +15,7 @@ export function CodeCard({
   return (
     <div
       className={cn(
-        "flex min-w-0 flex-col overflow-hidden rounded-3xl border border-border bg-ink-soft",
+        "flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-ink-soft",
         className,
       )}
     >

@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { ProfileCard } from "./ProfileCard";
+import { CodeCard } from "./CodeCard";
 import galleryChess from "@/assets/gallery-chess.jpg";
 import gallerySwim from "@/assets/gallery-swim.jpg";
 import galleryCalisthenics from "@/assets/gallery-calisthenics.jpg";
@@ -87,20 +88,17 @@ const gallery = [
   { src: galleryPhotography, alt: "Reading a finance book beside a camera" },
 ];
 
-function TechIcon({ name, dim }: { name: string; dim: boolean }) {
+/** VeriFi benchmark plot; only the published 250k-vector point is known. */
+function LatencyChart() {
   return (
-    <span
-      title={name}
-      className={`flex size-11 shrink-0 items-center justify-center rounded-full border border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground transition-opacity duration-180 ease-out ${dim ? "opacity-30" : "opacity-100"}`}
-    >
-      <svg viewBox="0 0 48 48" className="size-8" aria-hidden="true">
-        <circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <text x="24" y="27" textAnchor="middle" fill="currentColor" fontSize={name.length > 3 ? "8" : "10"} fontFamily="monospace" fontWeight="700">
-          {name}
-        </text>
-      </svg>
-      <span className="sr-only">{name}</span>
-    </span>
+    <svg viewBox="0 0 320 130" className="w-full" role="img" aria-label="VeriFi p50 latency benchmark pending logged data">
+      <line x1="24" y1="104" x2="296" y2="104" stroke="currentColor" strokeOpacity="0.15" />
+      <line x1="24" y1="28" x2="24" y2="104" stroke="currentColor" strokeOpacity="0.15" />
+      <circle cx="272" cy="36" r="3" fill="var(--volt)" />
+      <text x="272" y="24" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" fillOpacity="0.7">0.36 ms</text>
+      <text x="272" y="120" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" fillOpacity="0.45">250k</text>
+      <text x="160" y="70" textAnchor="middle" fontSize="9" fontFamily="monospace" fill="currentColor" fillOpacity="0.45">logged points pending</text>
+    </svg>
   );
 }
 
@@ -117,7 +115,7 @@ export function Hero() {
   };
 
   return (
-    <header id="top" className="scroll-mt-28 pb-14 pt-28 lg:pb-16 lg:pt-32">
+    <header id="top" className="scroll-mt-32 pb-14 pt-28 lg:pb-16 lg:pt-32">
       <Reveal className="mb-12 lg:hidden">
         <ProfileCard />
       </Reveal>
@@ -136,7 +134,7 @@ export function Hero() {
         </p>
       </Reveal>
 
-      <Reveal delay={160} className="mt-10 lg:mt-12">
+      <Reveal delay={140} className="mt-10 lg:mt-12">
         <dl className="flex flex-wrap justify-between gap-x-6 gap-y-6">
           {stats.map((s) => (
             <div key={s.value + s.label[0]} className="flex min-w-0 flex-1 flex-col items-center text-center">
@@ -149,11 +147,12 @@ export function Hero() {
         </dl>
       </Reveal>
 
-      <div className="mt-10 grid items-stretch gap-4 sm:grid-cols-2 lg:mt-12">
-        <Reveal delay={200} className="flex">
-          <div className="card-surface card-lift flex w-full flex-col rounded-3xl border border-primary/25 p-4 text-foreground">
+      {/* Asymmetric pair: bordered work card ~60%, borderless hobby column ~40% */}
+      <div className="mt-10 grid items-start gap-6 lg:mt-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-10">
+        <Reveal delay={200}>
+          <div className="card-surface rounded-lg border border-border p-5 text-foreground sm:p-6">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-volt">Selected work</p>
-            <ul className="mt-2 space-y-1">
+            <ul className="mt-4 space-y-2">
               {projects.map((p) => {
                 const isActive = active === p.id;
                 return (
@@ -168,11 +167,11 @@ export function Hero() {
                       aria-expanded={isActive}
                       className="w-full rounded-lg px-1.5 py-1 text-left transition-colors duration-180 ease-out hover:bg-primary/10"
                     >
-                      <span className="block font-display text-base font-semibold leading-snug">
+                      <span className="block font-display text-xl font-semibold leading-snug sm:text-2xl">
                         {p.name}
                         {p.wip && <span className="ml-2 font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground">in progress</span>}
                       </span>
-                      <span className="block text-[0.85em] font-normal leading-snug text-muted-foreground">{p.descriptor}</span>
+                      <span className="block text-sm font-normal leading-snug text-muted-foreground">{p.descriptor}</span>
                       <span className={`grid transition-all duration-180 ease-out ${isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                         <span className="overflow-hidden"><span className="mt-1 block font-mono text-[11px] leading-snug text-volt">{p.metric}</span></span>
                       </span>
@@ -181,53 +180,86 @@ export function Hero() {
                 );
               })}
             </ul>
-            <div className="mt-auto flex flex-col items-center gap-2 pt-4">
+            <div className="mt-6 border-t border-border pt-4">
               <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">Building with</p>
-              <div className="flex flex-wrap items-center justify-center gap-2">
-                {TECH.map((name) => <TechIcon key={name} name={name} dim={Boolean(activeProject && !activeProject.tech.includes(name))} />)}
-              </div>
+              <p className="mt-2 font-mono text-xs uppercase tracking-[0.12em]">
+                {TECH.map((name, i) => {
+                  const dim = Boolean(activeProject && !activeProject.tech.includes(name));
+                  return (
+                    <span key={name}>
+                      {i > 0 && <span className="mx-2 text-muted-foreground/40">·</span>}
+                      <span className={`transition-opacity duration-180 ease-out ${dim ? "opacity-30" : "opacity-100"}`}>{name}</span>
+                    </span>
+                  );
+                })}
+              </p>
             </div>
-            <span className="mt-3 flex size-8 items-center justify-center self-end rounded-full border border-primary/30 opacity-0" aria-hidden="true"><ChevronDown className="size-4" /></span>
           </div>
         </Reveal>
 
-        <Reveal delay={260} className="flex">
-          <div className="card-surface card-lift flex w-full flex-col rounded-3xl border border-primary/25 p-4 text-foreground">
+        <Reveal delay={260}>
+          <div className="border-l-2 border-primary pl-5 text-foreground">
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Off the keyboard</p>
-            <ul className="mt-2 space-y-1">
+            <ul className="mt-4 space-y-2">
               {hobbies.map((h) => (
-                <li key={h.name} className="px-1.5 py-1">
-                  <span className="block font-display text-base font-semibold leading-snug">{h.name}</span>
-                  <span className="block text-[0.85em] font-normal leading-snug text-muted-foreground">{h.descriptor}</span>
+                <li key={h.name}>
+                  <span className="block font-display text-xl font-semibold leading-snug sm:text-2xl">{h.name}</span>
+                  <span className="block text-sm font-normal leading-snug text-muted-foreground">{h.descriptor}</span>
                 </li>
               ))}
             </ul>
-            <div className="mt-auto flex flex-col items-center gap-2 pt-4">
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">Photo gallery</p>
-              <p className="text-center font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground/70">{gallery.length} shots — open below</p>
-            </div>
-            <button type="button" onClick={() => setGalleryOpen((v) => !v)} aria-expanded={galleryOpen} aria-label="Toggle hobby photo gallery" className="mt-3 flex size-8 items-center justify-center self-end rounded-full border border-primary/30 transition-colors duration-180 ease-out hover:bg-primary/10">
+            <button
+              type="button"
+              onClick={() => setGalleryOpen((v) => !v)}
+              aria-expanded={galleryOpen}
+              className="mt-5 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-volt transition-colors duration-180 ease-out hover:text-foreground"
+            >
+              {gallery.length} photos
               <ChevronDown className={`size-4 transition-transform duration-180 ease-out ${galleryOpen ? "rotate-180" : ""}`} />
             </button>
           </div>
         </Reveal>
       </div>
 
-      <div className={`grid transition-all duration-180 ease-out ${galleryOpen ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+      <div className={`grid transition-all duration-180 ease-out ${galleryOpen ? "mt-6 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
         <div className="overflow-hidden">
-          <div className="card-surface rounded-3xl border border-primary/25 p-4 sm:p-5">
+          <div className="card-surface rounded-lg border border-border p-4 sm:p-5">
             <div className="mb-3 flex items-center justify-between gap-3">
               <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Off the keyboard — gallery</p>
               <div className="flex shrink-0 gap-2">
-                <button type="button" onClick={() => scrollBy(-1)} aria-label="Previous photos" className="flex size-8 items-center justify-center rounded-full border border-primary/30 transition-colors duration-180 hover:bg-primary/10"><ChevronLeft className="size-4" /></button>
-                <button type="button" onClick={() => scrollBy(1)} aria-label="Next photos" className="flex size-8 items-center justify-center rounded-full border border-primary/30 transition-colors duration-180 hover:bg-primary/10"><ChevronRight className="size-4" /></button>
+                <button type="button" onClick={() => scrollBy(-1)} aria-label="Previous photos" className="flex size-8 items-center justify-center rounded-full border border-border transition-colors duration-180 hover:bg-primary/10"><ChevronLeft className="size-4" /></button>
+                <button type="button" onClick={() => scrollBy(1)} aria-label="Next photos" className="flex size-8 items-center justify-center rounded-full border border-border transition-colors duration-180 hover:bg-primary/10"><ChevronRight className="size-4" /></button>
               </div>
             </div>
             <div ref={trackRef} className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-1">
-              {gallery.map((img) => <img key={img.src} src={img.src} alt={img.alt} loading="lazy" width={1024} height={1024} className="aspect-square w-[70%] shrink-0 snap-start rounded-2xl object-cover sm:w-[45%] lg:w-[30%]" />)}
+              {gallery.map((img) => <img key={img.src} src={img.src} alt={img.alt} loading="lazy" width={1024} height={1024} className="aspect-square w-[70%] shrink-0 snap-start rounded-lg object-cover sm:w-[45%] lg:w-[30%]" />)}
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Real artifacts: benchmark output and a latency curve, not another styled box */}
+      <div className="mt-10 grid items-start gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-10">
+        <Reveal delay={80} className="min-w-0">
+          <CodeCard filename="wrk — http-server" badge="capture pending">
+            <span className="text-muted-foreground">$ wrk -t4 -c64 -d30s http://127.0.0.1:8080/</span>{"\n\n"}
+            <span className="text-volt">[ benchmark output pending ]</span>{"\n"}
+            Paste the real wrk output here to publish:{"\n"}
+            {"  "}• requests/sec{"\n"}
+            {"  "}• latency distribution{"\n"}
+            {"  "}• transfer/sec{"\n\n"}
+            <span className="text-muted-foreground"># no invented benchmark values</span>
+          </CodeCard>
+        </Reveal>
+        <Reveal delay={140} className="min-w-0">
+          <div className="card-surface rounded-lg border border-border p-5">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">VeriFi — p50 latency vs. vectors</p>
+            <div className="mt-4 text-foreground"><LatencyChart /></div>
+            <p className="mt-3 font-mono text-[10px] leading-relaxed text-muted-foreground">
+              milliseconds, single node. 250k vectors at 0.36 ms p50 — intermediate points are placeholders until the logged benchmark set is available.
+            </p>
+          </div>
+        </Reveal>
       </div>
     </header>
   );

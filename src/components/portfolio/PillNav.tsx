@@ -11,7 +11,7 @@ const items = [
 export function PillNav() {
   return (
     <nav className="pointer-events-none fixed inset-x-0 top-5 z-50 flex justify-center px-4">
-      <ul className="pointer-events-auto flex items-center gap-1 rounded-full border border-primary/40 bg-nav px-2 py-2 shadow-[0_10px_30px_-12px_oklch(0_0_0/0.9)]">
+      <ul className="pointer-events-auto flex items-center gap-1 rounded-full border border-border bg-nav px-2 py-2">
         {items.map(({ href, label, Icon }) => (
           <li key={href}>
             <a

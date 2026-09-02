@@ -3,10 +3,10 @@ import { Reveal } from "./Reveal";
 
 export function FirstProject() {
   return (
-    <section id="origin" className="scroll-mt-28 py-14 lg:py-20">
+    <section id="origin" className="scroll-mt-32 py-14 lg:py-20">
       <Reveal>
-        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">01 — Where it started</p>
-        <h2 className="mt-4 font-display text-[clamp(2rem,6vw,4rem)] font-extrabold uppercase leading-[0.9] tracking-tight">A Replit tab<br />that never closed</h2>
+        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-volt">01 — Where it started</p>
+        <h2 className="mt-4 font-display text-[clamp(1.5rem,3.6vw,2.4rem)] font-extrabold uppercase leading-[0.95] tracking-tight">A Replit tab<br />that never closed</h2>
       </Reveal>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)] lg:items-stretch lg:gap-12 xl:gap-20">
