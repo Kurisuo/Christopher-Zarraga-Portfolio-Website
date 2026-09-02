@@ -219,9 +219,9 @@ export function MoreProjects() {
       </div>
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <ProjectCard project={bottomRow[0]} delay={0} />
+        <ProjectCard project={bottomRow[0]!} delay={0} />
         <NVPilotCard />
-        <ProjectCard project={bottomRow[1]} delay={120} />
+        <ProjectCard project={bottomRow[1]!} delay={120} />
       </div>
 
       <Reveal delay={120}>
