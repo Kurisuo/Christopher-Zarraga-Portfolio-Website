@@ -251,6 +251,11 @@
   line-height: 1.62;
 }
 
+.bug-pane-snippets .bug-p {
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

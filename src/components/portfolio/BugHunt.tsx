@@ -312,7 +312,7 @@ export function BugHunt() {
           on={pane === "snip"}
           align="start"
           flow
-          className="[&_.bug-p]:text-[0.875rem] [&_.bug-p]:leading-[1.55]"
+          className="bug-pane-snippets"
         >
           <p className="bug-p">The two snippets below are the ones that make me laugh most:</p>
           <ol className="list-decimal space-y-4 pl-5">
