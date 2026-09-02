@@ -463,10 +463,12 @@ export function BugHunt() {
 function Pane({
   on,
   align = "center",
+  className,
   children,
 }: {
   on: boolean;
   align?: "start" | "center";
+  className?: string;
   children: ReactNode;
 }) {
   return (
@@ -476,6 +478,7 @@ function Pane({
         "bug-pane lg:absolute lg:inset-0 lg:flex lg:flex-col lg:overflow-auto lg:transition-opacity lg:duration-200",
         align === "start" ? "lg:justify-start" : "lg:justify-center",
         on ? "block lg:opacity-100" : "hidden lg:block lg:pointer-events-none lg:opacity-0",
+        className,
       )}
     >
       {children}
