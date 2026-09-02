@@ -36,12 +36,11 @@ export default defineConfig({
       failOnError: true,
     },
   },
-  // @ts-ignore — Lovable's typed nitro option is narrow, but the object is still merged.
-  nitro: {
+  nitro: ({
     hooks: {
       compiled: copyServerEntryForPrerender,
     },
-  },
+  } as any),
   vite: {
     base: process.env['VITE_BASE_PATH'] || "/",
     resolve: {
