@@ -1,11 +1,6 @@
-import { useRef, useState } from "react";
-import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 import { Reveal } from "./Reveal";
 import { ProfileCard } from "./ProfileCard";
-import galleryChess from "@/assets/gallery-chess.jpg";
-import gallerySwim from "@/assets/gallery-swim.jpg";
-import galleryCalisthenics from "@/assets/gallery-calisthenics.jpg";
-import galleryPhotography from "@/assets/gallery-photography.jpg";
 
 const stats = [
   { value: "1st", label: ["COHORT FULL RIDE", "RECIPIENT AT UCSC"] },
