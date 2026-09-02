@@ -75,7 +75,7 @@ export function MoreProjects() {
 
       <div className="mt-8 flex flex-col gap-4">
         {rows.map((row, rowIndex) => (
-          <div key={rowIndex} className="flex flex-col gap-4 lg:flex-row lg:items-start">
+          <div key={rowIndex} className="flex flex-col gap-4 lg:flex-row">
             {row.map((project, columnIndex) => (
               <Reveal
                 key={project.name}
