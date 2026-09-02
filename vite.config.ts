@@ -13,6 +13,7 @@ export default defineConfig({
     server: { entry: "server" },
   },
   vite: {
+    base: process.env.VITE_BASE_PATH || "/",
     resolve: {
       dedupe: ["react", "react-dom", "three", "@react-three/fiber", "@react-three/drei"],
     },
