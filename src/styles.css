@@ -246,7 +246,7 @@
 .bug-p {
   margin-bottom: 1rem;
   max-width: 48ch;
-  color: var(--muted-foreground);
+  color: oklch(0.9 0 0);
   font-size: 0.9375rem;
   line-height: 1.62;
 }

@@ -287,11 +287,11 @@ export function BugHunt() {
     : "All four. Better than I did for four years.";
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:items-center lg:gap-7">
+    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-7">
       {/* left column: cross-fading panes */}
-      <div className="relative min-w-0 lg:flex lg:h-[30rem] lg:items-center">
+      <div className="relative min-w-0 lg:flex lg:h-[30rem]">
 
-        <Pane on={pane === "intro"}>
+        <Pane on={pane === "intro"} align="start">
           <p className="bug-p">
             My first real project was a tiny text RPG I made in Python! I made it to showcase what I
             had learned in my first semester of Highschool computer science. Man, looking back at
@@ -322,7 +322,7 @@ export function BugHunt() {
           </ol>
         </Pane>
 
-        <Pane on={pane === "full"}>
+        <Pane on={pane === "full"} align="start">
           <p className="bug-p">
             The whole thing, unedited. Roughly 400 lines of high-school me — global state,
             copy-pasted branches, and a shop that recursively calls itself instead of looping.
@@ -332,7 +332,7 @@ export function BugHunt() {
           </p>
         </Pane>
 
-        <Pane on={pane === "res"}>
+        <Pane on={pane === "res"} align="start">
           {result ? (
             <>
               <div
@@ -460,12 +460,21 @@ export function BugHunt() {
   );
 }
 
-function Pane({ on, children }: { on: boolean; children: ReactNode }) {
+function Pane({
+  on,
+  align = "center",
+  children,
+}: {
+  on: boolean;
+  align?: "start" | "center";
+  children: ReactNode;
+}) {
   return (
     <div
       aria-hidden={!on}
       className={cn(
-        "bug-pane lg:absolute lg:inset-0 lg:flex lg:flex-col lg:justify-center lg:overflow-auto lg:transition-opacity lg:duration-200",
+        "bug-pane lg:absolute lg:inset-0 lg:flex lg:flex-col lg:overflow-auto lg:transition-opacity lg:duration-200",
+        align === "start" ? "lg:justify-start" : "lg:justify-center",
         on ? "block lg:opacity-100" : "hidden lg:block lg:pointer-events-none lg:opacity-0",
       )}
     >
