@@ -32,6 +32,13 @@
   --color-hairline: var(--hairline);
   --color-found: var(--found);
   --color-miss: var(--miss);
+  --color-code-fg: var(--code-fg);
+  --color-code-key: var(--code-key);
+  --color-code-str: var(--code-str);
+  --color-code-num: var(--code-num);
+  --color-code-fn: var(--code-fn);
+  --color-code-com: var(--code-com);
+
 
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
