@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import cohortAsset from "@/assets/sabatte-cohort.jpg.asset.json";
-import ycExpoPhoto from "@/assets/slide-yc-expo.jpg";
+import ycExpoAsset from "@/assets/slide-yc-expo.jpg.asset.json";
 import berkeleyPhoto from "@/assets/slide-berkeley-regents.jpg";
 import shpePhoto from "@/assets/slide-shpe-2026.jpg";
 import { Reveal } from "./Reveal";
@@ -25,10 +25,10 @@ const slides: Slide[] = [
     body: "I came to UC Santa Cruz in the first cohort of Sabatte Family full-ride scholars — the first full ride in the university's history. It changed what I could afford to be curious about. I am so grateful; I got to declare Computer Science with an Applied Math minor because I wanted both halves: the systems themselves, and the math that explains why they behave the way they do.",
   },
   {
-    image: ycExpoPhoto,
-    alt: "Placeholder image for the Y Combinator Expo",
+    image: ycExpoAsset.url,
+    alt: "Christopher Zarraga Jimenez at the Y Combinator Startup Internship Expo",
     caption: "Y Combinator Expo.",
-    body: "",
+    body: "I was also accepted to Y Combinator's 2027 Startup Internship Expo and flew out to San Francisco for it! I spent the day around engineers building with AI on problems that truly exist, and even helped pitch for Altera Labs — we brought in around ten potential intern candidates over the course of the event! It was amazing how kind everyone was. I quickly made friends with a group of ambitious, genuinely brilliant people who re-sparked my drive to just start making something.",
   },
   {
     image: berkeleyPhoto,
