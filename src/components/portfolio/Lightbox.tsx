@@ -67,6 +67,7 @@ export function Lightbox({ slides, index, onNavigate, onClose }: Props) {
         if (focusables.length === 0) return;
         const first = focusables[0];
         const last = focusables[focusables.length - 1];
+        if (!first || !last) return;
         const active = document.activeElement as HTMLElement | null;
         if (e.shiftKey) {
           if (!active || !root.contains(active) || active === first) {
