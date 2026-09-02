@@ -11,22 +11,17 @@ import { join } from "node:path";
 /**
  * TanStack Start's prerender preview server derives the expected server
  * entry filename from the configured input name ("server" -> "server.js"),
- * but Nitro emits the server bundle as "index.mjs". This Nitro plugin copies
+ * but Nitro emits the server bundle as "index.mjs". This Nitro hook copies
  * the emitted entry to the name the preview server looks for so prerendering
  * can run; the file is harmless in the final static output.
  */
-const ghPagesServerShim = {
-  name: "gh-pages-server-shim",
-  hooks: {
-    compiled: (nitro: any) => {
-      const indexPath = join(nitro.options.output.serverDir, "index.mjs");
-      const serverPath = join(nitro.options.output.serverDir, "server.js");
-      if (existsSync(indexPath) && !existsSync(serverPath)) {
-        copyFileSync(indexPath, serverPath);
-      }
-    },
-  },
-};
+function copyServerEntryForPrerender(nitro: any) {
+  const indexPath = join(nitro.options.output.serverDir, "index.mjs");
+  const serverPath = join(nitro.options.output.serverDir, "server.js");
+  if (existsSync(indexPath) && !existsSync(serverPath)) {
+    copyFileSync(indexPath, serverPath);
+  }
+}
 
 export default defineConfig({
   tanstackStart: {
@@ -41,9 +36,12 @@ export default defineConfig({
       failOnError: true,
     },
   },
+  // @ts-ignore — Lovable's typed nitro option is narrow, but the object is still merged.
   nitro: {
-    plugins: [ghPagesServerShim],
-  } as any,
+    hooks: {
+      compiled: copyServerEntryForPrerender,
+    },
+  },
   vite: {
     base: process.env['VITE_BASE_PATH'] || "/",
     resolve: {
