@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep downloadable portfolio documents and their previews in `public/media/` and reference them through `media()` so the same files resolve on Lovable and GitHub Pages.

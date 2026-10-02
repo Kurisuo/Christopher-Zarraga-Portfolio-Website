@@ -8,7 +8,7 @@ const projects = [
     name: "AIEA Lab",
     blurb: "Autonomous-vehicle research with reinforcement learning.",
     description:
-      "I learned Kubernetes and the Nautilus cluster from scratch just to get access to CARLA and run the lab's experiments — GPU-scheduled jobs, PVC-backed storage, pod specs written by hand. Most of the early work was infrastructure rather than research. Currently I'm studying the RL methods themselves, mostly SAC and DDPG, and learning to develop my own! The part I find interesting isn't implementing them but rather understanding why one algorithm or policy gets chosen over another for a given problem.",
+      "I learned Kubernetes and the Nautilus cluster from scratch to run CARLA and reinforcement-learning experiments — GPU-scheduled jobs, PVC-backed storage, pod specs written by hand. I've since evaluated Soft Actor-Critic agents in Gymnasium CarRacing, analyzing reward curves and control telemetry like steering, throttle, velocity, and acceleration. The part I find interesting isn't just implementing an algorithm but understanding why one policy gets chosen over another for a given problem.",
     metric: "SAC & DDPG · Kubernetes GPU cluster",
   },
   {
