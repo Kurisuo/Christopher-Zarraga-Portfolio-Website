@@ -1,6 +1,6 @@
 import { useState } from "react";
-import resumeImage from "@/assets/christopher-zarraga-resume.png";
 import { Button } from "@/components/ui/button";
+import { media } from "@/lib/media";
 import { Reveal } from "./Reveal";
 
 export function Contact() {
@@ -78,23 +78,28 @@ export function Contact() {
           id="inline-resume"
           className="mt-10 flex flex-col overflow-hidden rounded-lg border border-border bg-ink-soft"
         >
-          <div className="flex items-center justify-between border-b border-border px-5 py-3">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-3">
             <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
               Christopher Zarraga — Resume
             </span>
-            <Button
-              type="button"
-              onClick={() => setShowResume(false)}
-              aria-label="Close resume"
-              variant="outline"
-              size="sm"
-              className="rounded-full border-border bg-transparent font-mono text-[11px] uppercase tracking-[0.15em] text-foreground shadow-none hover:border-foreground hover:bg-foreground/10 hover:text-foreground"
-            >
-              Close
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button asChild variant="outline" size="sm" className="rounded-full border-border bg-transparent font-mono text-[11px] uppercase tracking-[0.15em] text-foreground shadow-none hover:border-foreground hover:bg-foreground/10 hover:text-foreground">
+                <a href={media("Christopher_Zarraga_Resume.pdf")} download="Christopher_Zarraga_Resume.pdf">Download PDF</a>
+              </Button>
+              <Button
+                type="button"
+                onClick={() => setShowResume(false)}
+                aria-label="Close resume"
+                variant="outline"
+                size="sm"
+                className="rounded-full border-border bg-transparent font-mono text-[11px] uppercase tracking-[0.15em] text-foreground shadow-none hover:border-foreground hover:bg-foreground/10 hover:text-foreground"
+              >
+                Close
+              </Button>
+            </div>
           </div>
           <img
-            src={resumeImage}
+            src={media("Christopher_Zarraga_Resume_Preview.png")}
             alt="Christopher Zarraga Jimenez resume"
             className="block h-auto w-full bg-background object-contain"
           />
