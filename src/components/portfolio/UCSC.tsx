@@ -28,7 +28,7 @@ const slides: Slide[] = [
     image: media("slide-yc-expo.jpg"),
     alt: "Christopher Zarraga Jimenez at the Y Combinator Startup Internship Expo",
     caption: "Y Combinator Expo.",
-    body: "I was also accepted to Y Combinator's 2027 Startup Internship Expo and flew out to San Francisco for it! I spent the day around engineers building with AI on problems that truly exist, and even helped pitch for Altera Labs — we brought in around ten potential intern candidates over the course of the event! It was amazing how kind everyone was. I quickly made friends with a group of ambitious, genuinely brilliant people who re-sparked my drive to just start making something.",
+    body: "I was also accepted to Y Combinator's 2026 Startup Internship Expo and flew out to San Francisco for it! I spent the day around engineers building with AI on problems that truly exist, and even helped pitch for Altera Labs — we brought in around ten potential intern candidates over the course of the event! It was amazing how kind everyone was. I quickly made friends with a group of ambitious, genuinely brilliant people who re-sparked my drive to just start making something.",
   },
   {
     image: media("slide-berkeley-regents.jpg"),
