@@ -6,10 +6,10 @@ const projects = [
   {
     tag: "Python / Stable-Baselines3 / CARLA",
     name: "AIEA Lab",
-    blurb: "Autonomous-vehicle research with reinforcement learning.",
+    blurb: "Frame-based monitoring research for autonomous vehicles.",
     description:
-      "I learned Kubernetes and the Nautilus cluster from scratch to run CARLA and reinforcement-learning experiments — GPU-scheduled jobs, PVC-backed storage, pod specs written by hand. I've since evaluated Soft Actor-Critic agents in Gymnasium CarRacing, analyzing reward curves and control telemetry like steering, throttle, velocity, and acceleration. The part I find interesting isn't just implementing an algorithm but understanding why one policy gets chosen over another for a given problem.",
-    metric: "SAC & DDPG · Kubernetes GPU cluster",
+      "I'm researching frame-based monitoring for autonomous vehicles at UCSC's AIEA Lab. I learned Kubernetes and the Nautilus cluster from scratch to run CARLA and reinforcement-learning experiments using YAML-configured GPU pods and Selkies Remote Desktop. I've also evaluated Soft Actor-Critic agents in Gymnasium CarRacing, analyzing reward curves and control telemetry like steering, throttle, velocity, and acceleration. The part I find interesting isn't just implementing an algorithm but understanding why one policy gets chosen over another for a given problem.",
+    metric: "Frame-monitoring · SAC · Kubernetes GPU cluster",
   },
   {
     tag: "Angular / Firebase / RxJS",
@@ -100,7 +100,7 @@ export function MoreProjects() {
         <div className="mt-8 grid gap-6 border border-border bg-ink-soft p-7 sm:p-10 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-12">
           <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">Right now</p>
           <p className="max-w-4xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
-            I&apos;m going deeper on autonomous-driving RL at the AIEA Lab and building up Compass with the Tech4Good Lab. On my own time I&apos;m re-learning computer architecture before writing an NES emulator in C++, and building AVScope — a C++ tool for benchmarking autonomous-vehicle experiments. Alongside that I&apos;m looking for an internship where I can ship something real and be the least experienced person in the room for a while!
+            Right now I&apos;m researching frame-based monitoring for autonomous vehicles at UCSC’s AIEA Lab. On my own time, I&apos;m refreshing my computer architecture knowledge before writing an NES emulator in C++ and building AVScope, a C++ tool for benchmarking autonomous-vehicle experiments. I also love attending hackathons, conferences, and workshops—most recently, the AMD × Red Hat Infra Workshop! I&apos;m looking for a 2027 internship where I can ship something real, learn from experienced engineers, and be the least experienced person in the room for a while!
           </p>
         </div>
       </Reveal>
